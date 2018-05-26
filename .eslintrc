@@ -1,0 +1,24 @@
+{
+  "env": {
+    "browser": true,
+  },
+  "extends": [
+    "airbnb"
+  ],
+  "rules": {
+    "semi": ["error", "never"],
+    "no-unused-vars": "off",
+    "comma-dangle": "off",
+    "new-cap": "off",
+    "capitalized-comments": "off",
+    "no-confusing-arrow": "off",
+    "import/no-extraneous-dependencies": "off",
+    "import/prefer-default-export": "off",
+    "react/prop-types": "off",
+    "react/react-in-jsx-scope": "off",
+    "react/self-closing-comp": ["error", {
+      "component": true,
+      "html": false
+    }]
+  },
+}

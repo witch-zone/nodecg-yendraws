@@ -1,0 +1,10 @@
+{
+  "name": "nodecg-yendraws",
+  "version": "1.0.0",
+  "dependencies": {
+    "paper-button": "^2.1.1",
+    "paper-input": "^2.2.2",
+    "paper-checkbox": "^2.0.4",
+    "iron-pages": "^2.1.1"
+  }
+}
