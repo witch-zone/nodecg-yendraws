@@ -5,7 +5,11 @@
   "homepage": "http://twitch.tv/yendraws",
   "scripts": {
     "start": "webpack --mode development --watch",
-    "build": "webpack --mode production"
+    "build": "webpack --mode production",
+    "lint:js": "eslint \"src/**/*.{js,jsx}\"",
+    "lint:scss": "stylelint 'src/**/*.scss' --syntax scss",
+    "lint": "npm run-script lint:js && npm run-script lint:scss",
+    "precommit": "lint-staged"
   },
   "author": {
     "name": "dani quinn sexton",
@@ -33,6 +37,10 @@
       }
     ]
   },
+  "lint-staged": {
+    "src/**/*.{js,jsx}": "eslint",
+    "src/**/*.scss": "stylelint --syntax scss"
+  },
   "repository": "https://github.com/witch-zone/nodecg-yendraws.git",
   "private": true,
   "dependencies": {
@@ -42,10 +50,17 @@
     "babel-plugin-transform-react-jsx": "^6.24.1",
     "babel-preset-env": "^1.7.0",
     "css-loader": "^0.28.11",
+    "eslint": "^4.19.1",
+    "eslint-config-airbnb": "^16.1.0",
+    "eslint-plugin-import": "^2.12.0",
+    "eslint-plugin-jsx-a11y": "^6.0.3",
+    "eslint-plugin-react": "^7.8.2",
     "file-loader": "^1.1.11",
     "html-loader": "^0.5.5",
     "html-webpack-plugin": "^3.2.0",
+    "husky": "^0.14.3",
     "image-loader": "0.0.1",
+    "lint-staged": "^7.1.2",
     "mini-css-extract-plugin": "^0.4.0",
     "node-sass": "^4.9.0",
     "nodecg-twitchie-graphics": "git+https://github.com/helloitsdan/nodecg-twitchie-graphics.git",
@@ -56,6 +71,9 @@
     "redux": "^4.0.0",
     "sass-loader": "^7.0.1",
     "style-loader": "^0.21.0",
+    "stylelint": "^9.2.1",
+    "stylelint-config-sass-guidelines": "^5.0.0",
+    "stylelint-scss": "^3.1.0",
     "svg-sprite-loader": "^3.8.0",
     "uglifyjs-webpack-plugin": "^1.2.5",
     "webpack": "^4.9.1",

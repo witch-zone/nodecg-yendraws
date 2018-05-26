@@ -1,0 +1,19 @@
+{
+  "extends": "stylelint-config-sass-guidelines",
+  "plugins": [
+    "stylelint-scss"
+  ],
+  "ignoreFiles": "node_modules",
+  "rules": {
+    "order/properties-alphabetical-order": null,
+    "selector-no-qualifying-type": null,
+    "max-nesting-depth": null,
+    "selector-max-compound-selectors": null,
+    "scss/selector-no-redundant-nesting-selector": null,
+    "scss/at-extend-no-missing-placeholder": true,
+    "scss/dollar-variable-no-missing-interpolation": true,
+    "scss/at-mixin-argumentless-call-parentheses": "never",
+    "selector-max-id": null,
+    "selector-class-pattern": "^(?:(?:o|c|u|t|s|is|has|_|js|qa)-)?[a-zA-Z0-9]+(?:-[a-zA-Z0-9]+)*(?:__[a-zA-Z0-9]+(?:-[a-zA-Z0-9]+)*)?(?:--[a-zA-Z0-9]+(?:-[a-zA-Z0-9]+)*)?(?:\\[.+\\])?$",
+  }
+}
