@@ -1,4 +1,3 @@
-html {
-  background: yellow;
-  color: black;
-}
+@import 'settings';
+@import 'typography';
+@import 'reset';

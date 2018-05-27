@@ -1,0 +1,25 @@
+@font-face {
+  font-family: 'Handwrityen';
+  src: url('../assets/fonts/handwrityen.woff2') format('woff2');
+  font-weight: 500;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Handwrityen';
+  src: url('../assets/fonts/handwrityen_bold.woff2') format('woff2');
+  font-weight: 800;
+  font-style: normal;
+}
+
+@mixin base-font {
+  font-family: $base-font-family;
+  letter-spacing: $base-letter-spacing;
+  line-height: $base-line-height;
+}
+
+@mixin brand-font {
+  font-family: $brand-font-family;
+  line-height: $brand-line-height;
+  letter-spacing: $brand-letter-spacing;
+}

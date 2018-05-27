@@ -1,0 +1,39 @@
+* { box-sizing: border-box; }
+
+html,
+body {
+  background: none;
+  padding: 0;
+  margin: 0;
+  overflow: hidden;
+}
+
+img {
+  max-width: 100%;
+  vertical-align: bottom;
+}
+
+body {
+  @include base-font;
+  font-size: $base-font-size;
+  font-weight: $font-weight-normal;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  @include brand-font;
+  font-weight: $font-weight-bold;
+
+  margin: 0 auto 0.2em;
+}
+
+figure {
+  margin: 0;
+  padding: 0;
+}
