@@ -1,12 +1,13 @@
 import { h } from 'preact'
 import OverlayProvider from 'nodecg-twitchie-graphics/overlay-provider'
 
+import Player from './components/Player'
+import BRB from './components/BRB'
+
 const Overlay = () => (
   <OverlayProvider>
-    <h1>HELLO!</h1>
-    <p>this is the overlay :~)</p>
-    <h2>It&apos;s nice to see you!</h2>
-    <p>i&apos;m afraid this is all we have right now</p>
+    <Player />
+    <BRB />
   </OverlayProvider>
 )
 

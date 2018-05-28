@@ -5,5 +5,5 @@ import './scss/yendraws.scss'
 
 render(
   <Overlay />,
-  document.getElementById('app')
+  document.getElementById('app'),
 )
