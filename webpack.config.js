@@ -4,13 +4,13 @@ const autoprefixer = require('autoprefixer')
 
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
-
+const CleanWebpackPlugin = require('clean-webpack-plugin')
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin')
 
 module.exports = {
   entry: {
-    main: './src/index.jsx'
+    yendraws: './src/index.jsx',
   },
 
   output: {
@@ -22,7 +22,7 @@ module.exports = {
   module: {
     rules: [{
       test: /\.jsx?$/,
-      exclude: modulePath => (
+      exclude: (modulePath) => (
         /node_modules/.test(modulePath) &&
         !/twitchie/.test(modulePath)
       ),
@@ -46,8 +46,8 @@ module.exports = {
         loader: 'file-loader',
         options: {
           context: path.resolve(__dirname, 'src'),
-          name: 'assets/[path][name].[ext]',
-        }
+          name: '[path][name].[ext]',
+        },
       }],
     }, {
       test: /\.s?css$/,
@@ -83,8 +83,8 @@ module.exports = {
           loader: 'file-loader',
           options: {
             context: path.resolve('./src/'),
-            name: 'assets/[path][name].[ext]',
-          }
+            name: '[path][name].[ext]',
+          },
         },
         {
           loader: 'img-loader',
@@ -96,7 +96,7 @@ module.exports = {
             },
           },
         },
-      ]
+      ],
     }, {
       test: /\.svg$/,
       use: [
@@ -115,7 +115,7 @@ module.exports = {
           },
         },
       ],
-    }]
+    }],
   },
 
   resolve: {
@@ -127,6 +127,7 @@ module.exports = {
   },
 
   plugins: [
+    new CleanWebpackPlugin(['graphics']),
     new webpack.DefinePlugin({
       'process.env': {
         NODE_ENV: JSON.stringify('production'),
@@ -144,7 +145,7 @@ module.exports = {
         minifyCSS: true,
         minifyJS: true,
       },
-    })
+    }),
   ],
 
   optimization: {

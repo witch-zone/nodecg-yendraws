@@ -10,7 +10,7 @@ const Scene = ({
     className={classnames(
       'c-scene',
       className, {
-        'is-visible': isVisible,
+        'c-scene--is-visible': isVisible,
       },
     )}
   >

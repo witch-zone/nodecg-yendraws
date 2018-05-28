@@ -1,0 +1,17 @@
+.c-scene {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: $width;
+  height: $height;
+
+  transition: all 1s ease-in-out;
+
+  opacity: 0;
+  visibility: hidden;
+}
+
+.c-scene--is-visible {
+  opacity: 1;
+  visibility: visible;
+}
