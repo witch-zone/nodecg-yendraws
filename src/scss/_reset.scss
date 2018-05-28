@@ -15,6 +15,7 @@ img {
 
 body {
   @include base-font;
+  color: $color-base;
   font-size: $base-font-size;
   font-weight: $font-weight-normal;
   text-rendering: optimizeLegibility;
@@ -31,6 +32,10 @@ h6 {
   font-weight: $font-weight-bold;
 
   margin: 0 auto 0.2em;
+}
+
+p {
+  margin: 0 auto 1em;
 }
 
 figure {

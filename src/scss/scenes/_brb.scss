@@ -1,9 +1,35 @@
 .c-scene--brb {
   z-index: 2;
+}
 
+.c-brb {
   background:
     url('../assets/images/brb-yen.png'),
     url('../assets/images/brb-background.png');
   background-size: contain;
   background-repeat: no-repeat;
+}
+
+.c-brb__message {
+  @include brand-font;
+
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-items: center;
+
+  width: 55%;
+  padding: 1em;
+
+  font-size: 5rem;
+  font-weight: bold;
+  text-align: center;
+}
+
+.c-brb__title {
+  font-size: 2em;
+}
+
+.c-brb__timer {
+  margin: 0;
 }
