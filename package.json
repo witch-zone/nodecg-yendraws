@@ -27,7 +27,33 @@
     "nodecg-bundle"
   ],
   "nodecg": {
-    "compatibleRange": "~0.9.0",
+    "compatibleRange": ">=1.0.0",
+    "bundleDependencies": {
+      "nodecg-twitchie": "^0.0.1"
+    },
+    "dashboardPanels": [
+      {
+        "name": "Commands",
+        "title": "Chat Commands",
+        "width": 2,
+        "file": "commands.html",
+        "headerColor": "#6441A4"
+      },
+      {
+        "name": "Manage Commands",
+        "title": "Manage Commands",
+        "width": 2,
+        "file": "manage-commands.html",
+        "workspace": "Config"
+      },
+      {
+        "name": "Manage Schedule",
+        "title": "Manage Schedule",
+        "width": 2,
+        "file": "manage-schedule.html",
+        "workspace": "Config"
+      }
+    ],
     "graphics": [
       {
         "file": "index.html",

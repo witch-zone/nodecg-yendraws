@@ -1,7 +1,24 @@
 .c-scene--player {
   z-index: 1;
+}
 
+.c-player {
   background: url('../assets/images/overlay-base.png');
   background-size: contain;
   background-repeat: no-repeat;
+}
+
+.c-player-window {
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.c-player-window--header {
+
+}
+
+.c-player-window--footer {
+
 }
