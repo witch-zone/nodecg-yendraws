@@ -1,15 +1,11 @@
 /* global nodecg, NodeCG, Polymer */
 
 (() => {
-  const commands = nodecg.Replicant('commands', 'nodecg-yendraws', {
-    defaultValue: [
-      '!motherhen',
-      '!commish',
-      '!social',
-      '!dani',
-      '!shoutout',
-    ],
-  })
+  const commands = nodecg.Replicant(
+    'commands',
+    'nodecg-yendraws',
+    { persistent: true },
+  )
 
   class YendrawsCommands extends Polymer.Element {
     static get is() {
@@ -39,6 +35,8 @@
           target,
         },
       )
+
+      this.target = ''
     }
 
     async ready() {

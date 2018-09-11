@@ -26,6 +26,7 @@
     "no-confusing-arrow": "off",
     "global-require": "off",
     "class-methods-use-this": "off",
+    "function-paren-newline": ["error", "consistent"],
     "import/no-extraneous-dependencies": "off",
     "import/newline-after-import": "off",
     "react/prop-types": "off",
