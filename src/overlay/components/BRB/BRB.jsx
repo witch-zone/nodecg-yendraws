@@ -1,6 +1,7 @@
 import { h } from 'preact'
 
 import Scene from '../Scene'
+import CountdownTimer from '../CountdownTimer'
 
 const BRB = ({
   message,
@@ -16,9 +17,9 @@ const BRB = ({
       </h1>
 
       {timer && (
-        <p className="c-brb__timer">
-          Starting in {timer.getHours()}:{timer.getMinutes()}!
-        </p>
+        <CountdownTimer
+          target={timer}
+        />
       )}
     </div>
   </Scene>
