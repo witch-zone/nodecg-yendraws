@@ -16,11 +16,9 @@ const BRB = ({
         {message}
       </h1>
 
-      {timer && (
-        <CountdownTimer
-          target={timer}
-        />
-      )}
+      <CountdownTimer
+        target={timer}
+      />
     </div>
   </Scene>
 )

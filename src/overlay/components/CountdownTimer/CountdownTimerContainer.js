@@ -9,52 +9,39 @@ import {
 
 import CountdownTimer from './CountdownTimer'
 
+import calculateTimeRemaining from './utils/calculateTimeRemaining'
+
 const createProps = ({
   target,
 }) => ({
   target: moment.utc(target),
 })
 
-const getCountdownText = (diff) => {
-  if (diff <= 0) {
-    return null
-  }
-
-  const diffMoment = moment.utc(diff)
-
-  return diffMoment.format(
-    diffMoment.hours() > 0
-      ? 'H:mm:ss'
-      : 'm:ss'
-  )
-}
-
-const calculateTimeRemaining = (target) => {
-  const now = moment.utc()
-  const diff = target.diff(now)
-  return getCountdownText(diff)
-}
-
 const createInitialState = () => ({
   countdown: null,
 })
 
-const createStateHandlers = {
+const stateHandlers = {
   onUpdateCountdown: (_, { target }) => () => ({
-    countdown: calculateTimeRemaining(target),
+    countdown: target.isValid()
+      ? calculateTimeRemaining(target)
+      : null,
   })
 }
 
 const lifecycleHandlers = {
   componentDidMount() {
     const { onUpdateCountdown } = this.props
-    setInterval(onUpdateCountdown, 1000)
+    this.ticker = setInterval(onUpdateCountdown, 1000)
+  },
+  componentWillUnmount() {
+    clearInterval(this.ticker)
   }
 }
 
 export default compose(
   setDisplayName('CountdownTimerContainer'),
   withPropsOnChange(['target'], createProps),
-  withStateHandlers(createInitialState, createStateHandlers),
+  withStateHandlers(createInitialState, stateHandlers),
   lifecycle(lifecycleHandlers),
 )(CountdownTimer)
