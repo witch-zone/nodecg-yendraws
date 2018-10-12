@@ -1,0 +1,106 @@
+<link rel="import" href="/bundles/nodecg-yendraws/bower_components/polymer/polymer-element.html">
+<link rel="import" href="/bundles/nodecg-yendraws/bower_components/iron-list/iron-list.html">
+<link rel="import" href="/bundles/nodecg-yendraws/bower_components/iron-icons/iron-icons.html">
+<link rel="import" href="/bundles/nodecg-yendraws/bower_components/paper-input/paper-input.html">
+<link rel="import" href="/bundles/nodecg-yendraws/bower_components/paper-icon-button/paper-icon-button.html">
+<link rel="import" href="/bundles/nodecg-yendraws/bower_components/paper-button/paper-button.html">
+
+<link rel="import" href="/bundles/nodecg-twitchie/dashboard/twitchie-styles/twitchie-styles.html">
+
+<dom-module id="yendraws-schedule-editor">
+  <template>
+    <style include="twitchie-styles"></style>
+
+    <style>
+      .c-schedule-list {
+        max-height: 10em;
+        border-bottom: 1px solid #ccc;
+        margin: 0 auto 0.5rem;
+      }
+
+      .c-schedule-list__command {
+        padding: 0.5rem 0;
+        border-bottom: 1px solid #ccc;
+        font-size: 0.8em;
+      }
+
+      .c-schedule-list__command:last-child {
+        border-bottom: none;
+      }
+
+      .c-schedule-list-field {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+    </style>
+
+    <div class="c-field-group">
+      <paper-input
+        label="Monday"
+        value="{{monday}}"
+        class="c-field-group__field c-flush-input"
+      ></paper-input>
+    </div>
+
+    <div class="c-field-group">
+      <paper-input
+        label="Tuesday"
+        value="{{tuesday}}"
+        class="c-field-group__field c-flush-input"
+      ></paper-input>
+    </div>
+
+    <div class="c-field-group">
+      <paper-input
+        label="Wednesday"
+        value="{{wednesday}}"
+        class="c-field-group__field c-flush-input"
+      ></paper-input>
+    </div>
+
+    <div class="c-field-group">
+      <paper-input
+        label="Thursday"
+        value="{{thursday}}"
+        class="c-field-group__field c-flush-input"
+      ></paper-input>
+    </div>
+
+    <div class="c-field-group">
+      <paper-input
+        label="Friday"
+        value="{{friday}}"
+        class="c-field-group__field c-flush-input"
+      ></paper-input>
+    </div>
+
+    <div class="c-field-group">
+      <paper-input
+        label="Saturday"
+        value="{{saturday}}"
+        class="c-field-group__field c-flush-input"
+      ></paper-input>
+    </div>
+
+    <div class="c-field-group">
+      <paper-input
+        label="Sunday"
+        value="{{sunday}}"
+        class="c-field-group__field c-flush-input"
+      ></paper-input>
+    </div>
+
+    <paper-button
+      raised
+      on-tap="saveSchedule"
+    >
+      <iron-icon
+        icon="icons:done"
+      ></iron-icon>
+      Save schedule
+    </paper-button>
+  </template>
+
+  <script src="yendraws-schedule-editor.js"></script>
+</dom-module>
