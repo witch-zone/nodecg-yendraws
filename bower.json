@@ -6,6 +6,8 @@
     "paper-input": "^2.2.2",
     "iron-icons": "PolymerElements/iron-icons#^2.1.1",
     "polymer": "^2.0.0",
-    "moment": "^2.22.2"
+    "moment": "^2.22.2",
+    "iron-list": "^2",
+    "paper-icon-button": "^2"
   }
 }
