@@ -2,7 +2,9 @@
 @import 'typography';
 @import 'reset';
 
-@import 'components/layer';
+@import 'components/c-layer';
+@import 'components/c-chat';
+@import 'components/c-social-links';
 
 @import 'scenes/scene';
 @import 'scenes/player';

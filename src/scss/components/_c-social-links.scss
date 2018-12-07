@@ -1,0 +1,29 @@
+.c-social-links {
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.c-social-links__link {
+  margin: 0 0.5em 0 0;
+}
+
+.c-social-link {
+  display: inline-flex;
+  flex-flow: row nowrap;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.c-social-link__icon {
+  display: inline-block;
+  margin: 0 0.25em 0 0;
+  padding: 0.125em;
+  font-size: 0.85em;
+  width: 1em;
+  height: 1em;
+  background: $color-social-background;
+  fill: #fff;
+  border-radius: 0.1em;
+}

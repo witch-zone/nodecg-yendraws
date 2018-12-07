@@ -20,6 +20,7 @@
 
 @mixin brand-font {
   font-family: $brand-font-family;
+  font-weight: $font-weight-bold;
   line-height: $brand-line-height;
   letter-spacing: $brand-letter-spacing;
 }
