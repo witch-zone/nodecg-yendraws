@@ -1,4 +1,4 @@
-.c-scene {
+.o-scene {
   position: absolute;
   top: 0;
   left: 0;
@@ -11,7 +11,7 @@
   visibility: hidden;
 }
 
-.c-scene--is-visible {
+.o-scene--is-visible {
   opacity: 1;
   visibility: visible;
 }

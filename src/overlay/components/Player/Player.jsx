@@ -1,31 +1,28 @@
 import { h } from 'preact'
 
-import Scene from '../Scene'
+import Scene, { Layer } from '../Scene'
 import Social from '../Social'
+import Chat from '../Chat'
 
 const Player = ({
   status,
 }) => (
-  <Scene className="c-scene--player">
-    <figure className="c-layer c-player-background" />
+  <Scene className="o-scene--player">
+    <Layer className="c-layer c-player-background" />
 
-    <div className="c-layer c-player">
+    <Layer className="c-player">
       <header className="c-player__header">
         {status}
       </header>
 
-      <section>
-        &nbsp;
-      </section>
-
       <footer className="c-player__footer">
         <Social />
       </footer>
-    </div>
+    </Layer>
 
-    <div className="c-layer c-chat">
-      chat go here :-)
-    </div>
+    <Layer className="c-chat">
+      <Chat />
+    </Layer>
   </Scene>
 )
 

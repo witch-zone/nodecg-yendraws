@@ -8,9 +8,9 @@ const Scene = ({
 }) => (
   <section
     className={classnames(
-      'c-scene',
+      'o-scene',
       className, {
-        'c-scene--is-visible': isVisible,
+        'o-scene--is-visible': isVisible,
       },
     )}
   >

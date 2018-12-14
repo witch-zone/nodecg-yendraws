@@ -1,6 +1,6 @@
 import { h } from 'preact'
 
-import Scene from '../Scene'
+import Scene, { Layer } from '../Scene'
 import CountdownTimer from '../CountdownTimer'
 
 const BRB = ({
@@ -8,18 +8,20 @@ const BRB = ({
   timer,
 }) => (
   <Scene
-    className="c-scene--brb c-brb"
+    className="o-scene--brb"
     showWhenAway
   >
-    <div className="c-layer c-brb__message">
-      <h1 className="c-brb__title">
-        {message}
-      </h1>
+    <Layer className="c-brb">
+      <div className="c-brb__message">
+        <h1 className="c-brb__title">
+          {message}
+        </h1>
 
-      <CountdownTimer
-        target={timer}
-      />
-    </div>
+        <CountdownTimer
+          target={timer}
+        />
+      </div>
+    </Layer>
   </Scene>
 )
 
