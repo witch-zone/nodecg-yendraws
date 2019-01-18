@@ -1,17 +1,13 @@
 .c-message-list {
   overflow: hidden;
-  margin: $chat-message-offset;
+  margin: 0 0.5em;
 }
 
 .c-message-list__wrapper {
-  padding: 0.5em;
-  color: black;
+  padding: 0 0 0.5em;
+  color: #000;
 }
 
 .c-message-list__message {
-  margin-bottom: 0.5em;
-
-  &:last-child {
-    margin-bottom: 0;
-  }
+  margin: 0.85em 0;
 }

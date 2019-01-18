@@ -1,3 +1,44 @@
 .c-message {
+  animation: message-popin 0.5s ease-in-out;
+  animation-iteration-count: 1;
+  animation-delay: 0.15s;
+  animation-fill-mode: both;
+}
 
+.c-message__title,
+.c-message__subtitle {
+  @include brand-font;
+  text-shadow:
+    0 1px 1px rgba(0, 0, 0, 0.3),
+    0 3px 3px rgba(255, 255, 255, 0.8);
+}
+
+.c-message__title {
+  font-size: 1.15em;
+  margin-bottom: 0.3em;
+}
+
+.c-message__subtitle {
+
+}
+
+.c-message__badge {
+
+}
+
+.c-message__body {
+  background: rgba(255, 255, 255, 0.4);
+  padding: 0.25em 0.33em;
+  font-size: 0.8em;
+  letter-spacing: 0.02em;
+}
+
+@keyframes message-popin {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
 }
