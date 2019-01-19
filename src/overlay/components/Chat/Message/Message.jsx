@@ -3,6 +3,8 @@ import classnames from 'classnames'
 
 import Emote from './Emote'
 import Cheer from './Cheer'
+import Badge from './Badge'
+import SubscriberBadge from './SubscriberBadge'
 
 const Message = ({
   user: {
@@ -47,13 +49,18 @@ const Message = ({
       )}
 
       {Object.keys(badges).map((badge) => (
-        <figure
-          key={badge}
-          className={classnames(
-            'c-message__badge',
-            `c-message__badge--${badge}`,
-          )}
-        />
+        badge === 'subscriber' ? (
+          <SubscriberBadge
+            type={badge}
+            scale={badges[badge]}
+            className="c-message__badge"
+          />
+        ) : (
+          <Badge
+            type={badge}
+            className="c-message__badge"
+          />
+        )
       ))}
     </header>
 
