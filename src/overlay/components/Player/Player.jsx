@@ -3,6 +3,7 @@ import { h } from 'preact'
 import Scene, { Layer } from '../Scene'
 import Social from '../Social'
 import Chat from '../Chat'
+import Twemoji from '../Twemoji'
 
 const Player = ({
   status,
@@ -12,7 +13,9 @@ const Player = ({
 
     <Layer className="c-player">
       <header className="c-player__header">
-        {status}
+        <Twemoji>
+          {status}
+        </Twemoji>
       </header>
 
       <footer className="c-player__footer">

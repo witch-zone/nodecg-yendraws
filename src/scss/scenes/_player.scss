@@ -19,7 +19,11 @@
 .c-player__header {
   @include brand-font;
   font-size: 2rem;
-  padding: 0.4rem 1rem 0 7rem;
+  padding: 0 1rem 0 7rem;
+  height: 12%;
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
 }
 
 .c-player__content {
@@ -29,5 +33,9 @@
 .c-player__footer {
   @include brand-font;
   font-size: 2rem;
-  padding: 0.4rem 1rem 0.4rem 7rem;
+  padding: 0 1rem 0 7rem;
+  height: 6%;
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
 }

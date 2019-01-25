@@ -44,22 +44,6 @@ const Message = ({
       ))}
     </header>
 
-    {topic && (
-      <div className="c-message_subtitle">
-        {topic === 'follower' && (
-          <span>
-            just followed!
-          </span>
-        )}
-
-        {topic === 'subscriber' && (
-          <span>
-            just subscribed!
-          </span>
-        )}
-      </div>
-    )}
-
     {tokens.length > 0 && (
       <div className="c-message__body">
         {tokens.map(({ type, content }) => {
