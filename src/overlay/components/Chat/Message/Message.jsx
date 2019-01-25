@@ -27,42 +27,38 @@ const Message = ({
       },
     )}
   >
-    <header>
+    <header className="c-message__header">
       <div className="c-message__title">
         {username}
       </div>
 
-      {topic && (
-        <div className="c-message_subtitle">
-          {topic === 'follower' && (
-            <span>
-              just followed!
-            </span>
-          )}
-
-          {topic === 'subscriber' && (
-            <span>
-              just subscribed!
-            </span>
-          )}
-        </div>
-      )}
-
       {Object.keys(badges).map((badge) => (
         badge === 'subscriber' ? (
           <SubscriberBadge
-            type={badge}
-            scale={badges[badge]}
+            duration={badges[badge]}
             className="c-message__badge"
           />
         ) : (
-          <Badge
-            type={badge}
-            className="c-message__badge"
-          />
+          null
         )
       ))}
     </header>
+
+    {topic && (
+      <div className="c-message_subtitle">
+        {topic === 'follower' && (
+          <span>
+            just followed!
+          </span>
+        )}
+
+        {topic === 'subscriber' && (
+          <span>
+            just subscribed!
+          </span>
+        )}
+      </div>
+    )}
 
     {tokens.length > 0 && (
       <div className="c-message__body">

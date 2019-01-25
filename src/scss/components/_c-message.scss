@@ -5,6 +5,13 @@
   animation-fill-mode: both;
 }
 
+.c-message__header {
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+  justify-content: center;
+}
+
 .c-message__title,
 .c-message__subtitle {
   @include brand-font;
@@ -15,7 +22,9 @@
 
 .c-message__title {
   font-size: 1.15em;
-  margin-bottom: 0.3em;
+  margin: 0.3em 0;
+  flex-basis: 0 0 auto;
+  order: 2;
 }
 
 .c-message__subtitle {
@@ -23,7 +32,9 @@
 }
 
 .c-message__badge {
-
+  flex-basis: 0 0 auto;
+  align-self: flex-end;
+  order: 1;
 }
 
 .c-message__body {
