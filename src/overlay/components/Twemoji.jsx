@@ -6,6 +6,14 @@ class Twemoji extends Component {
     this.parseTwemoji()
   }
 
+  shouldComponentUpdate(nextProps) {
+    const {
+      children,
+    } = this.props
+
+    return children !== nextProps.children
+  }
+
   componentDidUpdate() {
     this.parseTwemoji()
   }
@@ -15,9 +23,13 @@ class Twemoji extends Component {
   }
 
   render() {
+    const {
+      children,
+    } = this.props
+
     return (
       <span ref={(node) => { this.$node = node }}>
-        {this.props.children}
+        {children}
       </span>
     )
   }
