@@ -4,7 +4,6 @@ import classnames from 'classnames'
 import Emote from './Emote'
 import Cheer from './Cheer'
 import Badge from './Badge'
-import SubscriberBadge from './SubscriberBadge'
 
 const Message = ({
   user: {
@@ -32,16 +31,10 @@ const Message = ({
         {username}
       </div>
 
-      {Object.keys(badges).map((badge) => (
-        badge === 'subscriber' ? (
-          <SubscriberBadge
-            duration={badges[badge]}
-            className="c-message__badge"
-          />
-        ) : (
-          null
-        )
-      ))}
+      <Badge
+        badges={badges}
+        className="c-message__badge"
+      />
     </header>
 
     {tokens.length > 0 && (

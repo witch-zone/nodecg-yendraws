@@ -11,7 +11,7 @@ class Twemoji extends Component {
   }
 
   parseTwemoji() {
-    twemoji.parse(this.$node, { className: 'c-twitch-emote' })
+    twemoji.parse(this.$node, { className: 'c-twemoji' })
   }
 
   render() {

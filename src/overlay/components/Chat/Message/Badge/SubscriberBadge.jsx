@@ -1,10 +1,10 @@
 import classnames from 'classnames'
 import { h } from 'preact'
 
-import zeroMonthsBadge from '../../../../assets/badges/subscriber/0.png'
-import threeMonthsBadge from '../../../../assets/badges/subscriber/3.png'
-import sixMonthsBadge from '../../../../assets/badges/subscriber/6.png'
-import twelveMonthsBadge from '../../../../assets/badges/subscriber/12.png'
+import zeroMonthsBadge from '../../../../../assets/badges/subscriber/0.png'
+import threeMonthsBadge from '../../../../../assets/badges/subscriber/3.png'
+import sixMonthsBadge from '../../../../../assets/badges/subscriber/6.png'
+import twelveMonthsBadge from '../../../../../assets/badges/subscriber/12.png'
 
 const getSubBadgeImage = (duration) => {
   const months = parseInt(duration, 10)
