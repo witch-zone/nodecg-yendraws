@@ -3,26 +3,28 @@
 }
 
 .c-brb {
-  background:
-    url('../assets/images/brb-yen.png'),
-    url('../assets/images/brb-background.png');
+  @include brand-font;
+  font-size: 2em;
+
+  background: url('../assets/images/brb-background.png');
   background-size: contain;
   background-repeat: no-repeat;
 }
 
-.c-brb__message {
-  @include brand-font;
+.c-brb__yen {
+  float: right;
+  height: 100%;
+  width: 100%;
+  background: url('../assets/images/brb-yen.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  shape-outside: polygon(55% 68%, 33% 100%, 100% 100%, 100% 0%, 55% 0%);
+}
 
-  display: flex;
-  flex-flow: column nowrap;
-  justify-content: center;
-  align-items: center;
-
-  width: 55%;
-  padding: 1em;
-
-  font-size: 5rem;
-  text-align: center;
+.c-brb__wrapper {
+  padding: 2em 1.5em;
+  height: 100%;
+  max-width: 70%;
 }
 
 .c-brb__title {
@@ -31,4 +33,10 @@
 
 .c-brb__timer {
   margin: 0;
+}
+
+.c-brb__section {
+  padding-bottom: 1.5rem;
+  margin-bottom: 1.5rem;
+  border-bottom: 1px solid #fff;
 }

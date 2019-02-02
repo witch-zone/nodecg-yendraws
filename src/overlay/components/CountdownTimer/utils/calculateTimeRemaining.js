@@ -1,5 +1,9 @@
 import moment from 'moment'
 
+const pluralise = (amount, unit) => (
+  `${amount} ${unit}${amount !== 1 ? 's' : ''}`
+)
+
 const getCountdownText = (diff) => {
   if (diff <= 0) {
     return null
@@ -7,11 +11,17 @@ const getCountdownText = (diff) => {
 
   const diffMoment = moment.utc(diff)
 
-  return diffMoment.format(
-    diffMoment.hours() > 0
-      ? 'H:mm:ss'
-      : 'm:ss'
-  )
+  const hoursString = diffMoment.hours() > 0
+    ? `${pluralise(diffMoment.hours(), 'hour')}, `
+    : ''
+
+  const minutesString = diffMoment.minutes() > 0
+    ? `${pluralise(diffMoment.minutes(), 'minute')} and `
+    : ''
+
+  const secondsString = pluralise(diffMoment.seconds(), 'second')
+
+  return `${hoursString}${minutesString}${secondsString}`
 }
 
 const calculateTimeRemaining = (target) => {

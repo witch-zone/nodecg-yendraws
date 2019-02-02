@@ -4,8 +4,14 @@ import OverlayProvider from 'nodecg-twitchie-graphics/overlay-provider'
 import Player from './components/Player'
 import BRB from './components/BRB'
 
+import { reducers } from './store'
+import bindDispatch from './api'
+
 const Overlay = () => (
-  <OverlayProvider>
+  <OverlayProvider
+    reducers={reducers}
+    callback={bindDispatch}
+  >
     <Player />
     <BRB />
   </OverlayProvider>

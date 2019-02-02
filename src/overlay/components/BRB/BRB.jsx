@@ -2,6 +2,8 @@ import { h } from 'preact'
 
 import Scene, { Layer } from '../Scene'
 import CountdownTimer from '../CountdownTimer'
+import Social from '../Social'
+import Schedule from '../Schedule'
 
 const BRB = ({
   message,
@@ -12,14 +14,26 @@ const BRB = ({
     showWhenAway
   >
     <Layer className="c-brb">
-      <div className="c-brb__message">
-        <h1 className="c-brb__title">
-          {message}
-        </h1>
+      <figure className="c-brb__yen" />
 
-        <CountdownTimer
-          target={timer}
-        />
+      <div className="c-brb__wrapper">
+        <div className="c-brb__message c-brb__section">
+          <h1 className="c-brb__title">
+            {message}
+          </h1>
+
+          <CountdownTimer
+            target={timer}
+          />
+        </div>
+
+        <div className="c-brb__schedule c-brb__section">
+          <Schedule />
+        </div>
+
+        <div className="c-brb__social">
+          <Social />
+        </div>
       </div>
     </Layer>
   </Scene>
