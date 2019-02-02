@@ -18,6 +18,7 @@ const Schedule = ({
         <ScheduleTime
           day={day}
           time={schedule[day]}
+          className="c-schedule__time"
         />
       )
     )}

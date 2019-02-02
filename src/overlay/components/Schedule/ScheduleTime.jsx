@@ -12,7 +12,7 @@ const Schedule = ({
       className,
     )}
   >
-    <span className="c-scedule-time__day">
+    <span className="c-schedule-time__day">
       {day}
     </span>
 

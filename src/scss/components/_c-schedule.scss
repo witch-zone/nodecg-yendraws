@@ -1,0 +1,27 @@
+.c-schedule {
+  display: flex;
+}
+
+.c-schedule__time {
+  margin: 0 1em 0 auto;
+
+  &:last-child {
+    margin-right: 0;
+  }
+}
+
+.c-schedule-time {
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+  flex: 0 0 auto;
+}
+
+.c-schedule-time__day {
+  margin-bottom: 0.5rem;
+}
+
+.c-schedule-time__time {
+  flex-grow: 1;
+  font-size: 1.2em;
+}
