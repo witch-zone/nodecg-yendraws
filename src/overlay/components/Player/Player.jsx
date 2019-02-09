@@ -1,5 +1,7 @@
 import { h } from 'preact'
+import { Notifications } from 'nodecg-twitchie-graphics/overlay-provider'
 
+import Notification from '../Notification'
 import Scene, { Layer } from '../Scene'
 import Social from '../Social'
 import Chat from '../Chat'
@@ -26,6 +28,17 @@ const Player = ({
     <Layer className="c-chat">
       <Chat />
     </Layer>
+
+    <Notifications>
+      {
+        ({ notification, visible }) => (
+          <Notification
+            notification={notification}
+            visible={visible}
+          />
+        )
+      }
+    </Notifications>
   </Scene>
 )
 
