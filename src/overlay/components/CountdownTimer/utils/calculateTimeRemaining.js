@@ -17,7 +17,7 @@ const getCountdownText = (diff) => {
 
   const minutesString = diffMoment.minutes() > 0
     ? `${pluralise(diffMoment.minutes(), 'minute')} and `
-    : ''
+    : 'just '
 
   const secondsString = pluralise(diffMoment.seconds(), 'second')
 

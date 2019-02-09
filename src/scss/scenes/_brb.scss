@@ -25,6 +25,7 @@
   padding: 2em 1.5em;
   height: 100%;
   max-width: 70%;
+  text-align: right;
 }
 
 .c-brb__title {
@@ -33,6 +34,12 @@
   &:last-child {
     margin-bottom: 0;
   }
+}
+
+.c-brb__countdown {
+  @include base-font;
+  line-height: 1;
+  font-size: 0.9em;
 }
 
 .c-brb__timer {

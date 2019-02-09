@@ -5,6 +5,7 @@ import Account from './Account'
 
 const Social = ({
   accounts,
+  active,
   className,
 }) => (
   <div
@@ -14,14 +15,21 @@ const Social = ({
     )}
   >
     {accounts.map(
-      ({ service, username }) => (
+      ({ service, username }, idx) => (
         <Account
-          className="c-social-links__link"
+          className={classnames(
+            'c-social-links__service',
+            {
+              'c-social-links__service--active': active === idx,
+            }
+          )}
           service={service}
-          username={username}
+          link={username}
         />
       )
     )}
+
+    {' '}
   </div>
 )
 

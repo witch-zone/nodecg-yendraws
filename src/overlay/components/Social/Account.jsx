@@ -5,7 +5,7 @@ import AccountIcon from './AccountIcon'
 
 const Account = ({
   service,
-  username,
+  link,
   className,
 }) => (
   <div
@@ -19,8 +19,8 @@ const Account = ({
       service={service}
     />
 
-    <span className="c-social-link__username">
-      {username}
+    <span className="c-social-link__url">
+      {link}yendraws
     </span>
   </div>
 )

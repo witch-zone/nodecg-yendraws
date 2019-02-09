@@ -1,9 +1,5 @@
-.c-schedule {
-  display: flex;
-}
-
 .c-schedule__time {
-  margin: 0 1em 0 auto;
+  margin: 0 0.5em;
 
   &:last-child {
     margin-right: 0;
@@ -11,14 +7,18 @@
 }
 
 .c-schedule-time {
-  display: flex;
+  display: inline-flex;
   flex-flow: column nowrap;
   align-items: center;
   flex: 0 0 auto;
 }
 
 .c-schedule-time__day {
-  margin-bottom: 0.5rem;
+  @include base-font;
+  font-variant: small-caps;
+  line-height: 0;
+  font-size: 0.9em;
+  margin-bottom: 0.6em;
 }
 
 .c-schedule-time__time {

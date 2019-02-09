@@ -23,6 +23,7 @@ const BRB = ({
           </h1>
 
           <CountdownTimer
+            className="c-brb__countdown"
             target={timer}
           />
         </div>
