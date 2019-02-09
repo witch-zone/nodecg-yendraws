@@ -7,6 +7,7 @@ const Social = ({
   accounts,
   active,
   className,
+  rightAlign,
 }) => (
   <div
     className={classnames(
@@ -20,6 +21,7 @@ const Social = ({
           className={classnames(
             'c-social-links__service',
             {
+              'c-social-links__service--right': !!rightAlign,
               'c-social-links__service--active': active === idx,
             }
           )}

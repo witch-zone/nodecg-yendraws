@@ -33,7 +33,7 @@ const BRB = ({
         </div>
 
         <div className="c-brb__social">
-          <Social />
+          <Social rightAlign />
         </div>
       </div>
     </Layer>

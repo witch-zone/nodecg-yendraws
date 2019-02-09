@@ -24,7 +24,7 @@ const stateHandlers = {
 const lifecycleHandlers = {
   componentDidMount() {
     const { showNextAccount } = this.props
-    this.ticker = setInterval(showNextAccount, 7500)
+    this.ticker = setInterval(showNextAccount, 6000)
   },
   componentWillUnmount() {
     clearInterval(this.ticker)
