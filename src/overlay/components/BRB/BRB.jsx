@@ -4,6 +4,7 @@ import Scene, { Layer } from '../Scene'
 import CountdownTimer from '../CountdownTimer'
 import Social from '../Social'
 import Schedule from '../Schedule'
+import Twemoji from '../Twemoji'
 
 const BRB = ({
   message,
@@ -19,7 +20,7 @@ const BRB = ({
       <div className="c-brb__wrapper">
         <div className="c-brb__message c-brb__section">
           <h1 className="c-brb__title">
-            {message}
+            <Twemoji>{message}</Twemoji>
           </h1>
 
           <CountdownTimer

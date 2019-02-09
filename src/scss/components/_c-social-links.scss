@@ -44,7 +44,7 @@
   justify-content: flex-start;
 }
 
-.c-social-link__icon {
+.c-social-icon {
   display: inline-block;
   margin: 0 0.5em 0 0;
   padding: 0.125em;
@@ -53,5 +53,6 @@
   height: 1em;
   background: $color-social-background;
   fill: #fff;
+  box-shadow: $global-drop-shadow;
   border-radius: 0.1em;
 }
