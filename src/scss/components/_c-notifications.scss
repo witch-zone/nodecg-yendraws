@@ -5,12 +5,23 @@
   right: 0;
   width: 100% - $player-width;
   height: 21.5%;
+
   display: flex;
   flex-flow: column nowrap;
   align-items: center;
   justify-content: center;
+
   font-size: 0.8em;
   background: rgba(0, 0, 0, 0.55);
+
+  opacity: 0;
+  visibility: hidden;
+  transition: 0.8s all ease-in-out;
+}
+
+.c-notification--visible {
+  opacity: 1;
+  visibility: visible;
 }
 
 .c-notification__bat {
