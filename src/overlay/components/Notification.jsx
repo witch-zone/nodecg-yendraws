@@ -46,6 +46,7 @@ class Notification extends Component {
       >
         <audio
           ref={(audioRef) => { this.$audio = audioRef}}
+          volume="0.6"
           src={magic}
         />
 
