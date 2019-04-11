@@ -7,11 +7,18 @@ import BRB from './components/BRB'
 import { reducers } from './store'
 import bindDispatch from './api'
 
+import magic from '../assets/sounds/magic-notification.flac'
+
 const Overlay = () => (
   <OverlayProvider
     reducers={reducers}
     callback={bindDispatch}
   >
+    <audio
+      preload
+      src={magic}
+    />
+
     <Player />
     <BRB />
   </OverlayProvider>

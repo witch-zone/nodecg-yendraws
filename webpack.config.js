@@ -41,7 +41,7 @@ module.exports = {
         },
       }],
     }, {
-      test: /\.(eot|ttf|otf|woff|woff2)$/i,
+      test: /\.(eot|ttf|otf|woff|woff2|flac|ogg)$/i,
       use: [{
         loader: 'file-loader',
         options: {
