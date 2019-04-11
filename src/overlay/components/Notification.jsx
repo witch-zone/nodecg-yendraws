@@ -18,7 +18,26 @@ const Notification = ({
     )}
   >
     <img src={bat} alt="" className="c-notification__bat" />
-    a notification
+
+    {console.log(notification)}
+
+    {notification.topic === 'subscriber' && (
+      notification.scale ? (
+        <div className="c-notification__message" data-shadow={`${notification.user} just resubscribed! That's ${notification.scale} months!`}>
+          <span>{notification.user}</span> just resubscribed! That&apos;s {notification.scale} months!
+        </div>
+      ) : (
+        <div className="c-notification__message" data-shadow={`${notification.user} just subscribed!`}>
+          <span>{notification.user}</span> just subscribed!
+        </div>
+      )
+    )}
+
+    {notification.topic === 'follower' && (
+      <div className="c-notification__message" data-shadow={`${notification.user} just followed!`}>
+        <span>{notification.user}</span> just followed!
+      </div>
+    )}
   </div>
 )
 

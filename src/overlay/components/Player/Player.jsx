@@ -29,7 +29,7 @@ const Player = ({
       <Chat />
     </Layer>
 
-    <Notifications>
+    <Notifications duration="20000">
       {
         ({ notification, visible }) => (
           <Notification
