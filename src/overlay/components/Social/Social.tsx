@@ -1,0 +1,48 @@
+import classnames from 'classnames'
+import { FunctionComponent, h } from 'preact'
+import { useCallback, useEffect, useState } from 'preact/hooks'
+
+import { getSocialAccounts } from 'nodecg-twitchie-graphics'
+import { useSelector } from 'react-redux'
+import Account from './Account'
+
+const ROTATE_TIMEOUT = 6000
+
+interface SocialProps {
+  rightAlign: boolean
+  className?: string
+}
+
+const Social: FunctionComponent<SocialProps> = ({ className, rightAlign }) => {
+  const accounts = useSelector(getSocialAccounts)
+  const [active, setActive] = useState(0)
+
+  const showNextAccount = useCallback(() => {
+    setActive(active < accounts.length - 1 ? active + 1 : 0)
+  }, [accounts])
+
+  useEffect(() => {
+    const rotateInterval = setInterval(showNextAccount, ROTATE_TIMEOUT)
+
+    return () => {
+      clearTimeout(rotateInterval)
+    }
+  }, [showNextAccount])
+
+  return (
+    <div className={classnames('c-social-links', className)}>
+      {accounts.map(({ service, username }, idx) => (
+        <Account
+          className={classnames('c-social-links__service', {
+            'c-social-links__service--right': !!rightAlign,
+            'c-social-links__service--active': active === idx,
+          })}
+          service={service}
+          link={username}
+        />
+      ))}{' '}
+    </div>
+  )
+}
+
+export default Social

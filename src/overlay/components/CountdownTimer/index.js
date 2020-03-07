@@ -1,3 +1,3 @@
-import CountdownTimerContainer from './CountdownTimerContainer'
+import CountdownTimer from './CountdownTimer'
 
-export default CountdownTimerContainer
+export default CountdownTimer

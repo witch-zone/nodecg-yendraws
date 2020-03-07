@@ -3,14 +3,6 @@
   "version": "1.0.0",
   "description": "A cute and good stream layout for yen!",
   "homepage": "http://twitch.tv/yendraws",
-  "scripts": {
-    "start": "webpack --mode development --watch",
-    "build": "webpack --mode production",
-    "lint:js": "eslint \"src/**/*.{js,jsx}\"",
-    "lint:scss": "stylelint 'src/**/*.scss' --syntax scss",
-    "lint": "npm run-script lint:js && npm run-script lint:scss",
-    "precommit": "lint-staged"
-  },
   "author": {
     "name": "dani quinn sexton",
     "email": "dani@glitter.tech",
@@ -29,7 +21,7 @@
   "nodecg": {
     "compatibleRange": ">=1.0.0",
     "bundleDependencies": {
-      "nodecg-twitchie": "^0.0.1"
+      "nodecg-twitchie": "^2.0.0"
     },
     "dashboardPanels": [
       {
@@ -63,54 +55,74 @@
       }
     ]
   },
-  "lint-staged": {
-    "src/**/*.{js,jsx}": "eslint",
-    "src/**/*.scss": "stylelint --syntax scss"
-  },
   "repository": "https://github.com/witch-zone/nodecg-yendraws.git",
   "private": true,
-  "dependencies": {
-    "babel-core": "^6.26.3",
-    "babel-loader": "^7.1.4",
-    "babel-plugin-transform-object-rest-spread": "^6.26.0",
-    "babel-plugin-transform-react-jsx": "^6.24.1",
-    "babel-preset-env": "^1.7.0",
-    "classnames": "^2.2.5",
-    "clean-webpack-plugin": "^0.1.19",
-    "css-loader": "^0.28.11",
-    "eslint": "^4.19.1",
-    "eslint-config-airbnb": "^16.1.0",
-    "eslint-plugin-import": "^2.12.0",
-    "eslint-plugin-jsx-a11y": "^6.0.3",
-    "eslint-plugin-react": "^7.8.2",
-    "file-loader": "^1.1.11",
+  "scripts": {
+    "start": "NODE_ENV=development webpack-dev-server",
+    "build": "NODE_ENV=production webpack",
+    "watch": "npm run build -- --watch"
+  },
+  "devDependencies": {
+    "@types/classnames": "^2.2.9",
+    "@types/react-redux": "^7.1.5",
+    "clean-webpack-plugin": "^3.0.0",
+    "css-loader": "^3.2.0",
+    "file-loader": "^4.2.0",
     "html-loader": "^0.5.5",
     "html-webpack-plugin": "^3.2.0",
-    "husky": "^0.14.3",
-    "image-loader": "0.0.1",
-    "img-loader": "^3.0.0",
-    "lint-staged": "^7.1.2",
-    "mini-css-extract-plugin": "^0.4.0",
-    "node-sass": "^4.11.0",
-    "nodecg-twitchie-graphics": "git+https://github.com/helloitsdan/nodecg-twitchie-graphics.git",
-    "optimize-css-assets-webpack-plugin": "^4.0.1",
-    "postcss-loader": "^2.1.5",
-    "preact": "^8.2.9",
-    "preact-compat": "^3.18.0",
-    "preact-redux": "^2.0.3",
-    "recompose": "^0.27.1",
-    "redux": "^4.0.0",
-    "sass-loader": "^7.0.1",
-    "style-loader": "^0.21.0",
-    "stylelint": "^9.2.1",
-    "stylelint-config-sass-guidelines": "^5.0.0",
-    "stylelint-scss": "^3.1.0",
-    "svg-sprite-loader": "^3.8.0",
-    "twemoji": "^11.2.0",
-    "uglifyjs-webpack-plugin": "^1.2.5",
-    "velocity-animate": "^1.5.2",
-    "webpack": "^4.9.1",
-    "webpack-cli": "^2.1.4"
+    "husky": "^3.0.5",
+    "img-loader": "^3.0.1",
+    "lint-staged": "^9.2.5",
+    "mini-css-extract-plugin": "^0.8.0",
+    "node-sass": "^4.12.0",
+    "optimize-css-assets-webpack-plugin": "^5.0.3",
+    "prettier": "^1.15.3",
+    "sass-loader": "^8.0.0",
+    "style-loader": "^1.0.0",
+    "stylelint": "^11.0.0",
+    "stylelint-config-recommended-scss": "^4.0.0",
+    "stylelint-scss": "^3.11.1",
+    "svg-sprite-loader": "^4.1.6",
+    "terser-webpack-plugin": "^2.1.0",
+    "ts-loader": "^6.1.2",
+    "tslint": "^5.11.0",
+    "tslint-config-airbnb": "^5.11.2",
+    "tslint-config-prettier": "^1.17.0",
+    "tslint-eslint-rules": "^5.4.0",
+    "tslint-react": "^3.6.0",
+    "typescript": "^3.2.1",
+    "uglifyjs-webpack-plugin": "^2.2.0",
+    "webpack": "^4.40.2",
+    "webpack-cli": "^3.3.9",
+    "webpack-dev-server": "^3.8.1"
   },
-  "devDependencies": {}
+  "dependencies": {
+    "@types/react-motion": "0.0.29",
+    "classnames": "^2.2.6",
+    "nodecg-twitchie": "2.0.3",
+    "nodecg-twitchie-graphics": "2.0.6",
+    "preact": "^10.0.1",
+    "preact-context": "^1.1.4",
+    "react-motion": "^0.5.2",
+    "react-redux": "^7.1.1",
+    "redux": "^4.0.4",
+    "twemoji": "^12.1.5"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.{ts,tsx}": [
+      "tslint --fix"
+    ],
+    "*.scss": [
+      "stylelint --fix"
+    ],
+    "*.{ts,tsx,scss,json,md,html}": [
+      "prettier --write",
+      "git add"
+    ]
+  }
 }
