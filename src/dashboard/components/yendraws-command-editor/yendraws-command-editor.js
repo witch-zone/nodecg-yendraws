@@ -1,14 +1,19 @@
 import * as Polymer from '@polymer/polymer'
+import '@polymer/paper-input/paper-input'
+import '@polymer/paper-button/paper-button'
+import '@polymer/iron-list/iron-list'
 
 const commands = nodecg.Replicant('commands', 'nodecg-yendraws', {
   defaultValue: ['!motherhen', '!commish', '!social', '!dani', '!shoutout'],
   persistent: true,
 })
 
+import '../twitchie-style/twitchie-style'
+
 class YendrawsCommandEditor extends Polymer.PolymerElement {
   static get template() {
     return Polymer.html`
-    <style include="twitchie-styles"></style>
+    <style include="twitchie-style"></style>
 
     <style>
       .c-command-list {

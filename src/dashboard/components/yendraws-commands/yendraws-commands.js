@@ -1,11 +1,15 @@
 import * as Polymer from '@polymer/polymer'
+import '@polymer/paper-input/paper-input'
+import '@polymer/paper-button/paper-button'
 
 const commands = nodecg.Replicant('commands', 'nodecg-yendraws', { persistent: true })
+
+import '../twitchie-style/twitchie-style'
 
 class YendrawsCommands extends Polymer.PolymerElement {
   static get template() {
     return Polymer.html`
-    <style include="twitchie-styles"></style>
+    <style include="twitchie-style"></style>
 
     <style>
       .c-button-panel {

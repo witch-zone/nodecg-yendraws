@@ -1,4 +1,6 @@
 import * as Polymer from '@polymer/polymer'
+import '@polymer/paper-input/paper-input'
+import '@polymer/paper-button/paper-button'
 
 const schedule = nodecg.Replicant('schedule', 'nodecg-yendraws', {
   defaultValue: {
@@ -13,10 +15,12 @@ const schedule = nodecg.Replicant('schedule', 'nodecg-yendraws', {
   persistent: true,
 })
 
+import '../twitchie-style/twitchie-style'
+
 class YendrawsScheduleEditor extends Polymer.PolymerElement {
   static get template() {
     return Polymer.html`
-    <style include="twitchie-styles"></style>
+    <style include="twitchie-style"></style>
 
     <style>
       .c-schedule-list {
