@@ -5,6 +5,7 @@ const createReplicants = require('./replicants')
 let nodecgInstance
 let replicants
 let events
+let twitchie
 
 module.exports = {
   get nodecg() {
@@ -17,30 +18,30 @@ module.exports = {
   },
 
   get twitchie() {
-    return nodecgInstance.extensions['nodecg-twitchie']
+    return twitchie
   },
   set twitchie(instance) {
-    throw new Error('Twitchie is created when NodeCG starts up')
+    twitchie = instance
   },
 
   get log() {
     return nodecgInstance ? nodecgInstance.log : console
   },
-  set log(instance) {
+  set log(_) {
     throw new Error('Logger is created by NodeCG and cannot be overwritten')
   },
 
   get events() {
     return events
   },
-  set events(instance) {
+  set events(_) {
     throw new Error('Emitter is initialised when nodecg instance is set')
   },
 
   get replicants() {
     return replicants
   },
-  set replicants(instance) {
+  set replicants(_) {
     throw new Error('Replicants are initialised when nodecg instance is set')
   },
 }
