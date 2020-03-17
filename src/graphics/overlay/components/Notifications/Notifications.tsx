@@ -23,6 +23,10 @@ const Notifications: FunctionComponent<NotificationsProps> = ({ duration, downti
   }, [notification])
 
   useEffect(() => {
+    if (!notification) {
+      return
+    }
+
     setVisible(true)
 
     let clearNotificationTimeout = setTimeout(() => {
@@ -35,7 +39,7 @@ const Notifications: FunctionComponent<NotificationsProps> = ({ duration, downti
     }
   }, [notification])
 
-  return <Notification notification={notification} visible={visible} />
+  return notification ? <Notification notification={notification} visible={visible} /> : null
 }
 
 export default Notifications
