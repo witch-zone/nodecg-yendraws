@@ -1,23 +1,17 @@
 import { h } from 'preact'
-import OverlayProvider from 'nodecg-twitchie-graphics/overlay-provider'
+import OverlayProvider from './overlay-provider'
 
-import Player from './components/Player'
 import BRB from './components/BRB'
+import Player from './components/Player'
 
-import { reducers } from './store'
 import bindDispatch from './api'
+import { reducers } from './store'
 
 import magic from '../assets/sounds/magic-notification.flac'
 
 const Overlay = () => (
-  <OverlayProvider
-    reducers={reducers}
-    callback={bindDispatch}
-  >
-    <audio
-      preload
-      src={magic}
-    />
+  <OverlayProvider reducers={reducers as any} callback={bindDispatch}>
+    <audio preload="preload" src={magic} />
 
     <Player />
     <BRB />
