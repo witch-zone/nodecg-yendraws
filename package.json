@@ -96,22 +96,23 @@
     "webpack-dev-server": "^3.8.1"
   },
   "dependencies": {
+    "@polymer/iron-icons": "^3.0.0",
+    "@polymer/iron-list": "^3.0.0",
+    "@polymer/paper-button": "^3.0.0",
+    "@polymer/paper-icon-button": "^3.0.0",
+    "@polymer/paper-input": "^3.0.0",
+    "@polymer/polymer": "^3.0.0",
     "@types/react-motion": "0.0.29",
     "classnames": "^2.2.6",
-    "nodecg-twitchie": "^2.3.0",
-    "nodecg-twitchie-graphics": "^2.3.0",
+    "moment": "^2.24.0",
+    "nodecg-twitchie": "^2.4.0",
+    "nodecg-twitchie-graphics": "^2.4.0",
     "preact": "^10.0.1",
     "preact-context": "^1.1.4",
     "react-motion": "^0.5.2",
     "react-redux": "^7.1.1",
     "redux": "^4.0.4",
-    "twemoji": "^12.1.5",
-    "@polymer/paper-button": "^3.0.0",
-    "@polymer/paper-input": "^3.0.0",
-    "@polymer/iron-icons": "^3.0.0",
-    "@polymer/polymer": "^3.0.0",
-    "@polymer/iron-list": "^3.0.0",
-    "@polymer/paper-icon-button": "^3.0.0"
+    "twemoji": "^12.1.5"
   },
   "husky": {
     "hooks": {

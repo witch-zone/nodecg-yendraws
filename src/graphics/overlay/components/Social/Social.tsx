@@ -9,7 +9,7 @@ import Account from './Account'
 const ROTATE_TIMEOUT = 6000
 
 interface SocialProps {
-  rightAlign: boolean
+  rightAlign?: boolean
   className?: string
 }
 

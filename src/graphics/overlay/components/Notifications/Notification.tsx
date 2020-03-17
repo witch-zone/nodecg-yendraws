@@ -3,8 +3,8 @@ import { Notification } from 'nodecg-twitchie-graphics'
 import { FunctionComponent, h } from 'preact'
 import { useEffect, useRef } from 'preact/hooks'
 
-import bat from '../../assets/images/bat.gif'
-import magic from '../../assets/sounds/magic-notification.flac'
+import bat from '../../../assets/images/bat.gif'
+import magic from '../../../assets/sounds/magic-notification.flac'
 
 interface NotificationProps {
   notification: Notification

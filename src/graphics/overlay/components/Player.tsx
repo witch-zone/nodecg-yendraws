@@ -1,8 +1,5 @@
 import { h } from 'preact'
 
-import { getChannelInfo } from 'nodecg-twitchie-graphics'
-
-import { useSelector } from 'react-redux'
 import Chat from './Chat'
 import Notifications from './Notifications'
 import Scene, { Layer } from './Scene'
@@ -10,7 +7,7 @@ import Social from './Social'
 import Twemoji from './Twemoji'
 
 const Player = () => {
-  const { status } = useSelector(getChannelInfo)
+  //   const { status } = useSelector(getChannelInfo)
 
   return (
     <Scene className="o-scene--player">
@@ -30,7 +27,7 @@ const Player = () => {
         <Chat />
       </Layer>
 
-      <Notification />
+      <Notifications />
     </Scene>
   )
 }
