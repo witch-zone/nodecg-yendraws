@@ -18,14 +18,15 @@ const Social: FunctionComponent<SocialProps> = ({ className, rightAlign }) => {
   const [active, setActive] = useState(0)
 
   const showNextAccount = useCallback(() => {
-    setActive(active < accounts.length - 1 ? active + 1 : 0)
-  }, [accounts])
+    const nextAccountId = active < accounts.length - 1 ? active + 1 : 0
+    setActive(nextAccountId)
+  }, [active, accounts])
 
   useEffect(() => {
     const rotateInterval = setInterval(showNextAccount, ROTATE_TIMEOUT)
 
     return () => {
-      clearTimeout(rotateInterval)
+      clearInterval(rotateInterval)
     }
   }, [showNextAccount])
 
@@ -40,7 +41,7 @@ const Social: FunctionComponent<SocialProps> = ({ className, rightAlign }) => {
           service={service}
           link={username}
         />
-      ))}{' '}
+      ))}
     </div>
   )
 }
