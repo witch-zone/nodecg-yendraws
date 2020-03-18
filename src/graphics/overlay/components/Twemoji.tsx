@@ -1,15 +1,27 @@
 import { FunctionComponent, h } from 'preact'
-import { useEffect, useRef } from 'preact/hooks'
+import { useMemo } from 'preact/hooks'
 import twemoji from 'twemoji'
 
-const Twemoji: FunctionComponent = ({ children }) => {
-  const messageRef = useRef<HTMLElement>()
+interface TwemojiProps {
+  message?: string
+}
 
-  useEffect(() => {
-    twemoji.parse(messageRef.current!, { className: 'c-twemoji' })
-  }, [children])
+const Twemoji: FunctionComponent<TwemojiProps> = ({ message }) => {
+  const parsedMessage = useMemo(() => {
+    if (!message) {
+      return ''
+    }
 
-  return <span ref={messageRef}>{children}</span>
+    return twemoji.parse(message, { className: 'c-twemoji' })
+  }, [message])
+
+  return (
+    <span
+      dangerouslySetInnerHTML={{
+        __html: parsedMessage,
+      }}
+    />
+  )
 }
 
 export default Twemoji

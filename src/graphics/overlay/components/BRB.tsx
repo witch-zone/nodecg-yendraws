@@ -21,7 +21,7 @@ const BRB = () => {
         <div className="c-brb__wrapper">
           <div className="c-brb__message c-brb__section">
             <h1 className="c-brb__title">
-              <Twemoji>{message}</Twemoji>
+              <Twemoji message={message} />
             </h1>
 
             <CountdownTimer className="c-brb__countdown" target={timer} />

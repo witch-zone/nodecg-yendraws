@@ -8,6 +8,7 @@ import Twemoji from './Twemoji'
 
 const Player = () => {
   //   const { status } = useSelector(getChannelInfo)
+  const status = ''
 
   return (
     <Scene className="o-scene--player">
@@ -15,7 +16,7 @@ const Player = () => {
 
       <Layer className="c-player">
         <header className="c-player__header">
-          <Twemoji>{status}</Twemoji>
+          <Twemoji message={status} />
         </header>
 
         <footer className="c-player__footer">
