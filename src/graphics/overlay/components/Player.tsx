@@ -1,4 +1,6 @@
+import { getStreamInfo } from 'nodecg-twitchie-graphics'
 import { h } from 'preact'
+import { useSelector } from 'react-redux'
 
 import Chat from './Chat'
 import Notifications from './Notifications'
@@ -7,8 +9,7 @@ import Social from './Social'
 import Twemoji from './Twemoji'
 
 const Player = () => {
-  //   const { status } = useSelector(getChannelInfo)
-  const status = ''
+  const stream = useSelector(getStreamInfo)
 
   return (
     <Scene className="o-scene--player">
@@ -16,7 +17,7 @@ const Player = () => {
 
       <Layer className="c-player">
         <header className="c-player__header">
-          <Twemoji message={status} />
+          <Twemoji message={stream?.title} />
         </header>
 
         <footer className="c-player__footer">
