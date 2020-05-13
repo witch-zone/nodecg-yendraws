@@ -3,8 +3,7 @@
 @import 'reset';
 
 @import 'components/c-layer';
-@import 'components/c-message-list';
-@import 'components/c-message';
+@import 'components/c-chat';
 @import 'components/c-cheer';
 @import 'components/c-twemoji';
 @import 'components/c-twitch-emote';
@@ -17,4 +16,3 @@
 @import 'scenes/scene';
 @import 'scenes/player';
 @import 'scenes/brb';
-@import 'scenes/chat';

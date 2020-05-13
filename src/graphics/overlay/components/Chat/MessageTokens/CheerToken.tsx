@@ -7,4 +7,5 @@ interface CheerTokenProps {
 
 const CheerToken: FunctionComponent<CheerTokenProps> = ({ token }) => <Fragment>{token.amount}</Fragment>
 
+export { CheerTokenProps }
 export default CheerToken

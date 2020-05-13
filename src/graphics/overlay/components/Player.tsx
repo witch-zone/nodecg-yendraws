@@ -25,7 +25,7 @@ const Player = () => {
         </footer>
       </Layer>
 
-      <Layer className="c-chat">
+      <Layer>
         <Chat />
       </Layer>
 

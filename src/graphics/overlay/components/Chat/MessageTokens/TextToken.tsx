@@ -7,6 +7,7 @@ interface TextTokenProps {
   token: ChatTextMessageToken
 }
 
-const TextToken: FunctionComponent<TextTokenProps> = ({ token }) => <Twemoji message={token.text} />
+const TextToken: FunctionComponent<TextTokenProps> = ({ token }) => <Twemoji>{token.text}</Twemoji>
 
+export { TextTokenProps }
 export default TextToken
