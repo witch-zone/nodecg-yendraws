@@ -2,11 +2,10 @@ import * as Polymer from '@polymer/polymer'
 import '@polymer/paper-input/paper-input'
 import '@polymer/paper-button/paper-button'
 import '@polymer/iron-list/iron-list'
+import '@polymer/iron-icons/iron-icons'
+import '@polymer/paper-icon-button/paper-icon-button'
 
-const commands = nodecg.Replicant('commands', 'nodecg-yendraws', {
-  defaultValue: ['!motherhen', '!commish', '!social', '!dani', '!shoutout'],
-  persistent: true,
-})
+const commands = nodecg.Replicant('commands', 'nodecg-yendraws')
 
 import '../twitchie-style/twitchie-style'
 
@@ -105,7 +104,7 @@ class YendrawsCommandEditor extends Polymer.PolymerElement {
 
     NodeCG.waitForReplicants(commands).then(() => {
       commands.on('change', newCommands => {
-        this.commands = newCommands
+        this.commands = newCommands || []
       })
     })
   }

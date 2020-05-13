@@ -2,18 +2,7 @@ import * as Polymer from '@polymer/polymer'
 import '@polymer/paper-input/paper-input'
 import '@polymer/paper-button/paper-button'
 
-const schedule = nodecg.Replicant('schedule', 'nodecg-yendraws', {
-  defaultValue: {
-    monday: undefined,
-    tuesday: undefined,
-    wednesday: undefined,
-    thursday: undefined,
-    friday: undefined,
-    saturday: undefined,
-    sunday: undefined,
-  },
-  persistent: true,
-})
+const schedule = nodecg.Replicant('schedule', 'nodecg-yendraws')
 
 import '../twitchie-style/twitchie-style'
 

@@ -36,7 +36,7 @@ styleElement.innerHTML = `<template>
     }
 
     paper-icon-button {
-      color: #6441a4;
+      color: #ffffff;
       width: 1.5em;
       height: 1.5em;
       padding: 0;
