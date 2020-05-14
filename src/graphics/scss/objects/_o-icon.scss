@@ -1,0 +1,19 @@
+.o-icon {
+  margin-right: 0.3em;
+  width: 1em;
+  height: 1em;
+  fill: currentColor;
+}
+
+.o-emote {
+  margin-right: 0.3em;
+  height: 1.5em;
+
+  &--flush {
+    margin: 0;
+  }
+}
+
+.o-emote__bigmoji {
+  height: 2.5em;
+}

@@ -23,6 +23,7 @@
 }
 
 .c-chat-item {
+  font-size: 0.95em;
   margin: 0 0 0.75em;
   animation: message-popin 0.5s ease-in-out;
   animation-iteration-count: 1;
@@ -44,22 +45,26 @@
   text-overflow: ellipsis;
   overflow: hidden;
   @include brand-font;
-  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.3), 0 3px 3px rgba(255, 255, 255, 0.8);
-  font-size: 1.15em;
+  font-size: 1.2em;
   margin: 0.3em 0;
   flex-basis: 0 0 auto;
-  order: 2;
+  order: 3;
 }
 
 .c-chat-message__badge {
   flex-basis: 0 0 auto;
   align-self: flex-end;
   order: 1;
+  margin: 0 0.1em;
+}
+
+.c-chat-message__separator {
+  order: 2;
 }
 
 .c-chat-message__message {
   background: rgba(255, 255, 255, 0.4);
-  padding: 0.25em 0.33em;
+  padding: 0.3em 0.4em;
   font-size: 0.9em;
   letter-spacing: 0.02em;
 }
@@ -67,19 +72,9 @@
 @keyframes message-popin {
   0% {
     opacity: 0;
-    transform: translateY(1em);
-  }
-
-  67% {
-    transform: translateY(-0.24em);
-  }
-
-  85% {
-    transform: translateY(0);
   }
 
   100% {
-    transform: translateY(0%);
     opacity: 1;
   }
 }
