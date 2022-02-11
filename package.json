@@ -21,7 +21,7 @@
   "nodecg": {
     "compatibleRange": ">=1.5.0",
     "bundleDependencies": {
-      "nodecg-twitchie": "^2.3.0"
+      "nodecg-twitchie": "^3.0.0"
     },
     "dashboardPanels": [
       {
