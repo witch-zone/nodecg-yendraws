@@ -12,10 +12,18 @@ interface ScheduleProps {
 const Schedule: FunctionComponent<ScheduleProps> = ({ className }) => {
   const schedule = useSelector(getScheduleFromState)
 
+  if (!schedule || Object.keys(schedule).length === 0) {
+    return null
+  }
+
   return (
     <div className={classnames('c-schedule', className)}>
-      {Object.keys(schedule || {}).map(day => (
-        <ScheduleTime day={day} time={schedule[day]} className="c-schedule__time" />
+      {Object.keys(schedule).map(day => (
+        <ScheduleTime
+          day={day}
+          time={schedule[day]}
+          className="c-schedule__time"
+        />
       ))}
     </div>
   )

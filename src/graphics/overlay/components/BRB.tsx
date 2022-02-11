@@ -27,9 +27,7 @@ const BRB = () => {
             <CountdownTimer className="c-brb__countdown" target={timer} />
           </div>
 
-          <div className="c-brb__schedule c-brb__section">
-            <Schedule />
-          </div>
+          <Schedule className="c-brb__schedule c-brb__section" />
 
           <div className="c-brb__social">
             <Social rightAlign />
