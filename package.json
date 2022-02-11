@@ -59,6 +59,7 @@
     "build": "npm run build:dashboard && npm run build:graphics",
     "build:dashboard": "webpack --config webpack.config.dashboard.js",
     "build:graphics": "webpack --config webpack.config.graphics.js",
+    "lint": "eslint \"src/**/*.{ts,tsx,js,tsx}\"",
     "prepare": "husky install"
   },
   "devDependencies": {

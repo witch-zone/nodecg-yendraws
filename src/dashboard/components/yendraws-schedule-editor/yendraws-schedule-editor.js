@@ -1,8 +1,10 @@
+/* global NodeCG */
+
 import * as Polymer from '@polymer/polymer'
 import '@polymer/paper-input/paper-input'
 import '@polymer/paper-button/paper-button'
 
-const schedule = nodecg.Replicant('schedule', 'nodecg-yendraws')
+const schedule = NodeCG.Replicant('schedule', 'nodecg-yendraws')
 
 import '../twitchie-style/twitchie-style'
 
@@ -116,15 +118,26 @@ class YendrawsScheduleEditor extends Polymer.PolymerElement {
     super.ready()
 
     NodeCG.waitForReplicants(schedule).then(() => {
-      schedule.on('change', ({ monday, tuesday, wednesday, thursday, friday, saturday, sunday }) => {
-        this.monday = monday
-        this.tuesday = tuesday
-        this.wednesday = wednesday
-        this.thursday = thursday
-        this.friday = friday
-        this.saturday = saturday
-        this.sunday = sunday
-      })
+      schedule.on(
+        'change',
+        ({
+          monday,
+          tuesday,
+          wednesday,
+          thursday,
+          friday,
+          saturday,
+          sunday,
+        }) => {
+          this.monday = monday
+          this.tuesday = tuesday
+          this.wednesday = wednesday
+          this.thursday = thursday
+          this.friday = friday
+          this.saturday = saturday
+          this.sunday = sunday
+        },
+      )
     })
   }
 }

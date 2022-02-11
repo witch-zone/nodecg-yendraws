@@ -1,10 +1,12 @@
-interface Window {
-  SetVolume: (vol: any) => void
-  GetPlayState: () => void
-  OnSceneLoad: () => void
+declare global {
+  interface Window {
+    SetVolume: (vol: any) => void
+    GetPlayState: () => void
+    OnSceneLoad: () => void
+  }
 }
 
-window.SetVolume = _ => {
+window.SetVolume = () => {
   // no audio elements used on the page (yet)
 }
 
@@ -21,3 +23,5 @@ if (window.external && (window as any).external.SetLocalProperty) {
   // otherwise it'd be locked at 30 by defalt
   ;(window as any).external.SetLocalProperty('prop:Browser60fps', '1')
 }
+
+export {}

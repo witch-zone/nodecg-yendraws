@@ -1,8 +1,12 @@
+/* global NodeCG */
+
 import * as Polymer from '@polymer/polymer'
 import '@polymer/paper-input/paper-input'
 import '@polymer/paper-button/paper-button'
 
-const commands = nodecg.Replicant('commands', 'nodecg-yendraws', { persistent: true })
+const commands = NodeCG.Replicant('commands', 'nodecg-yendraws', {
+  persistent: true,
+})
 
 import '../twitchie-style/twitchie-style'
 
@@ -61,7 +65,7 @@ class YendrawsCommands extends Polymer.PolymerElement {
     const { target } = this
     const command = event.model.get('command')
 
-    nodecg.sendMessage('chat.command', {
+    NodeCG.sendMessage('chat.command', {
       command,
       target,
     })

@@ -9,6 +9,7 @@ const updateSchedule = (schedule: any) => ({
 
 const defaultState = {}
 
+// eslint-disable-next-line @typescript-eslint/default-param-last
 const scheduleReducer: Reducer = (state = defaultState, { type, payload }) => {
   switch (type) {
     case UPDATE_SCHEDULE_ACTION:
@@ -19,7 +20,7 @@ const scheduleReducer: Reducer = (state = defaultState, { type, payload }) => {
             ...obj,
             [key]: payload[key],
           }),
-          {}
+          {},
         )
     default:
       return state
@@ -32,4 +33,10 @@ const reducers = {
 
 const getScheduleFromState = (state: any) => state.schedule
 
-export { getScheduleFromState, scheduleReducer, reducers, updateSchedule, UPDATE_SCHEDULE_ACTION }
+export {
+  getScheduleFromState,
+  scheduleReducer,
+  reducers,
+  updateSchedule,
+  UPDATE_SCHEDULE_ACTION,
+}
