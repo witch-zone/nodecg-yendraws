@@ -58,24 +58,30 @@
   "scripts": {
     "build": "npm run build:dashboard && npm run build:graphics",
     "build:dashboard": "webpack --config webpack.config.dashboard.js",
-    "build:graphics": "webpack --config webpack.config.graphics.js"
+    "build:graphics": "webpack --config webpack.config.graphics.js",
+    "prepare": "husky install"
   },
   "devDependencies": {
-    "@types/classnames": "^2.2.9",
-    "@types/react-redux": "^7.1.5",
-    "@types/twemoji": "^12.1.0",
+    "@types/classnames": "^2.3.1",
+    "@types/react-redux": "^7.1.22",
+    "@types/twemoji": "^12.1.2",
+    "@typescript-eslint/eslint-plugin": "^5.11.0",
+    "@typescript-eslint/parser": "^5.11.0",
     "clean-webpack-plugin": "^3.0.0",
     "css-loader": "^3.2.0",
+    "eslint": "^8.8.0",
+    "eslint-config-airbnb-typescript": "^16.1.0",
+    "eslint-config-prettier": "^8.3.0",
     "file-loader": "^4.2.0",
     "html-loader": "^0.5.5",
     "html-webpack-plugin": "^3.2.0",
-    "husky": "^3.0.5",
+    "husky": "^7.0.4",
     "img-loader": "^3.0.1",
     "lint-staged": "^9.2.5",
     "mini-css-extract-plugin": "^0.8.0",
-    "node-sass": "^4.12.0",
     "optimize-css-assets-webpack-plugin": "^5.0.3",
     "prettier": "^1.15.3",
+    "sass": "^1.49.7",
     "sass-loader": "^8.0.0",
     "style-loader": "^1.0.0",
     "stylelint": "^11.0.0",
@@ -84,12 +90,7 @@
     "svg-sprite-loader": "^4.1.6",
     "terser-webpack-plugin": "^2.1.0",
     "ts-loader": "^6.1.2",
-    "tslint": "^5.11.0",
-    "tslint-config-airbnb": "^5.11.2",
-    "tslint-config-prettier": "^1.17.0",
-    "tslint-eslint-rules": "^5.4.0",
-    "tslint-react": "^3.6.0",
-    "typescript": "^3.2.1",
+    "typescript": "^4.5.5",
     "uglifyjs-webpack-plugin": "^2.2.0",
     "webpack": "^4.40.2",
     "webpack-cli": "^3.3.9",
@@ -103,32 +104,25 @@
     "@polymer/paper-input": "^3.0.0",
     "@polymer/polymer": "^3.0.0",
     "@types/react-motion": "0.0.29",
-    "classnames": "^2.2.6",
+    "classnames": "^2.3.1",
     "moment": "^2.24.0",
-    "nodecg-twitchie": "^2.4.2",
-    "nodecg-twitchie-graphics": "^2.5.1",
-    "preact": "^10.0.1",
-    "preact-context": "^1.1.4",
+    "nodecg-twitchie": "^3.0.0",
+    "nodecg-twitchie-graphics": "^3.0.0",
+    "preact": "^10.6.5",
     "react-motion": "^0.5.2",
-    "react-redux": "^7.1.1",
+    "react-redux": "^7.2.6",
     "redux": "^4.0.4",
     "twemoji": "^12.1.5"
   },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged"
-    }
-  },
   "lint-staged": {
     "*.{ts,tsx}": [
-      "tslint --fix"
+      "eslint --fix"
     ],
     "*.scss": [
       "stylelint --fix"
     ],
     "*.{ts,tsx,scss,json,md,html}": [
-      "prettier --write",
-      "git add"
+      "prettier --write"
     ]
   },
   "resolutions": {
