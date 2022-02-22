@@ -1,18 +1,20 @@
+/* eslint-disable @typescript-eslint/no-var-requires */
 const path = require('path')
-const webpack = require('webpack')
-const { CleanWebpackPlugin } = require('clean-webpack-plugin')
+const package = require('./package.json')
+
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
-const TerserJSPlugin = require('terser-webpack-plugin')
-const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin')
+const { ESBuildMinifyPlugin } = require('esbuild-loader')
+const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 
-const env = process.env.NODE_ENV
+const entryPoints = package.nodecg.graphics.reduce((entries, graphic) => {
+  const name = graphic.file.split('.')[0]
 
-const config = {}
-
-const entryPoints = {
-  index: './src/graphics/index.tsx',
-}
+  return {
+    ...entries,
+    [name]: `./src/graphics/${name}.tsx`,
+  }
+}, {})
 
 const createTemplate = name =>
   new HtmlWebpackPlugin({
@@ -21,91 +23,45 @@ const createTemplate = name =>
     template: './src/graphics/index.html',
   })
 
-config.default = {
+const config = {
   entry: entryPoints,
 
   output: {
-    path: path.resolve('./graphics/'),
-    publicPath: '/bundles/nodecg-yendraws/graphics/',
-    filename: 'bundle/[name].[hash].js',
+    path: path.resolve('./graphics'),
+    publicPath: `/bundles/${package.name}/graphics/`,
+    filename: 'bundle/[name].[contenthash].js',
+    assetModuleFilename: 'assets/[hash][ext][query]',
   },
 
   module: {
     rules: [
       {
-        test: /\.(ts|js)x?$/,
-        use: 'ts-loader',
-        exclude: /node_modules/,
-      },
-      {
-        test: /\.html$/,
-        use: [
-          {
-            loader: 'html-loader',
-            options: {
-              minimize: true,
-            },
-          },
-        ],
-      },
-      {
-        test: /\.(webm|mp4|eot|ttf|otf|woff|woff2|flac|ogg)$/i,
-        use: {
-          loader: 'file-loader',
-          options: {
-            context: path.resolve('./src/graphics/'),
-            name: 'assets/[path][name].[ext]',
-          },
+        test: /\.(js|ts)x?$/,
+        loader: 'esbuild-loader',
+        options: {
+          loader: 'tsx',
+          target: 'es2015',
         },
       },
       {
         test: /\.s?css$/,
-        use: [
-          {
-            loader: MiniCssExtractPlugin.loader,
-            options: {
-              hmr: process.env.NODE_ENV === 'development',
-            },
-          },
-          'css-loader',
-          'sass-loader',
-        ],
+        use: [MiniCssExtractPlugin.loader, 'css-loader', 'sass-loader'],
+      },
+      {
+        test: /\.html$/,
+        loader: 'html-loader',
+      },
+      {
+        test: /\.(webm|mp4|flac|eot|ttf|otf|woff|woff2)$/i,
+        type: 'asset/resource',
       },
       {
         test: /\.(jpe?g|png|gif)$/i,
-        use: [
-          {
-            loader: 'file-loader',
-            options: {
-              context: path.resolve('./src/graphics/'),
-              name: 'assets/[path][name].[ext]',
-            },
-          },
-          {
-            loader: 'img-loader',
-            options: {
-              optipng: false,
-              pngquant: {
-                floyd: 0.5,
-                speed: 2,
-              },
-            },
-          },
-        ],
+        type: 'asset/resource',
       },
       {
         test: /\.svg$/,
-        use: [
-          'svg-sprite-loader',
-          {
-            loader: 'img-loader',
-            options: {
-              svgo: {
-                plugins: [{ removeTitle: true }, { convertPathData: false }],
-              },
-            },
-          },
-        ],
+        loader: 'svg-sprite-loader',
       },
     ],
   },
@@ -115,24 +71,51 @@ config.default = {
 
     alias: {
       react: 'preact/compat',
+      'react-dom/test-utils': 'preact/test-utils',
       'react-dom': 'preact/compat',
+      'react/jsx-runtime': 'preact/jsx-runtime',
     },
   },
 
-  plugins: [new CleanWebpackPlugin(), new MiniCssExtractPlugin(), ...Object.keys(entryPoints).map(createTemplate)],
+  plugins: [
+    new CleanWebpackPlugin(),
+    new MiniCssExtractPlugin({ filename: 'bundle/[name].[contenthash].css' }),
+    ...Object.keys(entryPoints).map(createTemplate),
+  ],
 
-  devtool: 'inline-source-map',
+  devtool: 'source-map',
 }
 
-config.production = Object.assign({}, config.default, {
+const production = {
+  ...config,
   mode: 'production',
+
   optimization: {
-    minimizer: [new TerserJSPlugin({ sourceMap: true }), new OptimizeCSSAssetsPlugin({})],
+    splitChunks: {
+      cacheGroups: {
+        vendor: {
+          test: /[\\/]node_modules[\\/]/,
+          name: 'vendor',
+          chunks: 'all',
+          minSize: 0,
+          minChunks: 2,
+        },
+      },
+    },
+
+    minimizer: [
+      new ESBuildMinifyPlugin({
+        target: 'es2015',
+        css: true,
+      }),
+    ],
   },
-})
+}
 
-config.development = Object.assign({}, config.default, {
+const development = {
+  ...config,
   mode: 'development',
-})
+}
 
-module.exports = env === 'development' ? config.development : config.production
+module.exports =
+  process.env.NODE_ENV === 'development' ? development : production
