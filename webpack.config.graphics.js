@@ -16,7 +16,7 @@ const entryPoints = package.nodecg.graphics.reduce((entries, graphic) => {
   }
 }, {})
 
-const createTemplate = name =>
+const createTemplate = (name) =>
   new HtmlWebpackPlugin({
     filename: `${name}.html`,
     chunks: ['vendor', name],
@@ -105,7 +105,7 @@ const production = {
 
     minimizer: [
       new ESBuildMinifyPlugin({
-        target: 'es2015',
+        target: 'chrome68',
         css: true,
       }),
     ],
