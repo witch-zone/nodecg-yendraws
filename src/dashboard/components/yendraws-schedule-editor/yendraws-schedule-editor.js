@@ -4,7 +4,10 @@ import * as Polymer from '@polymer/polymer'
 import '@polymer/paper-input/paper-input'
 import '@polymer/paper-button/paper-button'
 
-const schedule = NodeCG.Replicant('schedule', 'nodecg-yendraws')
+const schedule = NodeCG.Replicant('schedule', 'nodecg-yendraws', {
+  persistent: true,
+  defaultValue: {},
+})
 
 import '../twitchie-style/twitchie-style'
 

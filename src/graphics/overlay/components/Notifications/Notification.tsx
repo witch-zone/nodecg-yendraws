@@ -1,13 +1,17 @@
+/* global nodecg */
+
 import classnames from 'classnames'
-import { Notification as NotificationType } from 'nodecg-twitchie-graphics'
+import {
+  Notification as TwitchieNotification,
+  NotificationType,
+} from 'nodecg-twitchie-graphics'
 import { FunctionComponent, h } from 'preact'
-import { useEffect, useRef } from 'preact/hooks'
+import { useEffect } from 'preact/hooks'
 
 import bat from '../../../assets/images/bat.gif'
-import magic from '../../../assets/sounds/magic-notification.flac'
 
 interface NotificationProps {
-  notification: NotificationType
+  notification: TwitchieNotification
   visible: boolean
   className?: string
 }
@@ -17,17 +21,9 @@ const Notification: FunctionComponent<NotificationProps> = ({
   visible,
   className,
 }) => {
-  const audio = useRef<HTMLAudioElement>(null)
-
   useEffect(() => {
-    if (!audio.current) {
-      return
-    }
-
-    audio.current.pause()
-    audio.current.currentTime = 0
-    audio.current.play()
-  }, [visible])
+    nodecg.playSound('notification')
+  }, [notification])
 
   return (
     <div
@@ -35,34 +31,56 @@ const Notification: FunctionComponent<NotificationProps> = ({
         'c-notification--visible': !!visible,
       })}
     >
-      <audio ref={audio} volume="0.6" src={magic} />
-
       <img src={bat} alt="" className="c-notification__bat" />
 
-      {notification.topic === 'subscriber' &&
-        (notification.scale ? (
+      {notification.topic === NotificationType.subscriber &&
+        (notification.months > 1 ? (
           <div
             className="c-notification__message"
-            data-shadow={`${notification.user} just resubscribed! That's ${notification.scale} months!`}
+            data-shadow={`${notification.name} just resubscribed! That's ${notification.months} months!`}
           >
-            <span>{notification.user}</span> just resubscribed! That&apos;s{' '}
-            {notification.scale} months!
+            <span>{notification.name}</span> just resubscribed! That&apos;s{' '}
+            {notification.months} months!
           </div>
         ) : (
           <div
             className="c-notification__message"
-            data-shadow={`${notification.user} just subscribed!`}
+            data-shadow={`${notification.name} just subscribed!`}
           >
-            <span>{notification.user}</span> just subscribed!
+            <span>{notification.name}</span> just subscribed!
           </div>
         ))}
 
-      {notification.topic === 'follower' && (
+      {notification.topic === NotificationType.subscriber_gift && (
         <div
           className="c-notification__message"
-          data-shadow={`${notification.user} just followed!`}
+          data-shadow={`${notification.name} just got a gift from ${
+            notification.gifter ?? 'someone'
+          }!`}
         >
-          <span>{notification.user}</span> just followed!
+          <span>{notification.name}</span> just got a gift from{' '}
+          {notification.gifter ?? 'someone'}!
+        </div>
+      )}
+
+      {notification.topic === NotificationType.community_gift && (
+        <div
+          className="c-notification__message"
+          data-shadow={`${notification.gifter ?? 'Someone'} just gave out ${
+            notification.count
+          } gifts! Wow!`}
+        >
+          <span>{notification.gifter ?? 'Someone'}</span> just gave out{' '}
+          {notification.count} gifts! Wow!
+        </div>
+      )}
+
+      {notification.topic === NotificationType.follower && (
+        <div
+          className="c-notification__message"
+          data-shadow={`${notification.from_name} just followed!`}
+        >
+          <span>{notification.from_name}</span> just followed!
         </div>
       )}
     </div>

@@ -59,6 +59,14 @@
         "height": 720,
         "singleInstance": true
       }
+    ],
+    "soundCues": [
+      {
+        "name": "notification",
+        "defaultVolume": 50,
+        "defaultFile": "sounds/magic-notification.ogg",
+        "channels": 1
+      }
     ]
   },
   "scripts": {
@@ -113,7 +121,7 @@
     "classnames": "^2.3.1",
     "moment": "^2.24.0",
     "nodecg-twitchie": "^3.2.1",
-    "nodecg-twitchie-graphics": "^4.0.0",
+    "nodecg-twitchie-graphics": "^4.1.0",
     "normalize.css": "^8.0.1",
     "preact": "^10.6.5",
     "react-motion": "^0.5.2",
