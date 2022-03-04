@@ -1,7 +1,5 @@
-import { ChatMessage } from 'nodecg-twitchie'
-import { FunctionComponent, h } from 'preact'
-
-import MessageTokens from './MessageTokens'
+import { ChatMessage } from 'nodecg-twitchie-graphics'
+import { ComponentChildren, FunctionComponent, h } from 'preact'
 
 import mod from '../../../assets/badges/mod.png'
 import yen from '../../../assets/badges/yen.png'
@@ -12,24 +10,30 @@ import sub3 from '../../../assets/badges/subscriber/3.png'
 import sub6 from '../../../assets/badges/subscriber/6.png'
 
 interface MessageProps {
-  message: ChatMessage
+  item: ChatMessage
+  user: ComponentChildren
+  message: ComponentChildren
 }
 
-const UserBadges: FunctionComponent<MessageProps> = ({ message }) => {
-  if (message.user.badges.broadcaster) {
+interface UserBadgesProps {
+  badges: Record<string, string>
+}
+
+const UserBadges: FunctionComponent<UserBadgesProps> = ({ badges = {} }) => {
+  if (badges.broadcaster) {
     return <img src={yen} alt="yen" className="o-emote o-emote--flush" />
   }
 
-  if (message.user.badges.moderator) {
+  if (badges.moderator) {
     return <img src={mod} alt="mod" className="o-emote o-emote--flush" />
   }
 
-  if (message.user.badges.founder) {
+  if (badges.founder) {
     return <img src={sub12} alt="sub12" className="o-emote o-emote--flush" />
   }
 
-  if (message.user.badges.subscriber) {
-    const months = parseInt(message.user.badges.subscriber, 10)
+  if (badges.subscriber) {
+    const months = parseInt(badges.subscriber, 10)
 
     if (months >= 12) {
       return <img src={sub12} alt="sub12" className="o-emote o-emote--flush" />
@@ -49,25 +53,26 @@ const UserBadges: FunctionComponent<MessageProps> = ({ message }) => {
   return null
 }
 
-const Message: FunctionComponent<MessageProps> = ({ message }) => (
+const Message: FunctionComponent<MessageProps> = ({ item, user, message }) => (
   <div className="c-chat-item c-chat-message">
     <div className="c-chat-message__header">
       <div className="c-chat-message__badge">
-        <UserBadges message={message} />
+        <UserBadges badges={item.user.badges} />
       </div>
 
       <div className="c-chat-message__separator">
-        <span className="o-emote" style={{ color: message.user.color || 'inherit' }}>
+        <span
+          className="o-emote"
+          style={{ color: item.user.color || 'inherit' }}
+        >
           &hearts;
         </span>
       </div>
 
-      <div className="c-chat-message__user">{message.user.name}</div>
+      <div className="c-chat-message__user">{user}</div>
     </div>
 
-    <div className="c-chat-message__message">
-      <MessageTokens tokens={message.tokens} />
-    </div>
+    <div className="c-chat-message__message">{message}</div>
   </div>
 )
 

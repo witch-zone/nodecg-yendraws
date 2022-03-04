@@ -1,6 +1,6 @@
-import { getStreamInfo } from 'nodecg-twitchie-graphics'
 import { h } from 'preact'
-import { useSelector } from 'react-redux'
+
+import useStore from '../../store'
 
 import Chat from './Chat'
 import Notifications from './Notifications'
@@ -9,7 +9,7 @@ import Social from './Social'
 import Twemoji from './Twemoji'
 
 const Player = () => {
-  const stream = useSelector(getStreamInfo)
+  const stream = useStore((state) => state.stream)
 
   return (
     <Scene className="o-scene--player">

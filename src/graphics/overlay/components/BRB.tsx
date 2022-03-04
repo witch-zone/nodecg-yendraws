@@ -1,7 +1,6 @@
 import { h } from 'preact'
-import { useSelector } from 'react-redux'
 
-import { getMessage, getTimer } from 'nodecg-twitchie-graphics'
+import useStore, { useOverlayStore } from '../../store'
 
 import CountdownTimer from './CountdownTimer'
 import Scene, { Layer } from './Scene'
@@ -10,8 +9,8 @@ import Social from './Social'
 import Twemoji from './Twemoji'
 
 const BRB = () => {
-  const message = useSelector(getMessage)
-  const timer = useSelector(getTimer)
+  const message = useStore((state) => state.brb.message)
+  const timer = useOverlayStore((state) => state.timer)
 
   return (
     <Scene className="o-scene--brb" showWhenAway>

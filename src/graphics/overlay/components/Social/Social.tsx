@@ -2,8 +2,8 @@ import classnames from 'classnames'
 import { FunctionComponent, h } from 'preact'
 import { useCallback, useEffect, useState } from 'preact/hooks'
 
-import { getSocialAccounts } from 'nodecg-twitchie-graphics'
-import { useSelector } from 'react-redux'
+import useStore from '../../../store'
+
 import Account from './Account'
 
 const ROTATE_TIMEOUT = 6000
@@ -14,7 +14,7 @@ interface SocialProps {
 }
 
 const Social: FunctionComponent<SocialProps> = ({ className, rightAlign }) => {
-  const accounts = useSelector(getSocialAccounts)
+  const accounts = useStore((state) => state.social)
   const [active, setActive] = useState(0)
 
   const showNextAccount = useCallback(() => {

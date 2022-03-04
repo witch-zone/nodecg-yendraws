@@ -1,7 +1,7 @@
-import { clearNotificationAction, getNextNotification } from 'nodecg-twitchie-graphics'
 import { FunctionComponent, h } from 'preact'
 import { useCallback, useEffect, useState } from 'preact/hooks'
-import { useDispatch, useSelector } from 'react-redux'
+
+import useStore from '../../../store'
 
 import Notification from './Notification'
 
@@ -13,13 +13,18 @@ interface NotificationsProps {
   downtime?: number
 }
 
-const Notifications: FunctionComponent<NotificationsProps> = ({ duration, downtime }) => {
+const Notifications: FunctionComponent<NotificationsProps> = ({
+  duration,
+  downtime,
+}) => {
   const [visible, setVisible] = useState(false)
-  const notification = useSelector(getNextNotification)
+  const notification = useStore((state) => state.notifications[0])
+  const removeNotificationById = useStore(
+    (state) => state.removeNotificationById,
+  )
 
-  const dispatch = useDispatch()
   const clearCurrentNotification = useCallback(() => {
-    dispatch(clearNotificationAction(notification.id!))
+    removeNotificationById(notification.id!)
   }, [notification])
 
   useEffect(() => {
@@ -31,7 +36,10 @@ const Notifications: FunctionComponent<NotificationsProps> = ({ duration, downti
 
     let clearNotificationTimeout = setTimeout(() => {
       setVisible(false)
-      clearNotificationTimeout = setTimeout(clearCurrentNotification, downtime || defaultDowntimeDuration)
+      clearNotificationTimeout = setTimeout(
+        clearCurrentNotification,
+        downtime || defaultDowntimeDuration,
+      )
     }, duration || defaultNotificationDuration)
 
     return () => {
@@ -39,7 +47,9 @@ const Notifications: FunctionComponent<NotificationsProps> = ({ duration, downti
     }
   }, [notification])
 
-  return notification ? <Notification notification={notification} visible={visible} /> : null
+  return notification ? (
+    <Notification notification={notification} visible={visible} />
+  ) : null
 }
 
 export default Notifications

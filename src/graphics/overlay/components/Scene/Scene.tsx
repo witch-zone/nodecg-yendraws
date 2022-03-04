@@ -1,8 +1,8 @@
 import classnames from 'classnames'
-import { getBRB } from 'nodecg-twitchie-graphics'
 import { FunctionComponent, h } from 'preact'
 import { useMemo } from 'preact/hooks'
-import { useSelector } from 'react-redux'
+
+import useStore from '../../../store'
 
 interface SceneProps {
   showWhenAway?: boolean
@@ -10,8 +10,13 @@ interface SceneProps {
   className?: string
 }
 
-const Scene: FunctionComponent<SceneProps> = ({ showWhenAway, hideWhenAway, className, children }) => {
-  const brb = useSelector(getBRB)
+const Scene: FunctionComponent<SceneProps> = ({
+  showWhenAway,
+  hideWhenAway,
+  className,
+  children,
+}) => {
+  const brb = useStore((state) => state.brb)
 
   const isVisible = useMemo(() => {
     if (showWhenAway) {

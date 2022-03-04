@@ -1,8 +1,8 @@
 import classnames from 'classnames'
 import { FunctionComponent, h } from 'preact'
-import { useSelector } from 'react-redux'
 
-import { getScheduleFromState } from '../../store'
+import { useOverlayStore } from '../../../store'
+
 import ScheduleTime from './ScheduleTime'
 
 interface ScheduleProps {
@@ -10,7 +10,7 @@ interface ScheduleProps {
 }
 
 const Schedule: FunctionComponent<ScheduleProps> = ({ className }) => {
-  const schedule = useSelector(getScheduleFromState)
+  const schedule = useOverlayStore((state) => state.schedule)
 
   if (!schedule || Object.keys(schedule).length === 0) {
     return null
@@ -18,12 +18,8 @@ const Schedule: FunctionComponent<ScheduleProps> = ({ className }) => {
 
   return (
     <div className={classnames('c-schedule', className)}>
-      {Object.keys(schedule).map(day => (
-        <ScheduleTime
-          day={day}
-          time={schedule[day]}
-          className="c-schedule__time"
-        />
+      {Object.entries(schedule).map(([day, time]) => (
+        <ScheduleTime day={day} time={time} className="c-schedule__time" />
       ))}
     </div>
   )

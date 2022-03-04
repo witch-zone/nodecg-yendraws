@@ -1,7 +1,6 @@
 {
   "description": "A cute and good stream layout for yen!",
   "keywords": [
-    "",
     "nodecg-bundle"
   ],
   "repository": "https://github.com/witch-zone/nodecg-yendraws.git",
@@ -24,6 +23,13 @@
       "nodecg-twitchie": "^3.0.0"
     },
     "dashboardPanels": [
+      {
+        "name": "timer",
+        "title": "Timer",
+        "width": 2,
+        "file": "timer.html",
+        "headerColor": "#6441A4"
+      },
       {
         "name": "Commands",
         "title": "Chat Commands",
@@ -63,25 +69,11 @@
     "prepare": "husky install"
   },
   "devDependencies": {
-
-    "@types/twemoji": "^12.1.2",
-
-
-
-
-
-
-
-
-
-
-
-
-
     "@types/classnames": "^2.3.1",
     "@types/color": "^3.0.1",
     "@types/react-motion": "^0.0.32",
     "@types/react-redux": "^7.1.22",
+    "@types/twemoji": "^12.1.2",
     "@typescript-eslint/eslint-plugin": "^5.11.0",
     "@typescript-eslint/parser": "^5.11.0",
     "clean-webpack-plugin": "^4.0.0",
@@ -108,28 +100,27 @@
     "webpack-dev-server": "^4.7.4"
   },
   "dependencies": {
+    "@polymer/iron-icon": "^3.0.0",
     "@polymer/iron-icons": "^3.0.0",
     "@polymer/iron-list": "^3.0.0",
+    "@polymer/iron-pages": "^3.0.0",
     "@polymer/paper-button": "^3.0.0",
+    "@polymer/paper-checkbox": "^3.0.0",
     "@polymer/paper-icon-button": "^3.0.0",
     "@polymer/paper-input": "^3.0.0",
     "@polymer/polymer": "^3.0.0",
     "@types/react-motion": "0.0.29",
-
-    "moment": "^2.24.0",
-
-
-    "twemoji": "^12.1.5",
     "classnames": "^2.3.1",
-    "nodecg-twitchie": "^3.0.0",
-    "nodecg-twitchie-graphics": "^3.0.0",
+    "moment": "^2.24.0",
+    "nodecg-twitchie": "^3.2.1",
+    "nodecg-twitchie-graphics": "^4.0.0",
+    "normalize.css": "^8.0.1",
     "preact": "^10.6.5",
     "react-motion": "^0.5.2",
-    "react-redux": "^7.2.6",
-    "redux": "^4.0.4",
-    "normalize.css": "^8.0.1",
+    "twemoji": "^12.1.5",
     "velocity-animate": "^1.5.2",
-    "xjs-framework": "^2.9.0"
+    "xjs-framework": "^2.9.0",
+    "zustand": "^3.7.1"
   },
   "lint-staged": {
     "*.{ts,tsx}": [

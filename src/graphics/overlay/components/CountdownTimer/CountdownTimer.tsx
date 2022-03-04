@@ -6,20 +6,25 @@ import { useCallback, useEffect, useMemo, useState } from 'preact/hooks'
 import calculateTimeRemaining from './utils/calculateTimeRemaining'
 
 interface CountdownTimerProps {
-  target: string | null
+  target: string | undefined
   className?: string
 }
 
-const CountdownTimer: FunctionComponent<CountdownTimerProps> = ({ target, className }) => {
+const CountdownTimer: FunctionComponent<CountdownTimerProps> = ({
+  target,
+  className,
+}) => {
   const targetMoment = useMemo(() => moment.utc(target || undefined), [target])
   const [countdown, updateCountdown] = useState<string | null>(null)
 
   const onUpdateCountdown = useCallback(() => {
-    updateCountdown(targetMoment.isValid() ? calculateTimeRemaining(targetMoment) : null)
+    updateCountdown(
+      targetMoment.isValid() ? calculateTimeRemaining(targetMoment) : null,
+    )
   }, [targetMoment, updateCountdown])
 
   useEffect(() => {
-    const tickTock = setInterval(onUpdateCountdown, 1000)
+    const tickTock = setInterval(onUpdateCountdown, 500)
 
     return () => {
       clearInterval(tickTock)

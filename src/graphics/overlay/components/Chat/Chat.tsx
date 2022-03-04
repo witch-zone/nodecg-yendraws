@@ -1,8 +1,4 @@
-import {
-  ChatMessageTypeWithNotifications,
-  getChatMessages,
-} from 'nodecg-twitchie-graphics'
-import { ComponentType, createElement, FunctionComponent, h } from 'preact'
+import { ComponentType, FunctionComponent, h } from 'preact'
 import {
   useEffect,
   useLayoutEffect,
@@ -11,17 +7,17 @@ import {
   useState,
 } from 'preact/hooks'
 import { Motion, spring } from 'react-motion'
-import { useSelector } from 'react-redux'
 
-import Message, { MessageProps } from './Message'
-import Notification, { NotificationProps } from './Notification'
+import useStore from '../../../store'
 
-const DEFAULT_MAX_VISIBLE_MESSAGES = 20
-const messageHeights: Record<string, number> = {}
+import { MessageProps } from './Message'
+import ChatItem from './ChatItem'
+
+const DEFAULT_MAX_VISIBLE_ITEMS = 20
+const itemHeights: Record<string, number> = {}
 
 interface ChatProps {
   messageComponent?: ComponentType<MessageProps>
-  notificationComponent?: ComponentType<NotificationProps>
 }
 
 const useMutationObserver = (
@@ -44,49 +40,45 @@ const useMutationObserver = (
   }, [target, config, observer])
 }
 
-const useVirtualisedMessages = (limit = DEFAULT_MAX_VISIBLE_MESSAGES) => {
-  const messages = useSelector(getChatMessages)
+const useVirtualisedItems = (limit = DEFAULT_MAX_VISIBLE_ITEMS) => {
+  const items = useStore((store) => store.chat.items)
 
-  if (messages.length <= limit) {
-    return [0, messages] as const
+  if (items.length <= limit) {
+    return [0, items] as const
   }
 
-  const visibleMessages = messages.slice(-limit)
-  const hiddenMessages = messages.slice(0, -limit)
+  const visibleItems = items.slice(-limit)
+  const hiddenItems = items.slice(0, -limit)
 
-  const hiddenMessagesHeight = hiddenMessages.reduce(
-    (totalHeight, { id }) => totalHeight + messageHeights[id!],
+  const hiddenItemsHeight = hiddenItems.reduce(
+    (totalHeight, { id }) => totalHeight + itemHeights[id!],
     0,
   )
 
-  return [hiddenMessagesHeight, visibleMessages] as const
+  return [hiddenItemsHeight, visibleItems] as const
 }
 
-const ChatMessageWrapper: FunctionComponent<any> = ({ children, id }) => {
-  const messageRef = useRef<HTMLDivElement>(null)
+const ChatItemWrapper: FunctionComponent<any> = ({ children, id }) => {
+  const itemRef = useRef<HTMLDivElement>(null)
 
   useLayoutEffect(() => {
-    messageHeights[id] = messageRef.current!.offsetHeight
+    itemHeights[id] = itemRef.current!.offsetHeight
   }, [])
 
-  return <div ref={messageRef}>{children}</div>
+  return <div ref={itemRef}>{children}</div>
 }
 
-const Chat: FunctionComponent<ChatProps> = ({
-  messageComponent = Message,
-  notificationComponent = Notification,
-}) => {
+const Chat: FunctionComponent<ChatProps> = ({ messageComponent }) => {
   const chatRef = useRef<HTMLDivElement>(null)
-  const messagesWrapperRef = useRef<HTMLDivElement>(null)
+  const itemsWrapperRef = useRef<HTMLDivElement>(null)
   const [scrollOffset, setOffset] = useState<number>(0)
 
-  const [messageOffset, visibleMessages] = useVirtualisedMessages()
+  const [itemOffset, visibleItems] = useVirtualisedItems()
 
-  useMutationObserver(messagesWrapperRef.current, { childList: true }, () => {
+  useMutationObserver(itemsWrapperRef.current, { childList: true }, () => {
     setOffset(
       Math.min(
-        chatRef.current!.offsetHeight -
-          messagesWrapperRef.current!.offsetHeight,
+        chatRef.current!.offsetHeight - itemsWrapperRef.current!.offsetHeight,
         0,
       ),
     )
@@ -95,25 +87,21 @@ const Chat: FunctionComponent<ChatProps> = ({
   return (
     <div ref={chatRef} className="c-chat">
       <Motion defaultStyle={{ y: 0 }} style={{ y: spring(scrollOffset) }}>
-        {styles => (
+        {(styles) => (
           <div
             style={{ transform: `translateY(${styles.y}px)` }}
-            ref={messagesWrapperRef}
+            ref={itemsWrapperRef}
             className="c-chat__wrapper"
           >
             <div
-              style={{ height: `${messageOffset}px` }}
-              className="c-chat__message-placeholder"
+              style={{ height: `${itemOffset}px` }}
+              className="c-chat__placeholder"
             />
 
-            {visibleMessages.map(message => (
-              <ChatMessageWrapper id={message.id} key={message.id}>
-                {message.type === ChatMessageTypeWithNotifications.NOTIFICATION
-                  ? createElement(notificationComponent, {
-                      notification: message,
-                    })
-                  : createElement(messageComponent, { message })}
-              </ChatMessageWrapper>
+            {visibleItems.map((item) => (
+              <ChatItemWrapper id={item.id} key={item.id}>
+                <ChatItem item={item} messageComponent={messageComponent} />
+              </ChatItemWrapper>
             ))}
           </div>
         )}
