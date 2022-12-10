@@ -1,12 +1,12 @@
 import { h } from 'preact'
 
-import useStore, { useOverlayStore } from '../../store'
+import useStore, { useOverlayStore } from '../../../store'
 
-import CountdownTimer from './CountdownTimer'
-import Scene, { Layer } from './Scene'
-import Schedule from './Schedule'
-import Social from './Social'
-import Twemoji from './Twemoji'
+import CountdownTimer from '../../../components/CountdownTimer'
+import Scene, { Layer } from '../../../components/Scene'
+import Schedule from '../../../components/Schedule'
+import Social from '../../../components/Social'
+import Twemoji from '../../../components/Twemoji'
 
 const BRB = () => {
   const message = useStore((state) => state.brb.message)

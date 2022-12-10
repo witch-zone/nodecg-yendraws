@@ -1,10 +1,11 @@
-import { NotificationType } from 'nodecg-twitchie-graphics'
-import { FunctionComponent, h } from 'preact'
+import {
+  Notification as TwitchieNotification,
+  NotificationType,
+} from 'nodecg-twitchie-graphics'
+import { ComponentType, createElement, FunctionComponent, h } from 'preact'
 import { useEffect, useState } from 'preact/hooks'
 
-import useStore from '../../../store'
-
-import Notification from './Notification'
+import useStore from '../../store'
 
 const defaultNotificationDuration = 5 * 1000
 const defaultDowntimeDuration = 2 * 1000
@@ -12,11 +13,19 @@ const defaultDowntimeDuration = 2 * 1000
 interface NotificationsProps {
   duration?: number
   downtime?: number
+  notificationComponent: ComponentType<NotificationProps>
+}
+
+export interface NotificationProps {
+  notification: TwitchieNotification
+  visible: boolean
+  className?: string
 }
 
 const Notifications: FunctionComponent<NotificationsProps> = ({
   duration,
   downtime,
+  notificationComponent,
 }) => {
   const [visible, setVisible] = useState(false)
 
@@ -50,9 +59,12 @@ const Notifications: FunctionComponent<NotificationsProps> = ({
     }
   }, [notification])
 
-  return notification ? (
-    <Notification notification={notification} visible={visible} />
-  ) : null
+  return notification
+    ? createElement(notificationComponent, {
+        notification,
+        visible,
+      })
+    : null
 }
 
 export default Notifications

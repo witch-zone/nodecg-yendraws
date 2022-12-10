@@ -6,7 +6,11 @@ interface EmoteTokenProps {
 }
 
 const EmoteToken: FunctionComponent<EmoteTokenProps> = ({ token }) => (
-  <img src={`https://static-cdn.jtvnw.net/emoticons/v1/${token.id}/3.0`} alt={token.name} className="o-emote" />
+  <img
+    src={`https://static-cdn.jtvnw.net/emoticons/v1/${token.id}/3.0`}
+    alt={token.name}
+    className="o-emote"
+  />
 )
 
 export { EmoteTokenProps }

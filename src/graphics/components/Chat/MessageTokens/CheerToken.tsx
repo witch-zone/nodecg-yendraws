@@ -5,7 +5,9 @@ interface CheerTokenProps {
   token: ChatCheerMessageToken
 }
 
-const CheerToken: FunctionComponent<CheerTokenProps> = ({ token }) => <Fragment>{token.amount}</Fragment>
+const CheerToken: FunctionComponent<CheerTokenProps> = ({ token }) => (
+  <Fragment>{token.amount}</Fragment>
+)
 
 export { CheerTokenProps }
 export default CheerToken

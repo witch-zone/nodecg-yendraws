@@ -8,10 +8,9 @@ import {
 } from 'preact/hooks'
 import { Motion, spring } from 'react-motion'
 
-import useStore from '../../../store'
+import useStore from '../../store'
 
-import { MessageProps } from './Message'
-import ChatItem from './ChatItem'
+import ChatItem, { MessageProps } from './ChatItem'
 
 const DEFAULT_MAX_VISIBLE_ITEMS = 20
 const itemHeights: Record<string, number> = {}

@@ -1,7 +1,7 @@
 import classnames from 'classnames'
 import { FunctionComponent, h } from 'preact'
 
-import { useOverlayStore } from '../../../store'
+import { useOverlayStore } from '../../store'
 
 import ScheduleTime from './ScheduleTime'
 

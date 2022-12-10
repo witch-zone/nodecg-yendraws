@@ -18,7 +18,7 @@ const MessageTokens: FunctionComponent<MessageTokensProps> = ({
   tokens,
 }) => (
   <WrapperComponent>
-    {tokens.map(token => {
+    {tokens.map((token) => {
       if (token.type === 'emote') {
         return <EmoteComponent token={token} />
       }

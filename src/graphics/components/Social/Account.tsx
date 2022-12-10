@@ -9,7 +9,11 @@ interface AccountProps {
   className?: string
 }
 
-const Account: FunctionComponent<AccountProps> = ({ service, link, className }) => (
+const Account: FunctionComponent<AccountProps> = ({
+  service,
+  link,
+  className,
+}) => (
   <div className={classnames('c-social-link', className)}>
     <AccountIcon className="c-social-link__icon" service={service} />
     <span className="c-social-link__url">{link}</span>

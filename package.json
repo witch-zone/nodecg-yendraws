@@ -54,10 +54,16 @@
     ],
     "graphics": [
       {
-        "file": "index.html",
-        "width": 1280,
-        "height": 720,
-        "singleInstance": true
+        "file": "yendraws.html",
+        "width": 1920,
+        "height": 1080,
+        "singleInstance": false
+      },
+      {
+        "file": "postyen.html",
+        "width": 1920,
+        "height": 1080,
+        "singleInstance": false
       }
     ],
     "soundCues": [

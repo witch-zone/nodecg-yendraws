@@ -1,12 +1,15 @@
 import { h } from 'preact'
 
-import useStore from '../../store'
+import useStore from '../../../store'
 
-import Chat from './Chat'
-import Notifications from './Notifications'
-import Scene, { Layer } from './Scene'
-import Social from './Social'
-import Twemoji from './Twemoji'
+import Chat from '../../../components/Chat'
+import Notifications from '../../../components/Notifications'
+import Scene, { Layer } from '../../../components/Scene'
+import Social from '../../../components/Social'
+import Twemoji from '../../../components/Twemoji'
+
+import Message from '../components/Message'
+import Notification from '../components/Notification'
 
 const Player = () => {
   const stream = useStore((state) => state.stream)
@@ -26,10 +29,10 @@ const Player = () => {
       </Layer>
 
       <Layer>
-        <Chat />
+        <Chat messageComponent={Message} />
       </Layer>
 
-      <Notifications />
+      <Notifications notificationComponent={Notification} />
     </Scene>
   )
 }

@@ -7,7 +7,11 @@ interface ScheduleProps {
   className?: string
 }
 
-const Schedule: FunctionComponent<ScheduleProps> = ({ day, time, className }) => (
+const Schedule: FunctionComponent<ScheduleProps> = ({
+  day,
+  time,
+  className,
+}) => (
   <div className={classnames('c-schedule-time', className)}>
     <span className="c-schedule-time__day">{day}</span>
     <span className="c-schedule-time__time">{time}</span>

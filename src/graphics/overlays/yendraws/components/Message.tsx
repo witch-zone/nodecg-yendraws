@@ -1,5 +1,6 @@
-import { ChatMessage } from 'nodecg-twitchie-graphics'
-import { ComponentChildren, FunctionComponent, h } from 'preact'
+import { FunctionComponent, h } from 'preact'
+
+import { MessageProps } from '../../../components/Chat/ChatItem'
 
 import mod from '../../../assets/badges/mod.png'
 import yen from '../../../assets/badges/yen.png'
@@ -8,12 +9,6 @@ import sub0 from '../../../assets/badges/subscriber/0.png'
 import sub12 from '../../../assets/badges/subscriber/12.png'
 import sub3 from '../../../assets/badges/subscriber/3.png'
 import sub6 from '../../../assets/badges/subscriber/6.png'
-
-interface MessageProps {
-  item: ChatMessage
-  user: ComponentChildren
-  message: ComponentChildren
-}
 
 interface UserBadgesProps {
   badges: Record<string, string>

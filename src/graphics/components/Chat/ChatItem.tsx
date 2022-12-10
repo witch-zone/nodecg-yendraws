@@ -1,4 +1,10 @@
-import { ComponentType, createElement, FunctionComponent, h } from 'preact'
+import {
+  ComponentChildren,
+  ComponentType,
+  createElement,
+  FunctionComponent,
+  h,
+} from 'preact'
 import {
   ChatNotification,
   ChatMessage,
@@ -6,16 +12,21 @@ import {
 } from 'nodecg-twitchie-graphics'
 
 import MessageTokens from './MessageTokens'
-import Message, { MessageProps } from './Message'
+
+export interface MessageProps {
+  item: ChatMessage
+  user: ComponentChildren
+  message: ComponentChildren
+}
 
 interface ChatItemProps {
   item: ChatNotification | ChatMessage
-  messageComponent?: ComponentType<MessageProps>
+  messageComponent: ComponentType<MessageProps>
 }
 
 const ChatItem: FunctionComponent<ChatItemProps> = ({
   item,
-  messageComponent = Message,
+  messageComponent,
 }) => {
   if (item.type !== ChatMessageTypeWithNotifications.message) {
     return null

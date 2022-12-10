@@ -2,7 +2,7 @@ import classnames from 'classnames'
 import { FunctionComponent, h } from 'preact'
 import { useMemo } from 'preact/hooks'
 
-import useStore from '../../../store'
+import useStore from '../../store'
 
 interface SceneProps {
   showWhenAway?: boolean

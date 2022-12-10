@@ -1,20 +1,13 @@
 /* global nodecg */
 
 import classnames from 'classnames'
-import {
-  Notification as TwitchieNotification,
-  NotificationType,
-} from 'nodecg-twitchie-graphics'
+import { NotificationType } from 'nodecg-twitchie-graphics'
 import { FunctionComponent, h } from 'preact'
 import { useEffect } from 'preact/hooks'
 
-import bat from '../../../assets/images/bat.gif'
+import { NotificationProps } from '../../../components/Notifications/Notifications'
 
-interface NotificationProps {
-  notification: TwitchieNotification
-  visible: boolean
-  className?: string
-}
+import bat from '../../../assets/images/bat.gif'
 
 const Notification: FunctionComponent<NotificationProps> = ({
   notification,
