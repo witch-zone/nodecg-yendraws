@@ -18,8 +18,8 @@
 
 .c-player__header {
   @include brand-font;
-  font-size: 2rem;
-  padding: 0 1rem 0 7rem;
+  font-size: 1.5em;
+  padding: 0 1em 0 3.5em;
   height: 12%;
   display: flex;
   flex-flow: row nowrap;
@@ -32,8 +32,8 @@
 
 .c-player__footer {
   @include brand-font;
-  font-size: 2rem;
-  padding: 0 1rem 0 7rem;
+  font-size: 1.5em;
+  padding: 0 1em 0 3.5em;
   height: 6%;
   display: flex;
   flex-flow: row nowrap;

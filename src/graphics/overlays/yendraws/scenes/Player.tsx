@@ -13,6 +13,7 @@ import Notification from '../components/Notification'
 
 const Player = () => {
   const stream = useStore((state) => state.stream)
+  const status = useStore((store) => store.status)
 
   return (
     <Scene className="o-scene--player">
@@ -20,7 +21,7 @@ const Player = () => {
 
       <Layer className="c-player">
         <header className="c-player__header">
-          <Twemoji message={stream?.title} />
+          <Twemoji message={status || stream?.title} />
         </header>
 
         <footer className="c-player__footer">

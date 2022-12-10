@@ -126,14 +126,11 @@
     "@types/react-motion": "0.0.29",
     "classnames": "^2.3.1",
     "moment": "^2.24.0",
-    "nodecg-twitchie": "^3.2.1",
-    "nodecg-twitchie-graphics": "^4.1.0",
-    "normalize.css": "^8.0.1",
+    "nodecg-twitchie": "^3.8.1",
+    "nodecg-twitchie-graphics": "^4.2.1",
     "preact": "^10.6.5",
     "react-motion": "^0.5.2",
     "twemoji": "^12.1.5",
-    "velocity-animate": "^1.5.2",
-    "xjs-framework": "^2.9.0",
     "zustand": "^3.7.1"
   },
   "lint-staged": {
