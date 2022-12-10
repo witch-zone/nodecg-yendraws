@@ -27,19 +27,18 @@ $global-drop-shadow: 0 2px 2px rgba(67, 94, 119, 0.5);
 @import 'typography';
 @import 'reset';
 
+@import 'objects/o-scene';
+@import 'objects/o-layer';
 @import 'objects/o-icon';
 
-@import 'components/c-layer';
-@import 'components/c-chat';
-@import 'components/c-cheer';
-@import 'components/c-twemoji';
-@import 'components/c-twitch-emote';
-@import 'components/c-twitch-badge';
-@import 'components/c-social-links';
-@import 'components/c-countdown-timer';
-@import 'components/c-schedule';
-@import 'components/c-notifications';
+@import 'overlays/yendraws/components/c-chat';
+@import 'overlays/yendraws/components/c-twemoji';
+@import 'overlays/yendraws/components/c-twitch-emote';
+@import 'overlays/yendraws/components/c-twitch-badge';
+@import 'overlays/yendraws/components/c-social-links';
+@import 'overlays/yendraws/components/c-countdown-timer';
+@import 'overlays/yendraws/components/c-schedule';
+@import 'overlays/yendraws/components/c-notifications';
 
-@import 'scenes/scene';
-@import 'scenes/player';
-@import 'scenes/brb';
+@import 'overlays/yendraws/scenes/player';
+@import 'overlays/yendraws/scenes/brb';

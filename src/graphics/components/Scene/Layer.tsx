@@ -6,7 +6,7 @@ interface LayerProps {
 }
 
 const Layer: FunctionComponent<LayerProps> = ({ className, children }) => (
-  <div className={classnames('c-layer', className)}>{children}</div>
+  <div className={classnames('o-layer', className)}>{children}</div>
 )
 
 export default Layer
