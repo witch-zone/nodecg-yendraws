@@ -1,0 +1,7 @@
+.c-player {
+  --postyen-background-color: #{$color-digital-light};
+  --postyen-foreground-color: #{$color-digital-dark};
+
+  @include brand-font;
+  color: var(--postyen-foreground-color);
+}

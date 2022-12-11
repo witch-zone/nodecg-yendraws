@@ -1,5 +1,7 @@
-import { Fragment, h } from 'preact'
+import { h } from 'preact'
 
-const PostyenOverlay = () => <Fragment>hi</Fragment>
+import Player from './scenes/Player'
+
+const PostyenOverlay = () => <Player />
 
 export default PostyenOverlay
