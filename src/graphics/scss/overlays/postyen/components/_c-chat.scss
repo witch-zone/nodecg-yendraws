@@ -1,0 +1,14 @@
+.c-chat {
+  position: absolute;
+  top: 82px;
+  bottom: 108px;
+  right: 0;
+  left: auto;
+
+  width: $sidebar-width;
+}
+
+.c-chat-item {
+  background: green;
+  margin: 1em 0.6em 1em -1.4em;
+}

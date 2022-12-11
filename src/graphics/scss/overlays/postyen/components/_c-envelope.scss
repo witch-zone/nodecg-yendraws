@@ -1,4 +1,25 @@
-.c-envelope {
-  background: url('../assets/images/postyen/stripe-top.png') no-repeat,
-    url('../assets/images/postyen/stripe-bottom.png') no-repeat;
+.c-envelope__sidebar {
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: auto;
+  height: 100%;
+  width: $sidebar-width;
+  background: var(--postyen-background-color);
+}
+
+.c-envelope__name {
+  position: absolute;
+  right: -42px;
+  top: -26px;
+  animation: rotate 30s linear infinite;
+}
+
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
 }

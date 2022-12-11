@@ -57,7 +57,7 @@ const config = {
       },
       {
         test: /\.(jpe?g|png|gif)$/i,
-        type: 'asset/image',
+        type: 'asset/resource',
       },
       {
         test: /\.svg$/,

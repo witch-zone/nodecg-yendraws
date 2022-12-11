@@ -6,7 +6,7 @@ import Twemoji from '../../../components/Twemoji'
 
 import lemonFriend from '../../../assets/images/postyen/friendzone-shark.png'
 
-const Player = () => {
+const Status = () => {
   const stream = useStore((state) => state.stream)
   const status = useStore((store) => store.status)
 
@@ -21,4 +21,4 @@ const Player = () => {
   )
 }
 
-export default Player
+export default Status
