@@ -15,34 +15,38 @@ import postboxBack from '../../../assets/images/postyen/postbox-back.png'
 import postboxFront from '../../../assets/images/postyen/postbox-front.png'
 
 const Player = () => (
-  <Scene className="c-player c-envelope">
-    <Layer className="c-envelope__sidebar" />
+  <Scene className="c-player">
+    <div className="c-envelope">
+      <Layer className="c-envelope__sidebar" />
+
+      <Layer>
+        <img src={stripeBottom} />
+      </Layer>
+
+      <Layer>
+        <Status />
+      </Layer>
+
+      <Layer>
+        <img src={postboxBack} />
+      </Layer>
+
+      <Layer>
+        <Chat messageComponent={Message} />
+      </Layer>
+
+      <Layer>
+        <img src={postboxFront} />
+      </Layer>
+
+      <Layer>
+        <img src={stripeTop} />
+      </Layer>
+    </div>
 
     <Layer>
-      <img src={stripeBottom} />
+      <Postmark />
     </Layer>
-
-    <Layer>
-      <Status />
-    </Layer>
-
-    <Layer>
-      <img src={postboxBack} />
-    </Layer>
-
-    <Layer>
-      <Chat messageComponent={Message} />
-    </Layer>
-
-    <Layer>
-      <img src={postboxFront} />
-    </Layer>
-
-    <Layer>
-      <img src={stripeTop} />
-    </Layer>
-
-    <Postmark />
 
     <Notifications notificationComponent={Notification} />
   </Scene>

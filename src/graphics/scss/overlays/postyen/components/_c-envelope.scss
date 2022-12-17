@@ -1,3 +1,9 @@
+.c-envelope {
+  clip-path: path(
+    'M 1654,157 a 123,123 0 0,0 246,0 a 123,123 0 0,0 -246,0 L 0 0 L 1920,0 L 1920,1080 L0,1080 L 0,0 z'
+  );
+}
+
 .c-envelope__sidebar {
   position: absolute;
   top: 0;
