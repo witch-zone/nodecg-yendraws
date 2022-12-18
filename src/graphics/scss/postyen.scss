@@ -19,6 +19,8 @@ $color-base: #fff;
 
 $color-digital-light: #cdb9e2;
 $color-digital-dark: #30084d;
+$color-traditional-light: #b0f0e5;
+$color-games-light: #ffd9ea;
 
 $global-drop-shadow: 0 2px 2px rgba(67, 94, 119, 0.5);
 
@@ -32,5 +34,6 @@ $global-drop-shadow: 0 2px 2px rgba(67, 94, 119, 0.5);
 @import 'overlays/postyen/components/c-envelope';
 @import 'overlays/postyen/components/c-chat';
 @import 'overlays/postyen/components/c-status';
+@import 'overlays/postyen/components/c-postmark';
 
 @import 'overlays/postyen/scenes/player';

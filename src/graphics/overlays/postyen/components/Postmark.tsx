@@ -8,28 +8,28 @@ import circleD from '../../../assets/images/postyen/circle-d.png'
 import circleT from '../../../assets/images/postyen/circle-t.png'
 import circleName from '../../../assets/images/postyen/circle-name.png'
 
-const Envelope = () => (
-  <Fragment>
+const Postmark = () => (
+  <div className="c-postmark c-postmark--digital">
     <Layer>
       <img src={postmark} />
     </Layer>
 
-    <Layer>
+    <Layer className="c-postmark-stamp c-postmark-stamp--games">
       <img src={circleG} />
     </Layer>
 
-    <Layer>
+    <Layer className="c-postmark-stamp c-postmark-stamp--digital">
       <img src={circleD} />
     </Layer>
 
-    <Layer>
+    <Layer className="c-postmark-stamp c-postmark-stamp--traditional">
       <img src={circleT} />
     </Layer>
 
     <Layer>
       <img className="c-envelope__name" src={circleName} />
     </Layer>
-  </Fragment>
+  </div>
 )
 
-export default Envelope
+export default Postmark

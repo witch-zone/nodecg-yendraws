@@ -44,9 +44,7 @@ const Player = () => (
       </Layer>
     </div>
 
-    <Layer>
-      <Postmark />
-    </Layer>
+    <Postmark />
 
     <Notifications notificationComponent={Notification} />
   </Scene>

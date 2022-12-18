@@ -4,4 +4,12 @@
 
   @include brand-font;
   color: var(--postyen-foreground-color);
+
+  &--traditional {
+    --postyen-background-color: #{$color-traditional-light};
+  }
+
+  &--games {
+    --postyen-background-color: #{$color-games-light};
+  }
 }
