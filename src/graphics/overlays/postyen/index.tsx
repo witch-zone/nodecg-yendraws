@@ -1,7 +1,7 @@
-import { h } from 'preact'
+import { FunctionComponent, h } from 'preact'
 
 import Player from './scenes/Player'
 
-const PostyenOverlay = () => <Player />
+const PostyenOverlay: FunctionComponent = () => <Player />
 
 export default PostyenOverlay

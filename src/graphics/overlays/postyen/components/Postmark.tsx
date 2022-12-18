@@ -1,4 +1,4 @@
-import { Fragment, h } from 'preact'
+import { FunctionComponent, h } from 'preact'
 
 import { Layer } from '../../../components/Scene'
 
@@ -8,7 +8,7 @@ import circleD from '../../../assets/images/postyen/circle-d.png'
 import circleT from '../../../assets/images/postyen/circle-t.png'
 import circleName from '../../../assets/images/postyen/circle-name.png'
 
-const Postmark = () => (
+const Postmark: FunctionComponent = () => (
   <div className="c-postmark c-postmark--digital">
     <Layer>
       <img src={postmark} />

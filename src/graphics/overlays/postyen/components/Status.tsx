@@ -1,23 +1,29 @@
-import { h } from 'preact'
+import { FunctionComponent, Fragment, h } from 'preact'
 
 import useStore from '../../../store'
 
 import Twemoji from '../../../components/Twemoji'
+import { Layer } from '../../../components/Scene'
 
 import lemonFriend from '../../../assets/images/postyen/friendzone-shark.png'
+import SpeechBubble from './SpeechBubble'
 
-const Status = () => {
+const Status: FunctionComponent = () => {
   const stream = useStore((state) => state.stream)
   const status = useStore((store) => store.status)
 
   return (
-    <div className="c-status">
-      <img className="c-status__friend" src={lemonFriend} />
+    <Fragment>
+      <Layer>
+        <img src={lemonFriend} />
+      </Layer>
 
-      <div className="c-status__bubble">
-        <Twemoji message={status || stream?.title} />
-      </div>
-    </div>
+      <Layer className="c-status">
+        <SpeechBubble>
+          <Twemoji message={status || stream?.title} />
+        </SpeechBubble>
+      </Layer>
+    </Fragment>
   )
 }
 

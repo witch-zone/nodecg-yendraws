@@ -1,4 +1,4 @@
-import { h } from 'preact'
+import { FunctionComponent, h } from 'preact'
 
 import Chat from '../../../components/Chat'
 import Notifications from '../../../components/Notifications'
@@ -14,7 +14,7 @@ import stripeBottom from '../../../assets/images/postyen/stripe-bottom.png'
 import postboxBack from '../../../assets/images/postyen/postbox-back.png'
 import postboxFront from '../../../assets/images/postyen/postbox-front.png'
 
-const Player = () => (
+const Player: FunctionComponent = () => (
   <Scene className="c-player">
     <div className="c-envelope">
       <Layer className="c-envelope__sidebar" />
@@ -23,9 +23,7 @@ const Player = () => (
         <img src={stripeBottom} />
       </Layer>
 
-      <Layer>
-        <Status />
-      </Layer>
+      <Status />
 
       <Layer>
         <img src={postboxBack} />
