@@ -3,6 +3,7 @@
   --postyen-foreground-color: #{$color-digital-dark};
 
   @include brand-font;
+  text-shadow: none;
   color: var(--postyen-foreground-color);
 
   &--traditional {
