@@ -1,8 +1,21 @@
 .c-status {
   top: auto;
+  bottom: 0;
   right: auto;
-  bottom: 15px;
-  left: 160px;
+  left: 0;
   width: 1300px;
   height: auto;
+
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: flex-start;
+  align-items: flex-end;
+}
+
+.c-status__friend {
+  vertical-align: bottom;
+}
+
+.c-status__message {
+  padding: 15px;
 }

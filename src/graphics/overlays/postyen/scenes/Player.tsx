@@ -1,13 +1,12 @@
 import { FunctionComponent, h } from 'preact'
 
 import Chat from '../../../components/Chat'
-import Notifications from '../../../components/Notifications'
 import Scene, { Layer } from '../../../components/Scene'
 
 import Status from '../components/Status'
 import Message from '../components/Message'
-import Notification from '../components/Notification'
 import Postmark from '../components/Postmark'
+import Notifications from '../components/Notifications'
 
 import stripeTop from '../../../assets/images/postyen/stripe-top.png'
 import stripeBottom from '../../../assets/images/postyen/stripe-bottom.png'
@@ -44,7 +43,7 @@ const Player: FunctionComponent = () => (
 
     <Postmark />
 
-    <Notifications notificationComponent={Notification} />
+    <Notifications />
   </Scene>
 )
 
