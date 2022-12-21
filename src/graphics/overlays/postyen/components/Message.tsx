@@ -1,6 +1,7 @@
 import { FunctionComponent, h } from 'preact'
 
 import { MessageProps } from '../../../components/Chat/ChatItem'
+import useUserColours from '../../../utils/useUserColours'
 
 import mod from '../../../assets/badges/mod.png'
 import yen from '../../../assets/badges/yen.png'
@@ -48,27 +49,35 @@ const UserBadges: FunctionComponent<UserBadgesProps> = ({ badges = {} }) => {
   return null
 }
 
-const Message: FunctionComponent<MessageProps> = ({ item, user, message }) => (
-  <div className="c-chat-item c-chat-message">
-    <div className="c-chat-message__header">
-      <div className="c-chat-message__badge">
-        <UserBadges badges={item.user.badges} />
+const Message: FunctionComponent<MessageProps> = ({ item, user, message }) => {
+  const [userColour, userNameColour] = useUserColours(
+    item?.user.color,
+    '#ce4fd9',
+  )
+
+  return (
+    <div className="c-chat-item c-chat-message">
+      <div
+        className="c-chat-message__header"
+        style={{
+          background: userColour.string(),
+          color: userNameColour.string(),
+        }}
+      >
+        <div className="c-chat-message__badge">
+          <UserBadges badges={item.user.badges} />
+        </div>
+
+        <div className="c-chat-message__separator">
+          <span className="o-emote">&hearts;</span>
+        </div>
+
+        <div className="c-chat-message__user">{user}</div>
       </div>
 
-      <div className="c-chat-message__separator">
-        <span
-          className="o-emote"
-          style={{ color: item.user.color || 'inherit' }}
-        >
-          &hearts;
-        </span>
-      </div>
-
-      <div className="c-chat-message__user">{user}</div>
+      <div className="c-chat-message__message">{message}</div>
     </div>
-
-    <div className="c-chat-message__message">{message}</div>
-  </div>
-)
+  )
+}
 
 export default Message

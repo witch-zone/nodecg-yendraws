@@ -4,11 +4,22 @@
   bottom: 108px;
   right: 0;
   left: auto;
+  overflow: hidden;
 
-  width: $sidebar-width;
+  width: $sidebar-chat-width;
+}
+
+.c-chat__wrapper {
+  padding: 0 12px 0.5em 15px;
+}
+
+.c-chat__placeholder {
+  min-height: 890px;
+  flex-grow: 1;
 }
 
 .c-chat-item {
-  background: green;
-  margin: 1em 0.6em 1em -1.4em;
+  margin: 1em 0;
+
+  word-break: break-word;
 }

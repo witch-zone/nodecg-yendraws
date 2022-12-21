@@ -1,5 +1,6 @@
-import { ChatMessageToken } from 'nodecg-twitchie'
+import { ChatEmoteMessageToken, ChatMessageToken } from 'nodecg-twitchie'
 import { ComponentType, Fragment, FunctionComponent, h } from 'preact'
+import { useMemo } from 'preact/hooks'
 
 import CheerToken, { CheerTokenProps } from './CheerToken'
 import EmoteToken, { EmoteTokenProps } from './EmoteToken'
@@ -16,21 +17,46 @@ const MessageTokens: FunctionComponent<MessageTokensProps> = ({
   EmoteComponent = EmoteToken,
   CheerComponent = CheerToken,
   tokens,
-}) => (
-  <WrapperComponent>
-    {tokens.map((token) => {
-      if (token.type === 'emote') {
-        return <EmoteComponent token={token} />
-      }
+}) => {
+  const weGottaGoJumbo = useMemo(() => {
+    if (tokens.length > 5) {
+      return false
+    }
 
-      if (token.type === 'cheer') {
-        return <CheerComponent token={token} />
-      }
+    return tokens
+      .filter((token) => token.type !== 'text' || token.text !== ' ')
+      .every((token) => token.type === 'emote')
+  }, [tokens])
 
-      return Array.from(token.text)
-    })}
-  </WrapperComponent>
-)
+  if (weGottaGoJumbo) {
+    return (
+      <WrapperComponent>
+        <div className="o-jumbomoji">
+          {tokens.map((token) =>
+            token.type === 'emote' ? (
+              <EmoteComponent token={token as ChatEmoteMessageToken} />
+            ) : null,
+          )}
+        </div>
+      </WrapperComponent>
+    )
+  }
 
+  return (
+    <WrapperComponent>
+      {tokens.map((token) => {
+        if (token.type === 'emote') {
+          return <EmoteComponent token={token} />
+        }
+
+        if (token.type === 'cheer') {
+          return <CheerComponent token={token} />
+        }
+
+        return Array.from(token.text)
+      })}
+    </WrapperComponent>
+  )
+}
 export { MessageTokensProps }
 export default MessageTokens

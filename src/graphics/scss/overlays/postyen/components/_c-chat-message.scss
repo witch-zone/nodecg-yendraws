@@ -1,0 +1,22 @@
+.c-chat-message {
+  font-size: 1.35em;
+  border-radius: 12px;
+  background: #fff;
+  color: #30084d;
+  overflow: hidden;
+  @include global-drop-shadow;
+}
+
+.c-chat-message__header,
+.c-chat-message__message {
+  padding: 15px;
+}
+
+.c-chat-message__header {
+  background: #ce4fd9;
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+  justify-content: flex-start;
+  font-size: 1.2em;
+}
