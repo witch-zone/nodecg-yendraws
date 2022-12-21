@@ -1,3 +1,8 @@
+:root {
+  --chat-message-header-background: #ce4fd9;
+  --chat-message-header-color: #30084d;
+}
+
 .c-chat-message {
   font-size: 1.35em;
   border-radius: 12px;
@@ -13,7 +18,8 @@
 }
 
 .c-chat-message__header {
-  background: #ce4fd9;
+  background: var(--chat-message-header-background);
+  color: var(--chat-message-header-color);
   display: flex;
   flex-flow: row nowrap;
   align-items: center;

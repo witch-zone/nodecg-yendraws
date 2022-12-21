@@ -60,8 +60,8 @@ const Message: FunctionComponent<MessageProps> = ({ item, user, message }) => {
       <div
         className="c-chat-message__header"
         style={{
-          background: userColour.string(),
-          color: userNameColour.string(),
+          '--chat-message-header-background': userColour.string(),
+          '--chat-message-header-color': userNameColour.string(),
         }}
       >
         <div className="c-chat-message__badge">
