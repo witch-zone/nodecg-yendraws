@@ -1,4 +1,5 @@
 import { FunctionComponent, h } from 'preact'
+import { useMemo } from 'preact/hooks'
 
 import { MessageProps } from '../../../components/Chat/ChatItem'
 import useUserColours from '../../../utils/useUserColours'
@@ -11,9 +12,14 @@ import sub12 from '../../../assets/badges/subscriber/12.png'
 import sub3 from '../../../assets/badges/subscriber/3.png'
 import sub6 from '../../../assets/badges/subscriber/6.png'
 
+import defaultIcon from '../../../assets/images/postyen/stamp-usericon.png'
+
 interface UserBadgesProps {
   badges: Record<string, string>
 }
+
+const random = (min: number, max: number) =>
+  (Math.random() * (min - max) + max).toFixed(2)
 
 const UserBadges: FunctionComponent<UserBadgesProps> = ({ badges = {} }) => {
   if (badges.broadcaster) {
@@ -46,7 +52,7 @@ const UserBadges: FunctionComponent<UserBadgesProps> = ({ badges = {} }) => {
     return <img src={sub0} alt="sub0" className="o-emote o-emote--flush" />
   }
 
-  return null
+  return <span className="o-emote">&hearts;</span>
 }
 
 const Message: FunctionComponent<MessageProps> = ({ item, user, message }) => {
@@ -54,6 +60,8 @@ const Message: FunctionComponent<MessageProps> = ({ item, user, message }) => {
     item?.user.color,
     '#ce4fd9',
   )
+
+  const stampAngle = useMemo(() => random(-4, 4), [])
 
   return (
     <div className="c-chat-item c-chat-message">
@@ -68,11 +76,16 @@ const Message: FunctionComponent<MessageProps> = ({ item, user, message }) => {
           <UserBadges badges={item.user.badges} />
         </div>
 
-        <div className="c-chat-message__separator">
-          <span className="o-emote">&hearts;</span>
-        </div>
-
         <div className="c-chat-message__user">{user}</div>
+
+        <div
+          className="c-chat-message__stamp c-stamp"
+          style={{
+            transform: `rotate(${stampAngle}deg)`,
+          }}
+        >
+          <img src={defaultIcon} className="c-stamp__icon" />
+        </div>
       </div>
 
       <div className="c-chat-message__message">{message}</div>

@@ -25,4 +25,23 @@
   align-items: center;
   justify-content: flex-start;
   font-size: 1.2em;
+  padding-left: 10px;
+  padding-right: 80px;
+}
+
+.c-chat-message__badge {
+  flex-shrink: 0;
+  margin: -1em 10px -1em 0;
+
+  .o-emote {
+    height: 1.5em;
+    line-height: 1.5em;
+    text-align: center;
+  }
+}
+
+.c-chat-message__stamp {
+  position: absolute;
+  top: 2px;
+  right: 2px;
 }
