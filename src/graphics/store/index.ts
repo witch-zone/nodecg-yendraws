@@ -31,7 +31,6 @@ scheduleReplicant.on('change', (newSchedule: Schedule) => {
 })
 
 timerReplicant.on('change', (newTimer: Timer) => {
-  console.log(newTimer)
   useOverlayStore.setState({
     timer: newTimer,
   })

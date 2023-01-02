@@ -1,5 +1,6 @@
 import { ComponentType, FunctionComponent, h } from 'preact'
 import {
+  useCallback,
   useEffect,
   useLayoutEffect,
   useMemo,
@@ -17,26 +18,6 @@ const itemHeights: Record<string, number> = {}
 
 interface ChatProps {
   messageComponent?: ComponentType<MessageProps>
-}
-
-const useMutationObserver = (
-  target: Node | null,
-  config: MutationObserverInit,
-  callback: MutationCallback,
-) => {
-  const observer = useMemo(() => new MutationObserver(callback), [callback])
-
-  useEffect(() => {
-    if (!target) {
-      return
-    }
-
-    observer.observe(target, config)
-
-    return () => {
-      observer.disconnect()
-    }
-  }, [target, config, observer])
 }
 
 const useVirtualisedItems = (limit = DEFAULT_MAX_VISIBLE_ITEMS) => {
@@ -68,20 +49,34 @@ const ChatItemWrapper: FunctionComponent<any> = ({ children, id }) => {
 }
 
 const Chat: FunctionComponent<ChatProps> = ({ messageComponent }) => {
-  const chatRef = useRef<HTMLDivElement>(null)
-  const itemsWrapperRef = useRef<HTMLDivElement>(null)
+  const chatRef = useRef<HTMLDivElement | null>(null)
+  const itemsWrapperRef = useRef<HTMLDivElement | null>(null)
   const [scrollOffset, setOffset] = useState<number>(0)
 
   const [itemOffset, visibleItems] = useVirtualisedItems()
 
-  useMutationObserver(itemsWrapperRef.current, { childList: true }, () => {
-    setOffset(
-      Math.min(
-        chatRef.current!.offsetHeight - itemsWrapperRef.current!.offsetHeight,
-        0,
-      ),
-    )
-  })
+  const observer = useMemo(
+    () =>
+      new MutationObserver(() => {
+        setOffset(
+          Math.min(
+            chatRef.current!.offsetHeight -
+              itemsWrapperRef.current!.offsetHeight,
+            0,
+          ),
+        )
+      }),
+    [],
+  )
+
+  const onWrapperRefUpdate = useCallback((newNode: HTMLDivElement | null) => {
+    if (!newNode) {
+      return
+    }
+
+    observer.observe(newNode, { childList: true })
+    itemsWrapperRef.current = newNode
+  }, [])
 
   return (
     <div ref={chatRef} className="c-chat">
@@ -89,7 +84,7 @@ const Chat: FunctionComponent<ChatProps> = ({ messageComponent }) => {
         {(styles) => (
           <div
             style={{ transform: `translateY(${styles.y}px)` }}
-            ref={itemsWrapperRef}
+            ref={onWrapperRefUpdate}
             className="c-chat__wrapper"
           >
             <div
