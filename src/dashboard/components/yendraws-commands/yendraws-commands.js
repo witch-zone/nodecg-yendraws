@@ -65,7 +65,7 @@ class YendrawsCommands extends Polymer.PolymerElement {
     const { target } = this
     const command = event.model.get('command')
 
-    NodeCG.sendMessage('chat.command', {
+    NodeCG.sendMessageToBundle('chat.command', 'nodecg-yendraws', {
       command,
       target,
     })
@@ -77,7 +77,7 @@ class YendrawsCommands extends Polymer.PolymerElement {
     super.ready()
 
     NodeCG.waitForReplicants(commands).then(() => {
-      commands.on('change', newCommands => {
+      commands.on('change', (newCommands) => {
         this.commands = newCommands
       })
     })
