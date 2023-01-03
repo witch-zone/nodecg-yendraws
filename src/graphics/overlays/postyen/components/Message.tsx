@@ -84,7 +84,10 @@ const Message: FunctionComponent<MessageProps> = ({ item, user, message }) => {
             transform: `rotate(${stampAngle}deg)`,
           }}
         >
-          <img src={defaultIcon} className="c-stamp__icon" />
+          <img
+            src={defaultIcon}
+            className="c-chat-message__usericon c-stamp__icon"
+          />
         </div>
       </div>
 

@@ -1,6 +1,6 @@
 .c-stamp {
   position: relative;
-  padding: 17.5px;
+  padding: 16px;
   transform-origin: 50% 50%;
 
   &:after {
@@ -14,4 +14,8 @@
     background: url('../assets/images/postyen/stamp.png') no-repeat center
       center;
   }
+}
+
+.c-stamp__icon {
+  display: block;
 }
