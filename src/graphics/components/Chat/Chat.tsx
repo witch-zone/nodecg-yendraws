@@ -1,7 +1,6 @@
 import { ComponentType, FunctionComponent, h } from 'preact'
 import {
   useCallback,
-  useEffect,
   useLayoutEffect,
   useMemo,
   useRef,
@@ -74,8 +73,8 @@ const Chat: FunctionComponent<ChatProps> = ({ messageComponent }) => {
       return
     }
 
-    observer.observe(newNode, { childList: true })
     itemsWrapperRef.current = newNode
+    observer.observe(newNode, { childList: true })
   }, [])
 
   return (
