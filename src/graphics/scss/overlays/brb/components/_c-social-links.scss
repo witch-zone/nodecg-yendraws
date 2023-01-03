@@ -2,6 +2,7 @@
   line-height: 1;
   height: 1em;
   position: relative;
+  @include brand-font;
 }
 
 .c-social-links__service {

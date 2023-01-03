@@ -1,31 +1,29 @@
 .c-schedule {
-  margin-top: -0.15em;
+  margin: -0.5em -0.5em -0.25em;
+  display: flex;
+  flex-flow: row wrap;
+  align-items: center;
+  justify-content: flex-end;
 }
 
 .c-schedule__time {
-  margin: 0 0.5em;
-
-  &:last-child {
-    margin-right: 0;
-  }
-}
-
-.c-schedule-time {
-  display: inline-flex;
-  flex-flow: column nowrap;
-  align-items: center;
-  flex: 0 0 auto;
+  margin: 0.25em 0.5em 0.25em 0;
+  text-align: center;
 }
 
 .c-schedule-time__day {
+  display: block;
   @include base-font;
   font-variant: small-caps;
-  line-height: 0;
+  line-height: 1;
   font-size: 0.9em;
-  margin-bottom: 0.6em;
+  margin-bottom: 0.2em;
 }
 
 .c-schedule-time__time {
+  display: block;
+  @include brand-font;
   flex-grow: 1;
   font-size: 1.2em;
+  line-height: 1;
 }

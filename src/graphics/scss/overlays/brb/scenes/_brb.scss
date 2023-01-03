@@ -1,5 +1,4 @@
 .c-brb {
-  @include brand-font;
   font-size: 2em;
   padding: 2em 1.5em;
   width: 70%;
@@ -8,6 +7,7 @@
 }
 
 .c-brb__title {
+  @include brand-font;
   font-size: 2em;
 
   &:last-child {
@@ -19,10 +19,6 @@
   @include base-font;
   line-height: 1;
   font-size: 0.9em;
-}
-
-.c-brb__timer {
-  margin: 0;
 }
 
 .c-brb__section {
