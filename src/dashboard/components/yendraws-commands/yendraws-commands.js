@@ -6,6 +6,7 @@ import '@polymer/paper-button/paper-button'
 
 const commands = NodeCG.Replicant('commands', 'nodecg-yendraws', {
   persistent: true,
+  defaultValue: ['!motherhen', '!commish', '!social', '!dani', '!follow'],
 })
 
 import '../twitchie-style/twitchie-style'

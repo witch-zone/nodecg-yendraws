@@ -13,6 +13,8 @@
     "noUnusedLocals": false,
     "noUnusedParameters": true,
     "jsx": "react",
-    "jsxFactory": "h"
-  }
+    "jsxFactory": "h",
+    "outDir": "dist"
+  },
+  "include": ["**/*"]
 }

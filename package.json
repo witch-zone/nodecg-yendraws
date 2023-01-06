@@ -82,9 +82,10 @@
     ]
   },
   "scripts": {
-    "build": "npm run build:dashboard && npm run build:graphics",
+    "build": "npm run build:dashboard && npm run build:graphics && npm run build:extension",
     "build:dashboard": "webpack --config webpack.config.dashboard.js",
     "build:graphics": "webpack --config webpack.config.graphics.js",
+    "build:extension": "NODE_ENV=production tsc --p tsconfig.extension.json",
     "lint": "eslint \"src/**/*.{ts,tsx,js,tsx}\"",
     "prepare": "husky install"
   },

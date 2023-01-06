@@ -1,4 +1,5 @@
 /node_modules/
 /graphics/
 /dashboard/
+/extension/
 .DS_Store
