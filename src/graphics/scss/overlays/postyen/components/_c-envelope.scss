@@ -12,6 +12,7 @@
   height: 100%;
   width: $sidebar-width;
   background: var(--postyen-background-color);
+  transition: background 0.6s ease-in-out;
 }
 
 .c-envelope__name {

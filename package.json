@@ -28,28 +28,37 @@
         "title": "Timer",
         "width": 2,
         "file": "timer.html",
-        "headerColor": "#6441A4"
+        "headerColor": "#cdb9e2"
       },
       {
-        "name": "Commands",
+        "name": "commands",
         "title": "Chat Commands",
         "width": 2,
         "file": "commands.html",
-        "headerColor": "#6441A4"
+        "headerColor": "#cdb9e2"
       },
       {
-        "name": "Manage Commands",
+        "name": "postyen-mode",
+        "title": "Postyến Mode",
+        "width": 2,
+        "file": "postyen-mode.html",
+        "headerColor": "#cdb9e2"
+      },
+      {
+        "name": "commands-manage",
         "title": "Manage Commands",
         "width": 2,
         "file": "manage-commands.html",
-        "workspace": "Config"
+        "workspace": "Config",
+        "headerColor": "#cdb9e2"
       },
       {
-        "name": "Manage Schedule",
+        "name": "schedule-manage",
         "title": "Manage Schedule",
         "width": 2,
         "file": "manage-schedule.html",
-        "workspace": "Config"
+        "workspace": "Config",
+        "headerColor": "#cdb9e2"
       }
     ],
     "graphics": [
@@ -129,6 +138,8 @@
     "@polymer/paper-checkbox": "^3.0.0",
     "@polymer/paper-icon-button": "^3.0.0",
     "@polymer/paper-input": "^3.0.0",
+    "@polymer/paper-radio-button": "^3.0.1",
+    "@polymer/paper-radio-group": "^3.0.1",
     "@polymer/polymer": "^3.5.1",
     "batcher-js": "^1.0.3",
     "classnames": "^2.3.2",

@@ -1,4 +1,5 @@
 import { FunctionComponent, h } from 'preact'
+import classnames from 'classnames'
 
 import Chat from '../../../components/Chat'
 import Scene, { Layer } from '../../../components/Scene'
@@ -12,39 +13,44 @@ import stripeTop from '../../../assets/images/postyen/stripe-top.png'
 import stripeBottom from '../../../assets/images/postyen/stripe-bottom.png'
 import postboxBack from '../../../assets/images/postyen/postbox-back.png'
 import postboxFront from '../../../assets/images/postyen/postbox-front.png'
+import usePostyenStore from '../store'
 
-const Player: FunctionComponent = () => (
-  <Scene className="c-player">
-    <div className="c-envelope">
-      <Layer className="c-envelope__sidebar" />
+const Player: FunctionComponent = () => {
+  const mode = usePostyenStore((state) => state.mode)
 
-      <Layer>
-        <img src={stripeBottom} />
-      </Layer>
+  return (
+    <Scene className={classnames('c-player', `c-player--${mode}`)}>
+      <div className="c-envelope">
+        <Layer className="c-envelope__sidebar" />
 
-      <Status />
+        <Layer>
+          <img src={stripeBottom} />
+        </Layer>
 
-      <Layer>
-        <img src={postboxBack} />
-      </Layer>
+        <Status />
 
-      <Layer>
-        <Chat messageComponent={Message} />
-      </Layer>
+        <Layer>
+          <img src={postboxBack} />
+        </Layer>
 
-      <Layer>
-        <img src={postboxFront} />
-      </Layer>
+        <Layer>
+          <Chat messageComponent={Message} />
+        </Layer>
 
-      <Layer>
-        <img src={stripeTop} />
-      </Layer>
-    </div>
+        <Layer>
+          <img src={postboxFront} />
+        </Layer>
 
-    <Postmark />
+        <Layer>
+          <img src={stripeTop} />
+        </Layer>
+      </div>
 
-    <Notifications />
-  </Scene>
-)
+      <Postmark />
+
+      <Notifications />
+    </Scene>
+  )
+}
 
 export default Player
