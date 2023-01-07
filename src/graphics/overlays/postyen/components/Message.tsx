@@ -4,6 +4,8 @@ import { useMemo } from 'preact/hooks'
 import { MessageProps } from '../../../components/Chat/ChatItem'
 import useUserColours from '../../../utils/useUserColours'
 
+import usePostyenStore from '../store'
+
 import mod from '../../../assets/badges/mod.png'
 import yen from '../../../assets/badges/yen.png'
 
@@ -20,6 +22,9 @@ interface UserBadgesProps {
 
 const random = (min: number, max: number) =>
   (Math.random() * (min - max) + max).toFixed(2)
+
+const useKnownUser = (username: any) =>
+  usePostyenStore((state) => state.knownUsers[`${username}`.toLowerCase()])
 
 const UserBadges: FunctionComponent<UserBadgesProps> = ({ badges = {} }) => {
   if (badges.broadcaster) {
@@ -56,6 +61,7 @@ const UserBadges: FunctionComponent<UserBadgesProps> = ({ badges = {} }) => {
 }
 
 const Message: FunctionComponent<MessageProps> = ({ item, user, message }) => {
+  const userIcon = useKnownUser(user)
   const [userColour, userNameColour] = useUserColours(
     item?.user.color,
     '#ce4fd9',
@@ -85,7 +91,7 @@ const Message: FunctionComponent<MessageProps> = ({ item, user, message }) => {
           }}
         >
           <img
-            src={defaultIcon}
+            src={userIcon || defaultIcon}
             className="c-chat-message__usericon c-stamp__icon"
           />
         </div>

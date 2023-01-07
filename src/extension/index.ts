@@ -6,4 +6,5 @@ module.exports = async (nodecg: NodeCG) => {
   context.nodecg = nodecg
 
   require('./modules/commands')
+  require('./modules/known-users')
 }
