@@ -30,13 +30,13 @@ const Notification: FunctionComponent<NotificationProps> = ({
       <SpeechBubble className="c-notification__message">
         {notification.topic === NotificationType.subscriber && (
           <Fragment>
-            <span>{notification.name}</span> just picked up a uniform!
+            <span>{notification.name}</span> just picked up some stamps!
           </Fragment>
         )}
 
         {notification.topic === NotificationType.subscriber_gift && (
           <Fragment>
-            <span>{notification.name}</span> just got a uniform from{' '}
+            <span>{notification.name}</span> just got some stamps from{' '}
             {notification.gifter ?? 'someone'}!
           </Fragment>
         )}
@@ -44,13 +44,13 @@ const Notification: FunctionComponent<NotificationProps> = ({
         {notification.topic === NotificationType.community_gift && (
           <Fragment>
             <span>{notification.gifter ?? 'Someone'}</span> just gave out{' '}
-            {notification.count} uniforms!
+            {notification.count} stamps!
           </Fragment>
         )}
 
         {notification.topic === NotificationType.follower && (
           <Fragment>
-            <span>{notification.from_name}</span> picked up some stamps!
+            <span>{notification.from_name}</span> picked up a uniform!
           </Fragment>
         )}
       </SpeechBubble>
