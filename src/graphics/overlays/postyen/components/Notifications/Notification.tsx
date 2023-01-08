@@ -28,21 +28,15 @@ const Notification: FunctionComponent<NotificationProps> = ({
       <img className="c-notification__friend" src={lemonFriend} />
 
       <SpeechBubble className="c-notification__message">
-        {notification.topic === NotificationType.subscriber &&
-          (notification.months > 1 ? (
-            <Fragment>
-              <span>{notification.name}</span> just resubscribed! That&apos;s{' '}
-              {notification.months} months!
-            </Fragment>
-          ) : (
-            <Fragment>
-              <span>{notification.name}</span> just subscribed!
-            </Fragment>
-          ))}
+        {notification.topic === NotificationType.subscriber && (
+          <Fragment>
+            <span>{notification.name}</span> just picked up a uniform!
+          </Fragment>
+        )}
 
         {notification.topic === NotificationType.subscriber_gift && (
           <Fragment>
-            <span>{notification.name}</span> just got a gift from{' '}
+            <span>{notification.name}</span> just got a uniform from{' '}
             {notification.gifter ?? 'someone'}!
           </Fragment>
         )}
@@ -50,13 +44,13 @@ const Notification: FunctionComponent<NotificationProps> = ({
         {notification.topic === NotificationType.community_gift && (
           <Fragment>
             <span>{notification.gifter ?? 'Someone'}</span> just gave out{' '}
-            {notification.count} gifts! Wow!
+            {notification.count} uniforms!
           </Fragment>
         )}
 
         {notification.topic === NotificationType.follower && (
           <Fragment>
-            <span>{notification.from_name}</span> just followed!
+            <span>{notification.from_name}</span> picked up some stamps!
           </Fragment>
         )}
       </SpeechBubble>
