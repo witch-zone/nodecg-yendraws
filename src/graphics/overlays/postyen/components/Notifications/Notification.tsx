@@ -3,18 +3,24 @@
 import classnames from 'classnames'
 import { NotificationType } from 'nodecg-twitchie-graphics'
 import { Fragment, FunctionComponent, h } from 'preact'
-import { useEffect } from 'preact/hooks'
+import { useEffect, useMemo } from 'preact/hooks'
 
+import usePostyenStore from '../../store'
 import { NotificationProps } from '../../../../components/Notifications/Notifications'
 import SpeechBubble from '../SpeechBubble'
-
-import lemonFriend from '../../../../assets/images/postyen/friends/friend-lemon.png'
 
 const Notification: FunctionComponent<NotificationProps> = ({
   notification,
   visible,
   className,
 }) => {
+  const randomFriendIcons = usePostyenStore((store) => store.friends)
+
+  const friendIcon = useMemo(() => {
+    const next = randomFriendIcons.next()
+    return next.done !== true ? next.value : undefined
+  }, [randomFriendIcons, notification.id])
+
   useEffect(() => {
     nodecg.playSound('notification')
   }, [notification])
@@ -25,7 +31,7 @@ const Notification: FunctionComponent<NotificationProps> = ({
         'c-notification--visible': !!visible,
       })}
     >
-      <img className="c-notification__friend" src={lemonFriend} />
+      <img className="c-notification__friend" src={friendIcon} />
 
       <SpeechBubble className="c-notification__message">
         {notification.topic === NotificationType.subscriber && (

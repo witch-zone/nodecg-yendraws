@@ -30,23 +30,25 @@
   padding: 15px 0;
 }
 
+%active-friend {
+  transition-delay: 0.45s;
+  transform: translateY(0);
+}
+
 .c-status--digital {
   .c-status__friend--digital {
-    transition-delay: 0.3s;
-    transform: translateY(0);
+    @extend %active-friend;
   }
 }
 
 .c-status--traditional {
   .c-status__friend--traditional {
-    transition-delay: 0.3s;
-    transform: translateY(0);
+    @extend %active-friend;
   }
 }
 
 .c-status--games {
   .c-status__friend--games {
-    transition-delay: 0.3s;
-    transform: translateY(0);
+    @extend %active-friend;
   }
 }

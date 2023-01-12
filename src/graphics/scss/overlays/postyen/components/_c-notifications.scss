@@ -15,7 +15,7 @@
 
   .c-notification__friend {
     vertical-align: bottom;
-    transform: translateY(-100%) scale(-1, -1);
+    transform: translateY(-100%) scaleY(-1);
     transition: 0.23s all ease-out;
     transition-delay: 0.5s;
   }
@@ -33,7 +33,7 @@
 .c-notification--visible {
   .c-notification__friend {
     transition-delay: 0;
-    transform: translateY(0) scale(-1, -1);
+    transform: translateY(0) scaleY(-1);
   }
 
   .c-notification__message {

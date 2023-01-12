@@ -12,7 +12,10 @@ const Twemoji: FunctionComponent<TwemojiProps> = ({ message }) => {
       return ''
     }
 
-    return twemoji.parse(message, { className: 'c-twemoji' })
+    return twemoji.parse(message, {
+      className: 'c-twemoji',
+      base: 'https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/',
+    })
   }, [message])
 
   return (
