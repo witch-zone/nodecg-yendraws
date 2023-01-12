@@ -8,7 +8,7 @@ import { useEffect } from 'preact/hooks'
 import { NotificationProps } from '../../../../components/Notifications/Notifications'
 import SpeechBubble from '../SpeechBubble'
 
-import lemonFriend from '../../../../assets/images/postyen/friends/lemon.png'
+import lemonFriend from '../../../../assets/images/postyen/friends/friend-lemon.png'
 
 const Notification: FunctionComponent<NotificationProps> = ({
   notification,

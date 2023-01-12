@@ -12,10 +12,41 @@
   align-items: flex-end;
 }
 
+.c-status__friends {
+  width: 147px;
+  height: 126px;
+  position: relative;
+}
+
 .c-status__friend {
+  position: absolute;
   vertical-align: bottom;
+  transform: translateY(100%);
+  transition: 0.23s all ease-out;
+  transition-delay: 0s;
 }
 
 .c-status__message {
-  padding: 15px;
+  padding: 15px 0;
+}
+
+.c-status--digital {
+  .c-status__friend--digital {
+    transition-delay: 0.3s;
+    transform: translateY(0);
+  }
+}
+
+.c-status--traditional {
+  .c-status__friend--traditional {
+    transition-delay: 0.3s;
+    transform: translateY(0);
+  }
+}
+
+.c-status--games {
+  .c-status__friend--games {
+    transition-delay: 0.3s;
+    transform: translateY(0);
+  }
 }
