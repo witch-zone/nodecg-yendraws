@@ -33,8 +33,6 @@ export const createRandomArrayPicker = <T>(arr: T[]) => {
         ;[nextItem, nextRemainingItems] = pickRandomItem(remainingItems)
       } while (nextItem === lastItem)
 
-      console.log(nextItem, nextRemainingItems)
-
       yield nextItem
 
       remainingItems =
