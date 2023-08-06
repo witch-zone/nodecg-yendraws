@@ -1,8 +1,8 @@
-import { NodeCG } from '../../../../types/server'
+import type NodeCG from '@nodecg/types'
 
 import context from './context'
 
-module.exports = async (nodecg: NodeCG) => {
+module.exports = async (nodecg: NodeCG.ServerAPI) => {
   context.nodecg = nodecg
 
   require('./modules/commands')

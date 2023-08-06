@@ -26,54 +26,70 @@ const Notification: FunctionComponent<NotificationProps> = ({
     >
       <img src={bat} alt="" className="c-notification__bat" />
 
-      {notification.topic === NotificationType.subscriber &&
-        (notification.months > 1 ? (
-          <div
-            className="c-notification__message"
-            data-shadow={`${notification.name} just resubscribed! That's ${notification.months} months!`}
-          >
-            <span>{notification.name}</span> just resubscribed! That&apos;s{' '}
-            {notification.months} months!
-          </div>
-        ) : (
-          <div
-            className="c-notification__message"
-            data-shadow={`${notification.name} just subscribed!`}
-          >
-            <span>{notification.name}</span> just subscribed!
-          </div>
-        ))}
-
-      {notification.topic === NotificationType.subscriber_gift && (
+      {notification.topic === NotificationType.subscriber && (
         <div
           className="c-notification__message"
-          data-shadow={`${notification.name} just got a gift from ${
-            notification.gifter ?? 'someone'
-          }!`}
+          data-shadow={`${
+            notification.userDisplayName ?? notification.userName
+          } just subscribed!`}
         >
-          <span>{notification.name}</span> just got a gift from{' '}
-          {notification.gifter ?? 'someone'}!
+          <span>{notification.userDisplayName ?? notification.userName}</span>{' '}
+          just subscribed!
         </div>
       )}
 
-      {notification.topic === NotificationType.community_gift && (
-        <div
-          className="c-notification__message"
-          data-shadow={`${notification.gifter ?? 'Someone'} just gave out ${
-            notification.count
-          } gifts! Wow!`}
-        >
-          <span>{notification.gifter ?? 'Someone'}</span> just gave out{' '}
-          {notification.count} gifts! Wow!
-        </div>
-      )}
+      {notification.topic === NotificationType.subscriber_gift &&
+        notification.amount === 1 && (
+          <div
+            className="c-notification__message"
+            data-shadow={`${
+              notification.recipientDisplayName ?? notification.recipientName
+            } just got a gift from ${
+              notification.gifterDisplayName ??
+              notification.gifterName ??
+              'someone'
+            }}!`}
+          >
+            <span>
+              {notification.recipientDisplayName ?? notification.recipientName}
+            </span>{' '}
+            just got a gift from{' '}
+            {notification.gifterDisplayName ??
+              notification.gifterName ??
+              'someone'}
+            !
+          </div>
+        )}
+
+      {notification.topic === NotificationType.subscriber_gift &&
+        Number(notification.amount) > 1 && (
+          <div
+            className="c-notification__message"
+            data-shadow={`${
+              notification.gifterDisplayName ??
+              notification.gifterName ??
+              'Someone'
+            } just gave out ${notification.amount} gifts! Wow!`}
+          >
+            <span>
+              {' '}
+              {notification.gifterDisplayName ??
+                notification.gifterName ??
+                'Someone'}
+            </span>{' '}
+            just gave out {notification.amount} gifts! Wow!
+          </div>
+        )}
 
       {notification.topic === NotificationType.follower && (
         <div
           className="c-notification__message"
-          data-shadow={`${notification.from_name} just followed!`}
+          data-shadow={`${
+            notification.userDisplayName ?? notification.userName
+          } just followed!`}
         >
-          <span>{notification.from_name}</span> just followed!
+          <span>{notification.userDisplayName ?? notification.userName}</span>{' '}
+          just followed!
         </div>
       )}
     </div>

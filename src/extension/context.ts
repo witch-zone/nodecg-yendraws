@@ -1,7 +1,7 @@
+import type NodeCG from '@nodecg/types'
 import { TwitchieExtension } from 'nodecg-twitchie'
-import { NodeCG } from '../../../../types/server'
 
-let nodecgInstance: NodeCG
+let nodecgInstance: NodeCG.ServerAPI
 
 export default {
   get nodecg() {
