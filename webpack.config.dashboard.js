@@ -2,7 +2,7 @@
 const path = require('path')
 const package = require('./package.json')
 
-const { ESBuildMinifyPlugin } = require('esbuild-loader')
+const { EsbuildPlugin } = require('esbuild-loader')
 const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 
@@ -54,8 +54,8 @@ const production = {
     },
 
     minimizer: [
-      new ESBuildMinifyPlugin({
-        target: 'es2015',
+      new EsbuildPlugin({
+        target: 'chrome68',
         css: true,
       }),
     ],

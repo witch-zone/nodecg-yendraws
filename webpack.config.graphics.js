@@ -4,7 +4,7 @@ const package = require('./package.json')
 
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
-const { ESBuildMinifyPlugin } = require('esbuild-loader')
+const { EsbuildPlugin } = require('esbuild-loader')
 const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 
 const entryPoints = package.nodecg.graphics.reduce((entries, graphic) => {
@@ -39,7 +39,6 @@ const config = {
         test: /\.(js|ts)x?$/,
         loader: 'esbuild-loader',
         options: {
-          loader: 'tsx',
           target: 'es2015',
         },
       },
@@ -104,7 +103,7 @@ const production = {
     },
 
     minimizer: [
-      new ESBuildMinifyPlugin({
+      new EsbuildPlugin({
         target: 'chrome68',
         css: true,
       }),
