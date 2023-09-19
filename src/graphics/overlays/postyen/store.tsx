@@ -2,10 +2,10 @@ import create from 'zustand'
 
 import { createRandomArrayPicker } from '../../utils/array'
 
-import friendLemon2 from '../../assets/images/postyen/friends/friend-lemon2.png'
-import friendLemon3 from '../../assets/images/postyen/friends/friend-lemon3.png'
-import friendEel2 from '../../assets/images/postyen/friends/friend-eel2.png'
-import friendJelly2 from '../../assets/images/postyen/friends/friend-jelly2.png'
+import friendLemon2 from './assets/friends/friend-lemon2.png'
+import friendLemon3 from './assets/friends/friend-lemon3.png'
+import friendEel2 from './assets/friends/friend-eel2.png'
+import friendJelly2 from './assets/friends/friend-jelly2.png'
 
 export enum PostyenMode {
   DIGITAL = 'digital',
@@ -30,18 +30,24 @@ const usePostyenStore = create<PostyenStore>(() => ({
   ]),
 }))
 
-const knownUserReplicant = nodecg.Replicant('users.known', 'nodecg-twitchie')
-const modeReplicant = nodecg.Replicant('postyen.mode', 'nodecg-yendraws')
+const knownUserReplicant = nodecg.Replicant<Record<string, string>>(
+  'users.known',
+  'nodecg-twitchie',
+)
+const modeReplicant = nodecg.Replicant<PostyenMode>(
+  'postyen.mode',
+  'nodecg-yendraws',
+)
 
-knownUserReplicant.on('change', (newUsers: Record<string, string>) => {
+knownUserReplicant.on('change', (newUsers) => {
   usePostyenStore.setState({
-    knownUsers: { ...newUsers },
+    knownUsers: newUsers ?? {},
   })
 })
 
-modeReplicant.on('change', (newMode: PostyenMode) => {
+modeReplicant.on('change', (newMode) => {
   usePostyenStore.setState({
-    mode: newMode,
+    mode: newMode ?? PostyenMode.DIGITAL,
   })
 })
 

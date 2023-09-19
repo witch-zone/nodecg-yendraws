@@ -5,11 +5,11 @@ import { Layer } from '../../../components/Scene'
 
 import usePostyenStore from '../store'
 
-import postmark from '../../../assets/images/postyen/postmark.png'
-import circleG from '../../../assets/images/postyen/circle-g.png'
-import circleD from '../../../assets/images/postyen/circle-d.png'
-import circleT from '../../../assets/images/postyen/circle-t.png'
-import circleName from '../../../assets/images/postyen/circle-name.png'
+import postmark from '../assets/postmark.png'
+import circleG from '../assets/circle-g.png'
+import circleD from '../assets/circle-d.png'
+import circleT from '../assets/circle-t.png'
+import circleName from '../assets/circle-name.png'
 
 const Postmark: FunctionComponent = () => {
   const mode = usePostyenStore((state) => state.mode)

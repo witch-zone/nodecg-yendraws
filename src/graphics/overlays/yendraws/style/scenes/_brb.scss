@@ -6,7 +6,7 @@
   @include brand-font;
   font-size: 2em;
 
-  background: url('../assets/images/brb-background.png');
+  background: url('./assets/brb-background.png');
   background-size: contain;
   background-repeat: no-repeat;
 }
@@ -15,7 +15,7 @@
   float: right;
   height: 100%;
   width: 100%;
-  background: url('../assets/images/brb-yen.png');
+  background: url('./assets/brb-yen.png');
   background-size: contain;
   background-repeat: no-repeat;
   shape-outside: polygon(55% 68%, 33% 100%, 100% 100%, 100% 0%, 55% 0%);

@@ -10,15 +10,22 @@ const useOverlayStore = create<OverlayStore>(() => ({
   timer: undefined,
 }))
 
-const timerReplicant = nodecg.Replicant('graphics.timer', 'nodecg-yendraws')
-const scheduleReplicant = nodecg.Replicant('schedule', 'nodecg-yendraws', {
-  persistent: true,
-  defaultValue: {},
-})
+const timerReplicant = nodecg.Replicant<Timer>(
+  'graphics.timer',
+  'nodecg-yendraws',
+)
+const scheduleReplicant = nodecg.Replicant<Schedule>(
+  'schedule',
+  'nodecg-yendraws',
+  {
+    persistent: true,
+    defaultValue: {},
+  },
+)
 
-scheduleReplicant.on('change', (newSchedule: Schedule) => {
+scheduleReplicant.on('change', (newSchedule) => {
   useOverlayStore.setState({
-    schedule: Object.entries(newSchedule)
+    schedule: Object.entries(newSchedule ?? {})
       .filter(([, value]) => !!value)
       .reduce(
         (obj, [key, value]) => ({
@@ -30,7 +37,7 @@ scheduleReplicant.on('change', (newSchedule: Schedule) => {
   })
 })
 
-timerReplicant.on('change', (newTimer: Timer) => {
+timerReplicant.on('change', (newTimer) => {
   useOverlayStore.setState({
     timer: newTimer,
   })

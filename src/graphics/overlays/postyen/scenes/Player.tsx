@@ -9,11 +9,12 @@ import Message from '../components/Message'
 import Postmark from '../components/Postmark'
 import Notifications from '../components/Notifications'
 
-import stripeTop from '../../../assets/images/postyen/stripe-top.png'
-import stripeBottom from '../../../assets/images/postyen/stripe-bottom.png'
-import postboxBack from '../../../assets/images/postyen/postbox-back.png'
-import postboxFront from '../../../assets/images/postyen/postbox-front.png'
 import usePostyenStore from '../store'
+
+import stripeTop from '../assets/stripe-top.png'
+import stripeBottom from '../assets/stripe-bottom.png'
+import postboxBack from '../assets/postbox-back.png'
+import postboxFront from '../assets/postbox-front.png'
 
 const Player: FunctionComponent = () => {
   const mode = usePostyenStore((state) => state.mode)

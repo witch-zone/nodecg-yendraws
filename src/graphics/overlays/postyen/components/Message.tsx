@@ -14,7 +14,7 @@ import sub12 from '../../../assets/badges/subscriber/12.png'
 import sub3 from '../../../assets/badges/subscriber/3.png'
 import sub6 from '../../../assets/badges/subscriber/6.png'
 
-import defaultIcon from '../../../assets/images/postyen/stamp-usericon.png'
+import defaultIcon from '../assets/stamp-usericon.png'
 
 interface UserBadgesProps {
   badges: Record<string, string>

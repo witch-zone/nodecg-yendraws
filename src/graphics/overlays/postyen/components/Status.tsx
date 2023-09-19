@@ -6,9 +6,9 @@ import usePostyenStore from '../store'
 import Twemoji from '../../../components/Twemoji'
 import { Layer } from '../../../components/Scene'
 
-import lemonFriend from '../../../assets/images/postyen/friends/friend-lemon.png'
-import eelFriend from '../../../assets/images/postyen/friends/friend-eel.png'
-import jellyFriend from '../../../assets/images/postyen/friends/friend-jelly.png'
+import lemonFriend from '../assets/friends/friend-lemon.png'
+import eelFriend from '../assets/friends/friend-eel.png'
+import jellyFriend from '../assets/friends/friend-jelly.png'
 
 import SpeechBubble from './SpeechBubble'
 

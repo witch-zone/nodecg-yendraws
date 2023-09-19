@@ -16,5 +16,5 @@
     "jsxFactory": "h",
     "outDir": "dist"
   },
-  "include": ["**/*"]
+  "include": ["**/*", "node_modules/@nodecg/types/augment-window.d.ts"]
 }

@@ -1,5 +1,3 @@
-declare const nodecg: any
-
 declare module '*.svg'
 declare module '*.png'
 declare module '*.gif'

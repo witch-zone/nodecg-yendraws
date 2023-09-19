@@ -8,6 +8,8 @@ import Schedule from '../../components/Schedule'
 import Social from '../../components/Social'
 import Twemoji from '../../components/Twemoji'
 
+import './brb.scss'
+
 const BRBOverlay = () => {
   const message = useStore((state) => state.brb.message)
   const timer = useOverlayStore((state) => state.timer)
