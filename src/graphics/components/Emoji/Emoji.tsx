@@ -2,18 +2,20 @@ import { FunctionComponent, h } from 'preact'
 import { useMemo } from 'preact/hooks'
 import twemoji from 'twemoji'
 
-interface TwemojiProps {
+import classes from './Emoji.module.scss'
+
+interface EmojiProps {
   message?: string
 }
 
-const Twemoji: FunctionComponent<TwemojiProps> = ({ message }) => {
+const Emoji: FunctionComponent<EmojiProps> = ({ message }) => {
   const parsedMessage = useMemo(() => {
     if (!message) {
       return ''
     }
 
     return twemoji.parse(message, {
-      className: 'c-twemoji',
+      className: classes.Emoji,
       base: 'https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/',
     })
   }, [message])
@@ -27,4 +29,4 @@ const Twemoji: FunctionComponent<TwemojiProps> = ({ message }) => {
   )
 }
 
-export default Twemoji
+export default Emoji

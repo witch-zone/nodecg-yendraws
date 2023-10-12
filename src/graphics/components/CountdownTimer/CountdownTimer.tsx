@@ -1,19 +1,16 @@
-import classnames from 'classnames'
 import moment from 'moment'
-import { FunctionComponent, h } from 'preact'
+import { FunctionComponent, Fragment, h } from 'preact'
 
 import { useCallback, useEffect, useMemo, useState } from 'preact/hooks'
 import calculateTimeRemaining from './utils/calculateTimeRemaining'
 
+import classes from './CountdownTimer.module.scss'
+
 interface CountdownTimerProps {
   target: string | undefined
-  className?: string
 }
 
-const CountdownTimer: FunctionComponent<CountdownTimerProps> = ({
-  target,
-  className,
-}) => {
+const CountdownTimer: FunctionComponent<CountdownTimerProps> = ({ target }) => {
   const targetMoment = useMemo(() => moment.utc(target || undefined), [target])
   const [countdown, updateCountdown] = useState<string | null>(null)
 
@@ -31,12 +28,18 @@ const CountdownTimer: FunctionComponent<CountdownTimerProps> = ({
     }
   })
 
-  return countdown !== null ? (
-    <span className={classnames('c-countdown-timer', className)}>
-      Please hold on for
-      <span className="c-countdown-timer__remaining">{countdown}!</span>
+  return (
+    <span className={classes.CountdownTimer}>
+      {countdown && (
+        <Fragment>
+          Please hold on for
+          <span className={classes.CountdownTimer__Remaining}>
+            {countdown}!
+          </span>
+        </Fragment>
+      )}
     </span>
-  ) : null
+  )
 }
 
 export default CountdownTimer

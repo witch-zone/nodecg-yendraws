@@ -1,14 +1,12 @@
 import { ChatTextMessageToken } from 'nodecg-twitchie'
-import { FunctionComponent, h } from 'preact'
-
-import Twemoji from '../../Twemoji'
+import { Fragment, FunctionComponent, h } from 'preact'
 
 interface TextTokenProps {
   token: ChatTextMessageToken
 }
 
 const TextToken: FunctionComponent<TextTokenProps> = ({ token }) => (
-  <Twemoji>{token.text}</Twemoji>
+  <Fragment>{token.text}</Fragment>
 )
 
 export { TextTokenProps }

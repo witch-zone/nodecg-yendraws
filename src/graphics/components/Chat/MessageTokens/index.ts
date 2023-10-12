@@ -1,2 +1,1 @@
-import MessageTokens from './MessageTokens'
-export default MessageTokens
+export { default } from './MessageTokens'

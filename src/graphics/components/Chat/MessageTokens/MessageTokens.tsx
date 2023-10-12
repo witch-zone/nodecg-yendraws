@@ -1,11 +1,13 @@
-import { ChatEmoteMessageToken, ChatMessageToken } from 'nodecg-twitchie'
+import { ChatMessageToken } from 'nodecg-twitchie'
 import { ComponentType, Fragment, FunctionComponent, h } from 'preact'
 import { useMemo } from 'preact/hooks'
 
 import CheerToken, { CheerTokenProps } from './CheerToken'
 import EmoteToken, { EmoteTokenProps } from './EmoteToken'
+import JumbomotesToken from './JumbomotesToken'
 
 interface MessageTokensProps {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   WrapperComponent?: ComponentType<any>
   EmoteComponent?: ComponentType<EmoteTokenProps>
   CheerComponent?: ComponentType<CheerTokenProps>
@@ -31,13 +33,7 @@ const MessageTokens: FunctionComponent<MessageTokensProps> = ({
   if (weGottaGoJumbo) {
     return (
       <WrapperComponent>
-        <div className="o-jumbomoji">
-          {tokens.map((token) =>
-            token.type === 'emote' ? (
-              <EmoteComponent token={token as ChatEmoteMessageToken} />
-            ) : null,
-          )}
-        </div>
+        <JumbomotesToken tokens={tokens} EmoteComponent={EmoteComponent} />
       </WrapperComponent>
     )
   }

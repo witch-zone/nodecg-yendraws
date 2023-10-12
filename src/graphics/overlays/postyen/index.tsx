@@ -1,9 +1,59 @@
 import { FunctionComponent, h } from 'preact'
+import classnames from 'classnames'
 
-import Player from './scenes/Player'
+import Chat from '../../components/Chat'
+import Layer from '../../components/Layer'
+
+import Status from './components/Status'
+import Message from './components/Message'
+import Postmark from './components/Postmark'
+import Notifications from './components/Notifications'
+
+import usePostyenStore from './store'
 
 import './postyen.scss'
 
-const PostyenOverlay: FunctionComponent = () => <Player />
+import stripeTop from './assets/stripe-top.png'
+import stripeBottom from './assets/stripe-bottom.png'
+import postboxBack from './assets/postbox-back.png'
+import postboxFront from './assets/postbox-front.png'
 
-export default PostyenOverlay
+const Player: FunctionComponent = () => {
+  const mode = usePostyenStore((state) => state.mode)
+
+  return (
+    <Layer className={classnames('c-player', `c-player--${mode}`)}>
+      <div className="c-envelope">
+        <Layer className="c-envelope__sidebar" />
+
+        <Layer>
+          <img src={stripeBottom} />
+        </Layer>
+
+        <Status />
+
+        <Layer>
+          <img src={postboxBack} />
+        </Layer>
+
+        <Layer>
+          <Chat messageComponent={Message} />
+        </Layer>
+
+        <Layer>
+          <img src={postboxFront} />
+        </Layer>
+
+        <Layer>
+          <img src={stripeTop} />
+        </Layer>
+      </div>
+
+      <Postmark />
+
+      <Notifications />
+    </Layer>
+  )
+}
+
+export default Player

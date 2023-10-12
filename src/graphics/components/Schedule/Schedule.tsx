@@ -1,25 +1,26 @@
-import classnames from 'classnames'
 import { FunctionComponent, h } from 'preact'
 
 import { useOverlayStore } from '../../store'
 
 import ScheduleTime from './ScheduleTime'
 
-interface ScheduleProps {
-  className?: string
-}
+import classes from './Schedule.module.scss'
 
-const Schedule: FunctionComponent<ScheduleProps> = ({ className }) => {
+const Schedule: FunctionComponent = () => {
   const schedule = useOverlayStore((state) => state.schedule)
+
+  console.log(schedule)
 
   if (!schedule || Object.keys(schedule).length === 0) {
     return null
   }
 
   return (
-    <div className={classnames('c-schedule', className)}>
+    <div className={classes.Schedule}>
       {Object.entries(schedule).map(([day, time]) => (
-        <ScheduleTime day={day} time={time} className="c-schedule__time" />
+        <div className={classes.Schedule__Item}>
+          <ScheduleTime day={day} time={time} />
+        </div>
       ))}
     </div>
   )

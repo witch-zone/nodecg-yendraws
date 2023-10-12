@@ -3,8 +3,8 @@ import { FunctionComponent, h } from 'preact'
 import useStore from '../../../store'
 import usePostyenStore from '../store'
 
-import Twemoji from '../../../components/Twemoji'
-import { Layer } from '../../../components/Scene'
+import Emoji from '../../../components/Emoji/Emoji'
+import Layer from '../../../components/Layer'
 
 import lemonFriend from '../assets/friends/friend-lemon.png'
 import eelFriend from '../assets/friends/friend-eel.png'
@@ -36,7 +36,7 @@ const Status: FunctionComponent = () => {
 
       <div className="c-status__message">
         <SpeechBubble>
-          <Twemoji message={status || stream?.title} />
+          <Emoji message={status || stream?.title} />
         </SpeechBubble>
       </div>
     </Layer>

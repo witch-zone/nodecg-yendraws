@@ -1,6 +1,6 @@
 import { FunctionComponent, h } from 'preact'
 
-import { Layer } from '../../../../components/Scene'
+import Layer from '../../../../components/Layer'
 import NotificationFeed from '../../../../components/Notifications'
 
 import Notification from './Notification'

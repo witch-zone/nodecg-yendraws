@@ -1,0 +1,47 @@
+.Chat {
+  max-height: 100%;
+
+  &__Wrapper {
+    /* prevents chat item margin overflow without
+     * having to use overflow rule, which can cause
+     * visual clipping */
+    padding: 1px 0;
+  }
+}
+
+.ChatItem {
+  margin: 0 auto 0.8rem;
+  word-break: break-word;
+  animation: message-popin 0.5s ease-in-out;
+  animation-iteration-count: 1;
+  animation-delay: 0.05s;
+  animation-fill-mode: both;
+}
+
+.ChatMessage {
+  &__User {
+    word-break: normal;
+    text-overflow: ellipsis;
+    overflow: hidden;
+  }
+}
+
+@keyframes message-popin {
+  0% {
+    opacity: 0;
+    transform: translateY(1em);
+  }
+
+  67% {
+    transform: translateY(-0.24em);
+  }
+
+  85% {
+    transform: translateY(0);
+  }
+
+  100% {
+    transform: translateY(0%);
+    opacity: 1;
+  }
+}

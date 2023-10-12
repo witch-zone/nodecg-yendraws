@@ -1,0 +1,29 @@
+.Schedule {
+  margin: -0.5em -0.5em -0.25em;
+  display: flex;
+  flex-flow: row wrap;
+  align-items: center;
+  justify-content: flex-end;
+
+  &__Item {
+    margin: 0.25em 0.5em 0.25em 0;
+    text-align: center;
+  }
+}
+
+.ScheduleItem {
+  &__Day {
+    display: block;
+    font-variant: small-caps;
+    line-height: 1;
+    font-size: 0.9em;
+    margin-bottom: 0.2em;
+  }
+
+  &__Time {
+    display: block;
+    flex-grow: 1;
+    font-size: 1.2em;
+    line-height: 1;
+  }
+}

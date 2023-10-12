@@ -1,0 +1,14 @@
+.Jumbomotes {
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+  justify-content: center;
+
+  &__Emote {
+    width: 33%;
+    max-width: 5em;
+    height: auto;
+    margin: 0;
+    line-height: 1;
+  }
+}

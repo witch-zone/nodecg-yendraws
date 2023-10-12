@@ -61,12 +61,6 @@ $global-drop-shadow: none;
 
 @import '../../style/reset';
 
-@import '../../style/objects/o-scene';
-@import '../../style/objects/o-layer';
-@import '../../style/objects/o-icon';
-
-@import 'style/components/c-twemoji';
-@import 'style/components/c-twitch-emote';
 @import 'style/components/c-stamp';
 @import 'style/components/c-envelope';
 @import 'style/components/c-chat';
@@ -76,4 +70,22 @@ $global-drop-shadow: none;
 @import 'style/components/c-speech-bubble';
 @import 'style/components/c-notifications';
 
-@import 'style/scenes/player';
+.c-player {
+  --postyen-background-color: #{$color-digital-light};
+  --postyen-foreground-color: #{$color-digital-dark};
+
+  width: $width;
+  height: $height;
+
+  @include brand-font;
+  text-shadow: none;
+  color: var(--postyen-foreground-color);
+
+  &--traditional {
+    --postyen-background-color: #{$color-traditional-light};
+  }
+
+  &--games {
+    --postyen-background-color: #{$color-games-light};
+  }
+}

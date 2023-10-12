@@ -4,7 +4,9 @@ import { useCallback, useEffect, useState } from 'preact/hooks'
 
 import useStore from '../../store'
 
-import Account from './Account'
+import SocialAccount from './SocialAccount'
+
+import classes from './Social.module.scss'
 
 const ROTATE_TIMEOUT = 6000
 
@@ -31,12 +33,12 @@ const Social: FunctionComponent<SocialProps> = ({ className, rightAlign }) => {
   }, [showNextAccount])
 
   return (
-    <div className={classnames('c-social-links', className)}>
+    <div className={classnames(classes.Social, className)}>
       {accounts.map(({ service, username }, idx) => (
-        <Account
-          className={classnames('c-social-links__service', {
-            'c-social-links__service--right': !!rightAlign,
-            'c-social-links__service--active': active === idx,
+        <SocialAccount
+          className={classnames(classes.Social__Account, {
+            [classes['Social__Account--right']]: !!rightAlign,
+            [classes['Social__Account--active']]: active === idx,
           })}
           service={service}
           link={username}

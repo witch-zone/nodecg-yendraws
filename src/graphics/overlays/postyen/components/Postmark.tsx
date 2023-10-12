@@ -1,7 +1,7 @@
 import { FunctionComponent, h } from 'preact'
 import classnames from 'classnames'
 
-import { Layer } from '../../../components/Scene'
+import Layer from '../../../components/Layer'
 
 import usePostyenStore from '../store'
 

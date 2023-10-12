@@ -7,16 +7,22 @@ import {
   useState,
 } from 'preact/hooks'
 import { Motion, spring } from 'react-motion'
+import classnames from 'classnames'
 
 import useStore from '../../store'
 
-import ChatItem, { MessageProps } from './ChatItem'
+import { MessageProps } from './Message'
+import { NotificationProps } from './Notification'
+import ChatItem from './ChatItem'
+
+import classes from './Chat.module.scss'
 
 const DEFAULT_MAX_VISIBLE_ITEMS = 20
 const itemHeights: Record<string, number> = {}
 
 interface ChatProps {
   messageComponent?: ComponentType<MessageProps>
+  notificationComponent?: ComponentType<NotificationProps>
 }
 
 const useVirtualisedItems = (limit = DEFAULT_MAX_VISIBLE_ITEMS) => {
@@ -37,17 +43,23 @@ const useVirtualisedItems = (limit = DEFAULT_MAX_VISIBLE_ITEMS) => {
   return [hiddenItemsHeight, visibleItems] as const
 }
 
-const ChatItemWrapper: FunctionComponent<any> = ({ children, id }) => {
+const ChatItemWrapper: FunctionComponent<{ id?: string }> = ({
+  children,
+  id,
+}) => {
   const itemRef = useRef<HTMLDivElement>(null)
 
   useLayoutEffect(() => {
-    itemHeights[id] = itemRef.current!.offsetHeight
-  }, [])
+    itemHeights[id!] = itemRef.current!.offsetHeight
+  }, [itemRef.current?.offsetHeight])
 
   return <div ref={itemRef}>{children}</div>
 }
 
-const Chat: FunctionComponent<ChatProps> = ({ messageComponent }) => {
+const Chat: FunctionComponent<ChatProps> = ({
+  messageComponent,
+  notificationComponent,
+}) => {
   const chatRef = useRef<HTMLDivElement | null>(null)
   const itemsWrapperRef = useRef<HTMLDivElement | null>(null)
   const [scrollOffset, setOffset] = useState<number>(0)
@@ -78,22 +90,26 @@ const Chat: FunctionComponent<ChatProps> = ({ messageComponent }) => {
   }, [])
 
   return (
-    <div ref={chatRef} className="c-chat">
+    <div ref={chatRef} className={classnames(classes.Chat, 'c-chat')}>
       <Motion defaultStyle={{ y: 0 }} style={{ y: spring(scrollOffset) }}>
         {(styles) => (
           <div
             style={{ transform: `translateY(${styles.y}px)` }}
             ref={onWrapperRefUpdate}
-            className="c-chat__wrapper"
+            className={classnames(classes.Chat__Wrapper, 'c-chat__wrapper')}
           >
             <div
-              style={{ height: `${itemOffset}px` }}
               className="c-chat__placeholder"
+              style={{ height: `${itemOffset}px` }}
             />
 
             {visibleItems.map((item) => (
               <ChatItemWrapper id={item.id} key={item.id}>
-                <ChatItem item={item} messageComponent={messageComponent} />
+                <ChatItem
+                  item={item}
+                  messageComponent={messageComponent}
+                  notificationComponent={notificationComponent}
+                />
               </ChatItemWrapper>
             ))}
           </div>

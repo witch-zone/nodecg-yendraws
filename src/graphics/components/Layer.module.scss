@@ -1,9 +1,10 @@
-.o-layer {
+.Layer {
   position: absolute;
+  z-index: 2;
   top: 0;
   left: 0;
-  width: $width;
-  height: $height;
+  bottom: 0;
+  right: 0;
   margin: 0;
   padding: 0;
 }

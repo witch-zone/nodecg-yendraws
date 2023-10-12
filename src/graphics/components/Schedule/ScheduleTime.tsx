@@ -1,21 +1,17 @@
-import classnames from 'classnames'
 import { FunctionComponent, h } from 'preact'
 
-interface ScheduleProps {
+import classes from './Schedule.module.scss'
+
+interface ScheduleItemProps {
   day: string
   time: string
-  className?: string
 }
 
-const Schedule: FunctionComponent<ScheduleProps> = ({
-  day,
-  time,
-  className,
-}) => (
-  <div className={classnames('c-schedule-time', className)}>
-    <span className="c-schedule-time__day">{day}</span>
-    <span className="c-schedule-time__time">{time}</span>
+const ScheduleItem: FunctionComponent<ScheduleItemProps> = ({ day, time }) => (
+  <div className={classes.ScheduleItem}>
+    <span className={classes.ScheduleItem__Day}>{day}</span>
+    <span className={classes.ScheduleItem__Time}>{time}</span>
   </div>
 )
 
-export default Schedule
+export default ScheduleItem
