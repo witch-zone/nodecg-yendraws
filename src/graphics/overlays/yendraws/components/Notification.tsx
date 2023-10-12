@@ -5,6 +5,8 @@ import { useEffect } from 'preact/hooks'
 
 import { NotificationProps } from '../../../components/Notifications/Notifications'
 
+import classes from './Notification.module.scss'
+
 import bat from '../assets/bat.gif'
 
 const Notification: FunctionComponent<NotificationProps> = ({
@@ -18,15 +20,15 @@ const Notification: FunctionComponent<NotificationProps> = ({
 
   return (
     <div
-      className={classnames('c-notification', className, {
-        'c-notification--visible': !!visible,
+      className={classnames(classes.Notification, className, {
+        [classes['Notification--visible']]: !!visible,
       })}
     >
-      <img src={bat} alt="" className="c-notification__bat" />
+      <img src={bat} alt="" className={classes.Notification__Bat} />
 
       {notification.topic === NotificationType.subscriber && (
         <div
-          className="c-notification__message"
+          className={classes.Notification__Message}
           data-shadow={`${
             notification.userDisplayName ?? notification.userName
           } just subscribed!`}
@@ -39,7 +41,7 @@ const Notification: FunctionComponent<NotificationProps> = ({
       {notification.topic === NotificationType.subscriber_gift &&
         notification.amount === 1 && (
           <div
-            className="c-notification__message"
+            className={classes.Notification__Message}
             data-shadow={`${
               notification.recipientDisplayName ?? notification.recipientName
             } just got a gift from ${
@@ -62,7 +64,7 @@ const Notification: FunctionComponent<NotificationProps> = ({
       {notification.topic === NotificationType.subscriber_gift &&
         Number(notification.amount) > 1 && (
           <div
-            className="c-notification__message"
+            className={classes.Notification__Message}
             data-shadow={`${
               notification.gifterDisplayName ??
               notification.gifterName ??
@@ -81,7 +83,7 @@ const Notification: FunctionComponent<NotificationProps> = ({
 
       {notification.topic === NotificationType.follower && (
         <div
-          className="c-notification__message"
+          className={classes.Notification__Message}
           data-shadow={`${
             notification.userDisplayName ?? notification.userName
           } just followed!`}
