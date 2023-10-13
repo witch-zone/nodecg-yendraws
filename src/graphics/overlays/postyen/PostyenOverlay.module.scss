@@ -1,0 +1,55 @@
+@use './settings' as *;
+
+.PostyenOverlay {
+  --postyen-background-color: #{$color-digital-light};
+  --postyen-foreground-color: #{$color-digital-dark};
+
+  width: $width;
+  height: $height;
+
+  @include brand-font;
+
+  text-shadow: none;
+  color: var(--postyen-foreground-color);
+
+  &--traditional {
+    --postyen-background-color: #{$color-traditional-light};
+  }
+
+  &--games {
+    --postyen-background-color: #{$color-games-light};
+  }
+
+  &__Chat {
+    position: absolute;
+    top: 82px;
+    bottom: 90px;
+    right: 0;
+    left: auto;
+    overflow: hidden;
+
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: stretch;
+    justify-content: stretch;
+
+    width: $sidebar-chat-width;
+  }
+}
+
+.Envelope {
+  clip-path: path(
+    'M 1654,157 a 123,123 0 0,0 246,0 a 123,123 0 0,0 -246,0 L 0 0 L 1920,0 L 1920,1080 L0,1080 L 0,0 z'
+  );
+}
+
+.Envelope__Sidebar {
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: auto;
+  height: 100%;
+  width: $sidebar-width;
+  background: var(--postyen-background-color);
+  transition: background 0.7s ease-in-out;
+}

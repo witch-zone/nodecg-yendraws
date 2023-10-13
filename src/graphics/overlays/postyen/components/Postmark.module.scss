@@ -1,0 +1,28 @@
+.Postmark {
+  &__Stamp {
+    transition: 0.7s ease-in-out all;
+    visibility: hidden;
+    opacity: 0;
+
+    &--visible {
+      visibility: visible;
+      opacity: 1;
+    }
+  }
+
+  &__Name {
+    position: absolute;
+    right: -42px;
+    top: -26px;
+    animation: rotate 30s linear infinite;
+  }
+}
+
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}

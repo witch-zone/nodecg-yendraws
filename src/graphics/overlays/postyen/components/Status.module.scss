@@ -1,0 +1,38 @@
+.Status {
+  top: auto;
+  bottom: 0;
+  right: auto;
+  left: 0;
+  width: 1300px;
+  height: auto;
+
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: flex-start;
+  align-items: flex-end;
+
+  &__Friends {
+    width: 147px;
+    height: 126px;
+    flex-shrink: 0;
+    flex-grow: 0;
+    position: relative;
+  }
+
+  &__Friend {
+    position: absolute;
+    vertical-align: bottom;
+    transform: translateY(100%);
+    transition: 0.23s all ease-out;
+    transition-delay: 0s;
+
+    &--visible {
+      transition-delay: 0.45s;
+      transform: translateY(0);
+    }
+  }
+
+  &__Message {
+    padding: 15px 0;
+  }
+}

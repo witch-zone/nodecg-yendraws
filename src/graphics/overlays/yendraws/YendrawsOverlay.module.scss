@@ -1,0 +1,57 @@
+@use './settings' as *;
+
+.Background {
+  background: url('./assets/overlay-bg-with-emotes.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+.Player {
+  width: $player-width;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: space-between;
+  align-items: flex-start;
+
+  &__Header {
+    @include brand-font;
+    font-size: 1.5em;
+    padding: 0 1em 0 3.5em;
+    height: 12%;
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+  }
+
+  &__Content {
+    flex-grow: 1;
+  }
+
+  &__Footer {
+    @include brand-font;
+    font-size: 1.5em;
+    padding: 0 1em 0 3.5em;
+    height: 6%;
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+  }
+}
+
+.YendrawsOverlay {
+  z-index: 1;
+  width: $width;
+  height: $height;
+
+  &__Chat {
+    position: absolute;
+    overflow: hidden;
+    top: 21.4%;
+    width: 18.25%;
+    padding: 0;
+    bottom: 0;
+    left: unset;
+    right: 0;
+    color: #000;
+  }
+}

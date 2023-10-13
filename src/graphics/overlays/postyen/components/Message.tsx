@@ -1,10 +1,13 @@
 import { FunctionComponent, h } from 'preact'
 import { useMemo } from 'preact/hooks'
+import classnames from 'classnames'
 
-import { MessageProps } from '../../../components/Chat/ChatItem'
+import { MessageProps } from '../../../components/Chat/Message'
 import useUserColours from '../../../utils/useUserColours'
 
 import usePostyenStore from '../store'
+
+import classes from './Message.module.scss'
 
 import mod from '../../../assets/badges/mod.png'
 import yen from '../../../assets/badges/yen.png'
@@ -23,41 +26,41 @@ interface UserBadgesProps {
 const random = (min: number, max: number) =>
   (Math.random() * (min - max) + max).toFixed(2)
 
-const useKnownUser = (username: any) =>
+const useKnownUser = (username: unknown) =>
   usePostyenStore((state) => state.knownUsers[`${username}`.toLowerCase()])
 
 const UserBadges: FunctionComponent<UserBadgesProps> = ({ badges = {} }) => {
   if (badges.broadcaster) {
-    return <img src={yen} alt="yen" className="o-emote o-emote--flush" />
+    return <img src={yen} alt="yen" className={classes.Badge} />
   }
 
   if (badges.moderator) {
-    return <img src={mod} alt="mod" className="o-emote o-emote--flush" />
+    return <img src={mod} alt="mod" className={classes.Badge} />
   }
 
   if (badges.founder) {
-    return <img src={sub12} alt="sub12" className="o-emote o-emote--flush" />
+    return <img src={sub12} alt="sub12" className={classes.Badge} />
   }
 
   if (badges.subscriber) {
     const months = parseInt(badges.subscriber, 10)
 
     if (months >= 12) {
-      return <img src={sub12} alt="sub12" className="o-emote o-emote--flush" />
+      return <img src={sub12} alt="sub12" className={classes.Badge} />
     }
 
     if (months >= 6) {
-      return <img src={sub6} alt="sub6" className="o-emote o-emote--flush" />
+      return <img src={sub6} alt="sub6" className={classes.Badge} />
     }
 
     if (months >= 3) {
-      return <img src={sub3} alt="sub3" className="o-emote o-emote--flush" />
+      return <img src={sub3} alt="sub3" className={classes.Badge} />
     }
 
-    return <img src={sub0} alt="sub0" className="o-emote o-emote--flush" />
+    return <img src={sub0} alt="sub0" className={classes.Badge} />
   }
 
-  return <span className="o-emote">&hearts;</span>
+  return <span className={classes.Badge}>&hearts;</span>
 }
 
 const Message: FunctionComponent<MessageProps> = ({ item, user, message }) => {
@@ -70,34 +73,33 @@ const Message: FunctionComponent<MessageProps> = ({ item, user, message }) => {
   const stampAngle = useMemo(() => random(-4, 4), [])
 
   return (
-    <div className="c-chat-item c-chat-message">
+    <div className={classes.Message}>
       <div
-        className="c-chat-message__header"
+        className={classes.Message__Header}
         style={{
           '--chat-message-header-background': userColour.string(),
           '--chat-message-header-color': userNameColour.string(),
         }}
       >
-        <div className="c-chat-message__badge">
-          <UserBadges badges={item.user.badges} />
-        </div>
+        {item?.user.badges && (
+          <div className={classes.Message__Badge}>
+            <UserBadges badges={item.user.badges} />
+          </div>
+        )}
 
-        <div className="c-chat-message__user">{user}</div>
+        <div className={classes.Message__User}>{user}</div>
 
         <div
-          className="c-chat-message__stamp c-stamp"
+          className={classnames(classes.Message__Stamp, classes.Stamp)}
           style={{
             transform: `rotate(${stampAngle}deg)`,
           }}
         >
-          <img
-            src={userIcon || defaultIcon}
-            className="c-chat-message__usericon c-stamp__icon"
-          />
+          <img src={userIcon || defaultIcon} className={classes.Stamp__Icon} />
         </div>
       </div>
 
-      <div className="c-chat-message__message">{message}</div>
+      <div className={classes.Message__Message}>{message}</div>
     </div>
   )
 }

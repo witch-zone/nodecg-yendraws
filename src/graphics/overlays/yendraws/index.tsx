@@ -12,26 +12,27 @@ import Message from './components/Message'
 import Notification from './components/Notification'
 
 import './yendraws.scss'
+import classes from './YendrawsOverlay.module.scss'
 
 const YendrawsOverlay = () => {
   const stream = useStore((state) => state.stream)
   const status = useStore((store) => store.status)
 
   return (
-    <Layer className="o-scene--player">
-      <Layer className="c-layer c-player-background" />
+    <Layer className={classes.YendrawsOverlay}>
+      <Layer className={classes.Background} />
 
-      <Layer className="c-player">
-        <header className="c-player__header">
+      <Layer className={classes.Player}>
+        <header className={classes.Player__Header}>
           <Emoji message={status || stream?.title} />
         </header>
 
-        <footer className="c-player__footer">
+        <footer className={classes.Player__Footer}>
           <Social />
         </footer>
       </Layer>
 
-      <Layer>
+      <Layer className={classes.YendrawsOverlay__Chat}>
         <Chat messageComponent={Message} />
       </Layer>
 

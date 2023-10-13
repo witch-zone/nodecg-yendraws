@@ -1,6 +1,6 @@
 import { FunctionComponent, h } from 'preact'
 
-import { MessageProps } from '../../../components/Chat/ChatItem'
+import { MessageProps } from '../../../components/Chat/Message'
 
 import classes from './Message.module.scss'
 

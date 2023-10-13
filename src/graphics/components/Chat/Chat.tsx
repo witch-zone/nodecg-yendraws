@@ -23,6 +23,7 @@ const itemHeights: Record<string, number> = {}
 interface ChatProps {
   messageComponent?: ComponentType<MessageProps>
   notificationComponent?: ComponentType<NotificationProps>
+  startFrom?: 'top' | 'bottom'
 }
 
 const useVirtualisedItems = (limit = DEFAULT_MAX_VISIBLE_ITEMS) => {
@@ -59,10 +60,12 @@ const ChatItemWrapper: FunctionComponent<{ id?: string }> = ({
 const Chat: FunctionComponent<ChatProps> = ({
   messageComponent,
   notificationComponent,
+  startFrom,
 }) => {
   const chatRef = useRef<HTMLDivElement | null>(null)
   const itemsWrapperRef = useRef<HTMLDivElement | null>(null)
-  const [scrollOffset, setOffset] = useState<number>(0)
+  const [chatHeight, setChatHeight] = useState(0)
+  const [scrollOffset, setOffset] = useState(0)
 
   const [itemOffset, visibleItems] = useVirtualisedItems()
 
@@ -89,6 +92,10 @@ const Chat: FunctionComponent<ChatProps> = ({
     observer.observe(newNode, { childList: true })
   }, [])
 
+  useLayoutEffect(() => {
+    setChatHeight(chatRef.current?.offsetHeight ?? 0)
+  }, [setChatHeight, chatRef])
+
   return (
     <div ref={chatRef} className={classnames(classes.Chat, 'c-chat')}>
       <Motion defaultStyle={{ y: 0 }} style={{ y: spring(scrollOffset) }}>
@@ -100,7 +107,10 @@ const Chat: FunctionComponent<ChatProps> = ({
           >
             <div
               className="c-chat__placeholder"
-              style={{ height: `${itemOffset}px` }}
+              style={{
+                minHeight: `${startFrom === 'bottom' ? chatHeight : 0}px`,
+                height: `${itemOffset}px`,
+              }}
             />
 
             {visibleItems.map((item) => (

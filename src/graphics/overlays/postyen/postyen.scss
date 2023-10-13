@@ -1,35 +1,4 @@
-@use 'sass:color';
-
-@mixin global-drop-shadow {
-  filter: drop-shadow(0 6px 0 color.scale(#502866, $alpha: -30%));
-}
-
-$base-font-size: 20px;
-$base-line-height: 1.5;
-$base-letter-spacing: 0;
-$base-font-family: Copywrityen, sans-serif;
-
-$brand-line-height: 0.9;
-$brand-letter-spacing: -0.03em;
-$brand-font-family: Handwrityen, sans-serif;
-
-$font-weight-normal: 500;
-$font-weight-bold: 800;
-
-$width: 1920px;
-$height: 1080px;
-
-$sidebar-width: 342px;
-$sidebar-chat-width: 385px;
-
-$color-base: #fff;
-
-$color-digital-light: #cdb9e2;
-$color-digital-dark: #30084d;
-$color-traditional-light: #b0f0e5;
-$color-games-light: #ffd9ea;
-
-$global-drop-shadow: none;
+@use './settings' as *;
 
 @font-face {
   font-family: 'Copywrityen';
@@ -45,47 +14,4 @@ $global-drop-shadow: none;
   font-style: normal;
 }
 
-@mixin base-font {
-  font-family: $base-font-family;
-  letter-spacing: $base-letter-spacing;
-  line-height: $base-line-height;
-}
-
-@mixin brand-font {
-  font-family: $brand-font-family;
-  font-weight: $font-weight-normal;
-  line-height: $brand-line-height;
-  letter-spacing: $brand-letter-spacing;
-  text-shadow: $global-drop-shadow;
-}
-
 @import '../../style/reset';
-
-@import 'style/components/c-stamp';
-@import 'style/components/c-envelope';
-@import 'style/components/c-chat';
-@import 'style/components/c-chat-message';
-@import 'style/components/c-status';
-@import 'style/components/c-postmark';
-@import 'style/components/c-speech-bubble';
-@import 'style/components/c-notifications';
-
-.c-player {
-  --postyen-background-color: #{$color-digital-light};
-  --postyen-foreground-color: #{$color-digital-dark};
-
-  width: $width;
-  height: $height;
-
-  @include brand-font;
-  text-shadow: none;
-  color: var(--postyen-foreground-color);
-
-  &--traditional {
-    --postyen-background-color: #{$color-traditional-light};
-  }
-
-  &--games {
-    --postyen-background-color: #{$color-games-light};
-  }
-}

@@ -12,19 +12,25 @@ import Notifications from './components/Notifications'
 import usePostyenStore from './store'
 
 import './postyen.scss'
+import classes from './PostyenOverlay.module.scss'
 
 import stripeTop from './assets/stripe-top.png'
 import stripeBottom from './assets/stripe-bottom.png'
 import postboxBack from './assets/postbox-back.png'
 import postboxFront from './assets/postbox-front.png'
 
-const Player: FunctionComponent = () => {
+const PostyenOverlay: FunctionComponent = () => {
   const mode = usePostyenStore((state) => state.mode)
 
   return (
-    <Layer className={classnames('c-player', `c-player--${mode}`)}>
-      <div className="c-envelope">
-        <Layer className="c-envelope__sidebar" />
+    <Layer
+      className={classnames(
+        classes.PostyenOverlay,
+        classes[`PostyenOverlay--${mode}`],
+      )}
+    >
+      <div className={classes.Envelope}>
+        <Layer className={classes.Envelope__Sidebar} />
 
         <Layer>
           <img src={stripeBottom} />
@@ -36,8 +42,8 @@ const Player: FunctionComponent = () => {
           <img src={postboxBack} />
         </Layer>
 
-        <Layer>
-          <Chat messageComponent={Message} />
+        <Layer className={classes.PostyenOverlay__Chat}>
+          <Chat messageComponent={Message} startFrom="bottom" />
         </Layer>
 
         <Layer>
@@ -56,4 +62,4 @@ const Player: FunctionComponent = () => {
   )
 }
 
-export default Player
+export default PostyenOverlay

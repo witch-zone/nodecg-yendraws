@@ -9,10 +9,11 @@ import usePostyenStore from '../../store'
 import { NotificationProps } from '../../../../components/Notifications/Notifications'
 import SpeechBubble from '../SpeechBubble'
 
+import classes from './Notifications.module.scss'
+
 const Notification: FunctionComponent<NotificationProps> = ({
   notification,
   visible,
-  className,
 }) => {
   const randomFriendIcons = usePostyenStore((store) => store.friends)
 
@@ -26,14 +27,19 @@ const Notification: FunctionComponent<NotificationProps> = ({
   }, [notification])
 
   return (
-    <div
-      className={classnames('c-notification', className, {
-        'c-notification--visible': !!visible,
-      })}
-    >
-      <img className="c-notification__friend" src={friendIcon} />
+    <div className={classes.Notification}>
+      <img
+        className={classnames(classes.Notification__Friend, {
+          [classes['Notification__Friend--visible']]: !!visible,
+        })}
+        src={friendIcon}
+      />
 
-      <SpeechBubble className="c-notification__message">
+      <SpeechBubble
+        className={classnames(classes.Notification__Message, {
+          [classes['Notification__Message--visible']]: !!visible,
+        })}
+      >
         {notification.topic === NotificationType.subscriber && (
           <Fragment>
             <span>{notification.userDisplayName ?? notification.userName}</span>{' '}

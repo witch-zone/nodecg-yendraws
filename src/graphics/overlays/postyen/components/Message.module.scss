@@ -1,0 +1,74 @@
+@use '../settings' as *;
+
+:root {
+  --chat-message-header-background: #ce4fd9;
+  --chat-message-header-color: #30084d;
+}
+
+.Badge {
+  display: inline-block;
+  vertical-align: middle;
+  max-width: 1.65em;
+}
+
+.Stamp {
+  position: relative;
+  padding: 16px;
+  transform-origin: 50% 50%;
+
+  &:after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+
+    background: url('../assets/stamp.png') no-repeat center center;
+  }
+
+  &__Icon {
+    display: block;
+    width: 42px;
+    height: 42px;
+  }
+}
+
+.Message {
+  margin: 1em 12px;
+  font-size: 1.35em;
+  border-radius: 12px;
+  background: #fff;
+  color: #30084d;
+  overflow: hidden;
+
+  word-break: break-word;
+
+  @include global-drop-shadow;
+
+  &__Header {
+    background: var(--chat-message-header-background);
+    color: var(--chat-message-header-color);
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+    justify-content: flex-start;
+    font-size: 1.2em;
+    padding: 15px 80px 15px 10px;
+  }
+
+  &__Message {
+    padding: 15px;
+  }
+
+  &__Badge {
+    flex-shrink: 0;
+    margin: -1em 10px -1em 0;
+  }
+
+  &__Stamp {
+    position: absolute;
+    top: 2px;
+    right: 2px;
+  }
+}
