@@ -14,18 +14,6 @@ import './yendraws-countdown'
 import '../twitchie-style/twitchie-style'
 
 const timer = NodeCG.Replicant('graphics.timer', 'nodecg-yendraws')
-const brb = NodeCG.Replicant('graphics.brb', 'nodecg-twitchie', {
-  persistent: true,
-})
-
-const clearBrb = () => {
-  const { message } = brb.value
-
-  brb.value = {
-    isAway: false,
-    message,
-  }
-}
 
 class YendrawsTimer extends Polymer.PolymerElement {
   static get template() {
@@ -48,12 +36,6 @@ class YendrawsTimer extends Polymer.PolymerElement {
 
       <section name="manage">
         <yendraws-countdown id="countdown" target="[[timer]]"></yendraws-countdown>
-
-        <div class="c-field-group">
-          <paper-checkbox checked="{{clearBrbOnComplete}}">
-            Hide BRB screen when timer finishes?
-          </paper-checkbox>
-        </div>
 
         <paper-button raised="" on-tap="clearTimer">
           <iron-icon icon="icons:alarm-off"></iron-icon>
@@ -78,10 +60,6 @@ class YendrawsTimer extends Polymer.PolymerElement {
         type: Number,
         value: 0,
       },
-      clearBrbOnComplete: {
-        type: Boolean,
-        value: true,
-      },
     }
   }
 
@@ -103,12 +81,6 @@ class YendrawsTimer extends Polymer.PolymerElement {
       timer.on('change', (newVal) => {
         this.timer = newVal
         this.$.pages.selected = newVal ? 'manage' : 'create'
-      })
-
-      this.$.countdown.addEventListener('countdown-finished', () => {
-        if (this.clearBrbOnComplete) {
-          clearBrb()
-        }
       })
     })
   }
