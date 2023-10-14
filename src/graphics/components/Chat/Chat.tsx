@@ -108,7 +108,7 @@ const Chat: FunctionComponent<ChatProps> = ({
             <div
               className="c-chat__placeholder"
               style={{
-                minHeight: `${startFrom === 'bottom' ? chatHeight : 0}px`,
+                marginTop: `${startFrom === 'bottom' ? chatHeight : 0}px`,
                 height: `${itemOffset}px`,
               }}
             />
